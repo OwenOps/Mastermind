@@ -1,2 +1,2 @@
 # Mastermind
-### ***Owen -- Alexandre -- Oum -- Namodacane --***
+### ***Owen -- Alexandre -- Oum -- Namodacane***
