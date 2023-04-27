@@ -61,13 +61,14 @@ Partial Class FormAccueil
         Me.btnStats.Location = New System.Drawing.Point(290, 207)
         Me.btnStats.Name = "btnStats"
         Me.btnStats.Size = New System.Drawing.Size(117, 35)
-        Me.btnStats.TabIndex = 2
+        Me.btnStats.TabIndex = 4
         Me.btnStats.Text = "Statistique"
         Me.btnStats.UseVisualStyleBackColor = False
         '
         'btnJouer
         '
         Me.btnJouer.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnJouer.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnJouer.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.btnJouer.Location = New System.Drawing.Point(156, 207)
         Me.btnJouer.Name = "btnJouer"
@@ -79,6 +80,7 @@ Partial Class FormAccueil
         'btnQuitter
         '
         Me.btnQuitter.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnQuitter.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnQuitter.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.btnQuitter.Location = New System.Drawing.Point(22, 207)
         Me.btnQuitter.Name = "btnQuitter"
@@ -93,7 +95,7 @@ Partial Class FormAccueil
         Me.PictureBox1.Location = New System.Drawing.Point(-1, 0)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(450, 79)
-        Me.PictureBox1.TabIndex = 5
+        Me.PictureBox1.TabIndex = 2
         Me.PictureBox1.TabStop = False
         '
         'Label1
