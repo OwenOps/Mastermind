@@ -44,7 +44,7 @@ Partial Class FormulaireJeu
         'MasterMind
         '
         Me.MasterMind.AutoSize = True
-        Me.MasterMind.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MasterMind.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MasterMind.Location = New System.Drawing.Point(264, 20)
         Me.MasterMind.Name = "MasterMind"
         Me.MasterMind.Size = New System.Drawing.Size(142, 25)
@@ -208,7 +208,7 @@ Partial Class FormulaireJeu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(655, 519)
+        Me.ClientSize = New System.Drawing.Size(655, 493)
         Me.Controls.Add(Me.ListeCaractereJouable)
         Me.Controls.Add(Me.ListeCaratereHistorique)
         Me.Controls.Add(Me.PanelCaractereJoué)
