@@ -28,11 +28,11 @@ Partial Class FormJeu
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.BtnGuess = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Txt1 = New System.Windows.Forms.TextBox()
+        Me.Txt2 = New System.Windows.Forms.TextBox()
+        Me.Txt3 = New System.Windows.Forms.TextBox()
+        Me.Txt4 = New System.Windows.Forms.TextBox()
+        Me.Txt5 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PnlCaractereJoue = New System.Windows.Forms.Panel()
         Me.LstCaratereHistorique = New System.Windows.Forms.ListBox()
@@ -114,50 +114,51 @@ Partial Class FormJeu
         Me.BtnGuess.Text = "Guess"
         Me.BtnGuess.UseVisualStyleBackColor = True
         '
-        'TextBox2
+        'Txt1
         '
-        Me.TextBox2.Location = New System.Drawing.Point(17, 19)
-        Me.TextBox2.MaxLength = 1
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(38, 20)
-        Me.TextBox2.TabIndex = 13
-        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.Txt1.Location = New System.Drawing.Point(17, 19)
+        Me.Txt1.MaxLength = 1
+        Me.Txt1.Name = "Txt1"
+        Me.Txt1.Size = New System.Drawing.Size(38, 20)
+        Me.Txt1.TabIndex = 1
+        Me.Txt1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox6
+        'Txt2
         '
-        Me.TextBox6.Location = New System.Drawing.Point(71, 19)
-        Me.TextBox6.MaxLength = 1
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(38, 20)
-        Me.TextBox6.TabIndex = 17
-        Me.TextBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.Txt2.Location = New System.Drawing.Point(74, 19)
+        Me.Txt2.MaxLength = 1
+        Me.Txt2.Name = "Txt2"
+        Me.Txt2.Size = New System.Drawing.Size(38, 20)
+        Me.Txt2.TabIndex = 2
+        Me.Txt2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox1
+        'Txt3
         '
-        Me.TextBox1.Location = New System.Drawing.Point(134, 19)
-        Me.TextBox1.MaxLength = 1
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(38, 20)
-        Me.TextBox1.TabIndex = 18
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.Txt3.Location = New System.Drawing.Point(141, 19)
+        Me.Txt3.MaxLength = 1
+        Me.Txt3.Name = "Txt3"
+        Me.Txt3.Size = New System.Drawing.Size(38, 20)
+        Me.Txt3.TabIndex = 3
+        Me.Txt3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox3
+        'Txt4
         '
-        Me.TextBox3.Location = New System.Drawing.Point(194, 19)
-        Me.TextBox3.MaxLength = 1
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(38, 20)
-        Me.TextBox3.TabIndex = 19
-        Me.TextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.Txt4.Location = New System.Drawing.Point(206, 19)
+        Me.Txt4.MaxLength = 1
+        Me.Txt4.Name = "Txt4"
+        Me.Txt4.Size = New System.Drawing.Size(38, 20)
+        Me.Txt4.TabIndex = 4
+        Me.Txt4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox4
+        'Txt5
         '
-        Me.TextBox4.Location = New System.Drawing.Point(256, 19)
-        Me.TextBox4.MaxLength = 1
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(38, 20)
-        Me.TextBox4.TabIndex = 20
-        Me.TextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.Txt5.Location = New System.Drawing.Point(267, 19)
+        Me.Txt5.MaxLength = 1
+        Me.Txt5.Name = "Txt5"
+        Me.Txt5.Size = New System.Drawing.Size(38, 20)
+        Me.Txt5.TabIndex = 5
+        Me.Txt5.Tag = "1"
+        Me.Txt5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label1
         '
@@ -173,14 +174,14 @@ Partial Class FormJeu
         '
         Me.PnlCaractereJoue.BackColor = System.Drawing.SystemColors.Menu
         Me.PnlCaractereJoue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PnlCaractereJoue.Controls.Add(Me.TextBox2)
-        Me.PnlCaractereJoue.Controls.Add(Me.TextBox6)
-        Me.PnlCaractereJoue.Controls.Add(Me.TextBox4)
-        Me.PnlCaractereJoue.Controls.Add(Me.TextBox1)
-        Me.PnlCaractereJoue.Controls.Add(Me.TextBox3)
+        Me.PnlCaractereJoue.Controls.Add(Me.Txt5)
+        Me.PnlCaractereJoue.Controls.Add(Me.Txt1)
+        Me.PnlCaractereJoue.Controls.Add(Me.Txt4)
+        Me.PnlCaractereJoue.Controls.Add(Me.Txt2)
+        Me.PnlCaractereJoue.Controls.Add(Me.Txt3)
         Me.PnlCaractereJoue.Location = New System.Drawing.Point(26, 187)
         Me.PnlCaractereJoue.Name = "PnlCaractereJoue"
-        Me.PnlCaractereJoue.Size = New System.Drawing.Size(312, 59)
+        Me.PnlCaractereJoue.Size = New System.Drawing.Size(322, 59)
         Me.PnlCaractereJoue.TabIndex = 22
         '
         'LstCaratereHistorique
@@ -345,11 +346,11 @@ Partial Class FormJeu
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents BtnGuess As Button
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents Txt1 As TextBox
+    Friend WithEvents Txt2 As TextBox
+    Friend WithEvents Txt3 As TextBox
+    Friend WithEvents Txt4 As TextBox
+    Friend WithEvents Txt5 As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PnlCaractereJoue As Panel
     Friend WithEvents LstCaratereHistorique As ListBox
