@@ -13,10 +13,10 @@
 
     Function enregistrerJoueur()
 
-        JoueurActuel(0).nom = FormAccueil.cbxNomJoueur1.Text
+        JoueurActuel(0).nom = FormJoueur.cbxNomJoueur1.Text
         JoueurActuel(0).estPremierJoueur = True
 
-        JoueurActuel(1).nom = FormAccueil.cbxNomJoueur2.Text
+        JoueurActuel(1).nom = FormJoueur.cbxNomJoueur2.Text
         JoueurActuel(0).estPremierJoueur = False
 
         For i As Integer = 0 To JoueurActuel.Length - 1
@@ -35,12 +35,12 @@
 
     Function verifJoueur() As Boolean
 
-        If FormAccueil.cbxNomJoueur1.Text = "" Or FormAccueil.cbxNomJoueur2.Text = "" Then
+        If FormJoueur.cbxNomJoueur1.Text = "" Or FormJoueur.cbxNomJoueur2.Text = "" Then
             MsgBox("Veuillez entrer un nom pour chaque joueur", vbOKOnly, "Erreur")
             Return False
         End If
 
-        If FormAccueil.cbxNomJoueur1.Text = FormAccueil.cbxNomJoueur2.Text Then
+        If FormJoueur.cbxNomJoueur1.Text = FormJoueur.cbxNomJoueur2.Text Then
             MsgBox("Veuillez entrer un nom différent pour chaque joueur", vbOKOnly, "Erreur")
             Return False
         End If
