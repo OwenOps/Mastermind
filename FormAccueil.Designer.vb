@@ -102,11 +102,11 @@ Partial Class FormAccueil
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.SystemColors.MenuHighlight
-        Me.Label1.Font = New System.Drawing.Font("Sylfaen", 30.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Font = New System.Drawing.Font("Sylfaen", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(82, 12)
+        Me.Label1.Location = New System.Drawing.Point(102, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(237, 52)
+        Me.Label1.Size = New System.Drawing.Size(227, 52)
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "MasterMind"
         '
@@ -135,7 +135,7 @@ Partial Class FormAccueil
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(428, 264)
+        Me.ClientSize = New System.Drawing.Size(428, 256)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -145,6 +145,7 @@ Partial Class FormAccueil
         Me.Controls.Add(Me.btnStats)
         Me.Controls.Add(Me.cbxNomJoueur2)
         Me.Controls.Add(Me.cbxNomJoueur1)
+        Me.Cursor = System.Windows.Forms.Cursors.Cross
         Me.Name = "FormAccueil"
         Me.Text = "Accueil"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
