@@ -47,4 +47,14 @@
 
         Return True
     End Function
+
+    Function CaseVide() As Boolean
+        For Each txtBox As TextBox In FormJeu.PnlCaractereJoue.Controls
+            If (txtBox.Text.Length = 0) Then
+                MsgBox("Veuillez remplir toute les cases.", vbOKOnly, "Erreur")
+                Return True
+            End If
+        Next
+        Return False
+    End Function
 End Module

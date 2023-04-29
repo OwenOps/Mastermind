@@ -200,7 +200,7 @@ Partial Class FormJeu
         Me.ListeCaractereJouable.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ListeCaractereJouable.FormattingEnabled = True
         Me.ListeCaractereJouable.ItemHeight = 15
-        Me.ListeCaractereJouable.Location = New System.Drawing.Point(45, 466)
+        Me.ListeCaractereJouable.Location = New System.Drawing.Point(60, 466)
         Me.ListeCaractereJouable.Name = "ListeCaractereJouable"
         Me.ListeCaractereJouable.Size = New System.Drawing.Size(136, 30)
         Me.ListeCaractereJouable.TabIndex = 23
@@ -233,6 +233,7 @@ Partial Class FormJeu
         Me.LblBravoPerdu.Size = New System.Drawing.Size(93, 13)
         Me.LblBravoPerdu.TabIndex = 28
         Me.LblBravoPerdu.Text = "Bravo ! ou Perdu !"
+        Me.LblBravoPerdu.Visible = False
         '
         'Label9
         '
@@ -332,7 +333,7 @@ Partial Class FormJeu
         Me.MaximumSize = New System.Drawing.Size(632, 614)
         Me.Name = "FormJeu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "FormJeu"
+        Me.Text = "NbrCara"
         Me.PnlCaractereJoue.ResumeLayout(False)
         Me.PnlCaractereJoue.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
