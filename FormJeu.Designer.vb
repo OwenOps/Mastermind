@@ -182,7 +182,7 @@ Partial Class FormJeu
         Me.PnlCaractereJoue.Location = New System.Drawing.Point(26, 187)
         Me.PnlCaractereJoue.Name = "PnlCaractereJoue"
         Me.PnlCaractereJoue.Size = New System.Drawing.Size(322, 59)
-        Me.PnlCaractereJoue.TabIndex = 22
+        Me.PnlCaractereJoue.TabIndex = 6
         '
         'LstCaratereHistorique
         '

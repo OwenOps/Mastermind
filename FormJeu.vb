@@ -11,6 +11,14 @@
             ListeCaractereJouable.Items.Add(te)
         End If
 
+        'Pour trie dans ordre, sans ca probleme
+        Dim ctrlList As List(Of Control) = PnlCaractereJoue.Controls.Cast(Of Control).OrderBy(Function(c) c.TabIndex).ToList()
+
+        For i As Integer = 0 To ctrlList.Count - 1
+            PnlCaractereJoue.Controls.SetChildIndex(ctrlList(i), i)
+        Next
+
+
         Me.Text = "Il vous reste " & NbrCoup.ToString & " coup(s)..."
     End Sub
 
@@ -39,30 +47,26 @@
         If Not CaseVide() Then
             Dim LstCara As String = ""
 
-            'Sans ca, ne met pas dans l'odre les caracteres
-            Dim ctrlList As List(Of Control) = PnlCaractereJoue.Controls.Cast(Of Control).OrderBy(Function(c) c.Name).ToList()
-
-            For i As Integer = 0 To ctrlList.Count - 1
-                LstCara += ctrlList(i).Text
+            For i As Integer = 0 To PnlCaractereJoue.Controls.Count - 1
+                LstCara += PnlCaractereJoue.Controls(i).Text
             Next
 
-            For i As Integer = 0 To ctrlList.Count - 1
+            For i As Integer = 0 To PnlCaractereJoue.Controls.Count - 1
                 For j As Integer = 0 To test.Length - 1
-                    If (ctrlList(i).Text = test(j) And i = j) Then 'Si bon et bien place
+                    If (PnlCaractereJoue.Controls(i).Text = test(j) And i = j) Then 'Si bon et bien place
                         LstCara = LstCara.Remove(i, 1).Insert(i, "B")
                         PnlCaractereJoue.Controls(i).BackColor = Color.Green
-                        PnlCaractereJoue.Controls(i).ForeColor = Color.White
 
-                    ElseIf (ctrlList(i).Text = test(j)) Then 'Si present
-                        LstCara = LstCara.Replace(ctrlList(i).Text, "P")
+                    ElseIf (PnlCaractereJoue.Controls(i).Text = test(j)) Then 'Si present
+                        LstCara = LstCara.Replace(PnlCaractereJoue.Controls(i).Text, "P")
                         PnlCaractereJoue.Controls(i).BackColor = Color.Blue
-                        PnlCaractereJoue.Controls(i).ForeColor = Color.White
 
-                    ElseIf Not test.Contains(ctrlList(i).Text) Then 'Si caractere n'est pas present
-                        LstCara = LstCara.Replace(ctrlList(i).Text, "F")
+                    ElseIf Not test.Contains(PnlCaractereJoue.Controls(i).Text) Then 'Si caractere n'est pas present
+                        LstCara = LstCara.Replace(PnlCaractereJoue.Controls(i).Text, "F")
                         PnlCaractereJoue.Controls(i).BackColor = Color.Red
-                        PnlCaractereJoue.Controls(i).ForeColor = Color.White
+
                     End If
+                    PnlCaractereJoue.Controls(i).ForeColor = Color.White
                 Next
             Next
 
@@ -80,7 +84,7 @@
             Next
 
             NbrCoup = NbrCoup - 1
-            FormulaireJeu_Load()
+            Me.Text = "Il vous reste " & NbrCoup.ToString & " coup(s)..."
         End If
     End Sub
 
