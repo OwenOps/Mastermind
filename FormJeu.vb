@@ -1,6 +1,6 @@
 ﻿Public Class FormJeu
     Dim test() As Char = {"a", "z", "e", "r", "t"}
-    Dim NbrCoup As Integer = 15
+    Dim NbrCoup As Integer = 1
     Dim timerTest As Integer = 0
     Private Sub FormulaireJeu_Load() Handles MyBase.Load
         If (ListeCaractereJouable.Items.Count = 0) Then
@@ -22,13 +22,22 @@
         Me.Text = "Il vous reste " & NbrCoup.ToString & " coup(s)..."
     End Sub
 
-    Private Sub LabelBravoPerdu_Click(sender As Object, e As EventArgs) Handles LblBravoPerdu.Click
-        If (NbrCoup = 0 Or timerTest = 90) Then
-            LblBravoPerdu.Text = "Perdu"
+    Private Sub LblBravoPerdu_Click() Handles LblBravoPerdu.Click
+        If (ToutValide()) Then
+            LblBravoPerdu.Text = "Gagné !!"
+            LblBravoPerdu.Left += 12
+            LblBravoPerdu.ForeColor = Color.Green
+        ElseIf (NbrCoup = 0 Or timerTest = 90) Then
+            LblBravoPerdu.Text = "Perdu, Peut-être la prochaine fois"
+            LblBravoPerdu.Left -= 75
+            LblBravoPerdu.ForeColor = Color.Red
         Else
-            LblBravoPerdu.Text = "Gagné"
+            Exit Sub
         End If
+
+        BtnGuess.Hide()
         LblBravoPerdu.Show()
+
     End Sub
 
     Private Sub LblNomJoueur_Click(sender As Object, e As EventArgs) Handles LblNomJoueur.Click
@@ -85,9 +94,9 @@
 
             NbrCoup = NbrCoup - 1
             Me.Text = "Il vous reste " & NbrCoup.ToString & " coup(s)..."
+            LblBravoPerdu_Click()
         End If
     End Sub
-
 
     Private Sub BtnBye_Click(sender As Object, e As EventArgs) Handles BtnBye.Click
         Me.Hide()

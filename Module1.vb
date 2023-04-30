@@ -57,4 +57,13 @@
         Next
         Return False
     End Function
+
+    Function ToutValide() As Boolean
+        For Each txtBox As TextBox In FormJeu.PnlCaractereJoue.Controls
+            If (txtBox.BackColor <> Color.Green) Then
+                Return False
+            End If
+        Next
+        Return True
+    End Function
 End Module

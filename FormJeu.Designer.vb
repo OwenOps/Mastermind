@@ -228,9 +228,10 @@ Partial Class FormJeu
         'LblBravoPerdu
         '
         Me.LblBravoPerdu.AutoSize = True
-        Me.LblBravoPerdu.Location = New System.Drawing.Point(125, 327)
+        Me.LblBravoPerdu.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblBravoPerdu.Location = New System.Drawing.Point(139, 315)
         Me.LblBravoPerdu.Name = "LblBravoPerdu"
-        Me.LblBravoPerdu.Size = New System.Drawing.Size(93, 13)
+        Me.LblBravoPerdu.Size = New System.Drawing.Size(150, 18)
         Me.LblBravoPerdu.TabIndex = 28
         Me.LblBravoPerdu.Text = "Bravo ! ou Perdu !"
         Me.LblBravoPerdu.Visible = False
