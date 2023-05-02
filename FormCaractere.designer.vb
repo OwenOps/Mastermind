@@ -163,7 +163,7 @@ Partial Class FormCaractere
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(628, 309)
+        Me.ClientSize = New System.Drawing.Size(628, 308)
         Me.Controls.Add(Me.CaraJouable)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label1)

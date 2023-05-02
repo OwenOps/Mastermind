@@ -1,9 +1,8 @@
 ﻿Public Class FormJeu
-    Dim NbrCoup As Integer = 1
-    Dim timerTest As Integer = 0
+    'Toutes les petites fonctions utilises sont en bas
     Private Sub FormulaireJeu_Load() Handles MyBase.Load
         Dim caraChaine As String = ""
-        For Each cara In ModuleConfig.CaraJouable
+        For Each cara In ModuleConfig.getCaraJouable.ToArray
             caraChaine += "  " & cara & "  "
         Next
         CaraJouable.Text = caraChaine
@@ -15,29 +14,19 @@
             PnlCaractereJoue.Controls.SetChildIndex(ctrlList(i), i)
         Next
 
-        Me.Text = "Il vous reste " & NbrCoup.ToString & " coup(s)..."
+        nombreCoup()
+        LblNomJoueur.Text = getDeuxiemeJoueur()
     End Sub
 
     Private Sub LblBravoPerdu_Click()
-        If (ToutValide()) Then
-            LblBravoPerdu.Text = "Gagné !!"
-            LblBravoPerdu.Left += 12
-            LblBravoPerdu.ForeColor = Color.Green
-        ElseIf (NbrCoup = 0 Or timerTest = 90) Then
-            LblBravoPerdu.Text = "Perdu, Peut-être la prochaine fois"
-            LblBravoPerdu.Left -= 75
-            LblBravoPerdu.ForeColor = Color.Red
-        Else
-            Exit Sub
+        Dim BravoPerdu As Boolean = False
+        If ToutValide() Then
+            BravoPerdu = True
         End If
 
+        gagnePerdu(BravoPerdu)
         BtnGuess.Hide()
         LblBravoPerdu.Show()
-
-    End Sub
-
-    Private Sub LblNomJoueur_Click(sender As Object, e As EventArgs) Handles LblNomJoueur.Click
-        LblNomJoueur.Text = JoueurActuel(1).nom
     End Sub
 
     Private Sub LblTimer_Click(sender As Object, e As EventArgs) Handles LblTimer.Click
@@ -50,24 +39,17 @@
 
     Private Sub ButtonGuess_Click(sender As Object, e As EventArgs) Handles BtnGuess.Click
         If Not CaseVide() Then
-            Dim LstCara As String = ""
-
+            Console.WriteLine(ModulePartie.getCaraATrouver)
             For i As Integer = 0 To PnlCaractereJoue.Controls.Count - 1
-                LstCara += PnlCaractereJoue.Controls(i).Text
-            Next
-
-            For i As Integer = 0 To PnlCaractereJoue.Controls.Count - 1
-                For j As Integer = 0 To ModuleConfig.CaraJouable.Length - 1
-                    If (PnlCaractereJoue.Controls(i).Text = ModuleConfig.CaraJouable(j) And i = j) Then 'Si bon et bien place
-                        LstCara = LstCara.Remove(i, 1).Insert(i, "B")
+                For j As Integer = 0 To ModulePartie.getCaraATrouver.ToArray.Length - 1
+                    If (PnlCaractereJoue.Controls(i).Text = ModulePartie.getCaraATrouver.ToArray(j) And i = j) Then 'Si bon et bien place
                         PnlCaractereJoue.Controls(i).BackColor = Color.Green
+                        Exit For
 
-                    ElseIf (PnlCaractereJoue.Controls(i).Text = ModuleConfig.CaraJouable(j)) Then 'Si present
-                        LstCara = LstCara.Replace(PnlCaractereJoue.Controls(i).Text, "P")
+                    ElseIf (PnlCaractereJoue.Controls(i).Text = ModulePartie.getCaraATrouver.ToArray(j)) Then 'Si present
                         PnlCaractereJoue.Controls(i).BackColor = Color.Blue
 
-                    ElseIf Not ModuleConfig.CaraJouable.Contains(PnlCaractereJoue.Controls(i).Text) Then 'Si caractere n'est pas present
-                        LstCara = LstCara.Replace(PnlCaractereJoue.Controls(i).Text, "F")
+                    ElseIf Not ModulePartie.getCaraATrouver.ToArray.Contains(PnlCaractereJoue.Controls(i).Text) Then 'Si caractere n'est pas present
                         PnlCaractereJoue.Controls(i).BackColor = Color.Red
 
                     End If
@@ -75,28 +57,62 @@
                 Next
             Next
 
-            'Essayer d'enlever pour optimiser
-            Dim newLst As String = ""
-            For Each st In LstCara
-                newLst += "   " & st & "   "
+            Dim LstCara As String = ""
+            For Each cara As TextBox In PnlCaractereJoue.Controls
+                LstCara += "   " & cara.Text & "   "
             Next
+            LstCaratereHistorique.Items.Add(LstCara)
 
-            LstCaratereHistorique.Items.Add(newLst)
-
-            'Reset
-            For i As Integer = 0 To PnlCaractereJoue.Controls.Count - 1
-                PnlCaractereJoue.Controls(i).Text = ""
-            Next
-
-            NbrCoup = NbrCoup - 1
-            Me.Text = "Il vous reste " & NbrCoup.ToString & " coup(s)..."
+            resetTxtBox()
             LblBravoPerdu_Click()
+            ModuleConfig.enleveNombreCoup()
+            nombreCoup()
         End If
+    End Sub
+
+    Private Sub Txt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt1.KeyPress, Txt2.KeyPress, Txt3.KeyPress, Txt4.KeyPress, Txt5.KeyPress
+        Dim textBox As TextBox = CType(sender, TextBox)
+        If Char.IsLetter(e.KeyChar) Then
+            Dim entree As String = e.KeyChar.ToString()
+            If ModuleConfig.getCaraJouable.ToArray.Contains(entree) Then
+                If textBox.Text.Length > 0 Then
+                    e.Handled = True
+                End If
+            Else
+                e.Handled = True
+
+            End If
+        ElseIf Char.IsControl(e.KeyChar) Then
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+    Sub gagnePerdu(bravoPerdu As Boolean)
+        If bravoPerdu Then
+            LblBravoPerdu.Text = "Gagné !!"
+            LblBravoPerdu.Left += 12
+            LblBravoPerdu.ForeColor = Color.Green
+        Else
+            LblBravoPerdu.Text = "Perdu, Peut-être la prochaine fois"
+            LblBravoPerdu.Left -= 75
+            LblBravoPerdu.ForeColor = Color.Red
+        End If
+    End Sub
+
+    Sub resetTxtBox()
+        For Each txt As TextBox In PnlCaractereJoue.Controls
+            txt.Text = ""
+        Next
     End Sub
 
     Private Sub BtnBye_Click(sender As Object, e As EventArgs) Handles BtnBye.Click
         Me.Hide()
         FormJoueur.Show()
+    End Sub
+
+    Sub nombreCoup()
+        Me.Text = "Il vous reste " & ModuleConfig.getNombreCoup.ToString & " coup(s)..."
     End Sub
 
     Private Sub FormJeu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

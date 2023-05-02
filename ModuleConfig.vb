@@ -1,3 +1,34 @@
 ﻿Module ModuleConfig
-    Public ReadOnly CaraJouable() As String = {"A", "B", "C", "D", "E"}
+    Private CaraJouableDefautlt() As String = {"A", "B", "C", "D", "E"}
+    Private NombreDeCoupPossible As Integer = 3
+    Private Const NBR_CARA As Integer = 5
+
+    Sub enleveNombreCoup()
+        NombreDeCoupPossible = NombreDeCoupPossible - 1
+    End Sub
+
+    Sub setNombreCoup(nbr As Integer)
+        NombreDeCoupPossible = nbr
+    End Sub
+
+    Function getNombreCoup() As Integer
+        Return NombreDeCoupPossible
+    End Function
+
+    Sub setCaraJouable(cara As String)
+        If cara <> "" And cara.Length = NBR_CARA Then
+            cara = cara.ToArray
+            For i As Integer = 0 To NBR_CARA - 1
+                CaraJouableDefautlt(i) = cara(i)
+            Next
+        End If
+    End Sub
+
+    Function getCaraJouable() As String
+        Dim caractere As String = ""
+        For i As Integer = 0 To NBR_CARA - 1
+            caractere += CaraJouableDefautlt(i)
+        Next
+        Return caractere
+    End Function
 End Module

@@ -8,16 +8,22 @@
         Dim cumulTemps As Integer
         Dim estPremierJoueur As Boolean
     End Structure
-
     Public JoueurActuel(2) As Joueur
 
-    Function enregistrerJoueur()
+    Function getPremierJoueur() As String
+        Return JoueurActuel(0).nom
+    End Function
 
+    Function getDeuxiemeJoueur() As String
+        Return JoueurActuel(1).nom
+    End Function
+
+    Sub enregistrerJoueur()
         JoueurActuel(0).nom = FormJoueur.cbxNomJoueur1.Text
         JoueurActuel(0).estPremierJoueur = True
 
         JoueurActuel(1).nom = FormJoueur.cbxNomJoueur2.Text
-        JoueurActuel(0).estPremierJoueur = False
+        JoueurActuel(1).estPremierJoueur = False
 
         For i As Integer = 0 To JoueurActuel.Length - 1
             JoueurActuel(i).score = 0
@@ -29,12 +35,9 @@
             End If
             JoueurActuel(i).cumulTemps = 0
         Next
-
-        Return Nothing
-    End Function
+    End Sub
 
     Function verifJoueur() As Boolean
-
         If FormJoueur.cbxNomJoueur1.Text = "" Or FormJoueur.cbxNomJoueur2.Text = "" Then
             MsgBox("Veuillez entrer un nom pour chaque joueur", vbOKOnly, "Erreur")
             Return False
@@ -45,25 +48,6 @@
             Return False
         End If
 
-        Return True
-    End Function
-
-    Function CaseVide() As Boolean
-        For Each txtBox As TextBox In FormJeu.PnlCaractereJoue.Controls
-            If (txtBox.Text.Length = 0) Then
-                MsgBox("Veuillez remplir toute les cases.", vbOKOnly, "Erreur")
-                Return True
-            End If
-        Next
-        Return False
-    End Function
-
-    Function ToutValide() As Boolean
-        For Each txtBox As TextBox In FormJeu.PnlCaractereJoue.Controls
-            If (txtBox.BackColor <> Color.Green) Then
-                Return False
-            End If
-        Next
         Return True
     End Function
 End Module

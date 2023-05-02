@@ -1,8 +1,14 @@
 ﻿Public Class FormCaractere
-    Dim rectangle As Graphics
     Private Sub FormCaractere_Load() Handles MyBase.Load
+        'Pour trie dans ordre la liste des txtBox, sans ca probleme
+        Dim ctrlList As List(Of Control) = PnlCaractereJoue.Controls.Cast(Of Control).OrderBy(Function(c) c.TabIndex).ToList()
+
+        For i As Integer = 0 To ctrlList.Count - 1
+            PnlCaractereJoue.Controls.SetChildIndex(ctrlList(i), i)
+        Next
+
         Dim caraChaine As String = ""
-        For Each cara In ModuleConfig.CaraJouable
+        For Each cara In ModuleConfig.getCaraJouable.ToArray
             caraChaine += "  " & cara & "  "
         Next
         CaraJouable.Text = caraChaine
@@ -12,7 +18,7 @@
         Dim textBox As TextBox = CType(sender, TextBox)
         If Char.IsLetter(e.KeyChar) Then
             Dim entree As String = e.KeyChar.ToString()
-            If ModuleConfig.CaraJouable.Contains(entree) Then
+            If ModuleConfig.getCaraJouable.ToArray.Contains(entree) Then
                 If textBox.Text.Length > 0 Then
                     e.Handled = True
                 End If
@@ -28,16 +34,20 @@
 
     Private Sub ButtonHIDE_Click(sender As Object, e As EventArgs) Handles ButtonHIDE.Click
         Dim erreur As Boolean = False
+        Dim chaineATrouve As String = ""
 
         For Each txtBox As TextBox In PnlCaractereJoue.Controls
             If (txtBox.Text.Length <= 0) Then
                 erreur = True
+            Else
+                chaineATrouve += txtBox.Text
             End If
         Next
 
         If erreur = False Then
             Dim demande As DialogResult = MessageBox.Show("Voulez-vous commencer à jouer?", "La partie va commencer !", MessageBoxButtons.YesNo)
             If demande = DialogResult.Yes Then
+                ModulePartie.setCaraATrouver(chaineATrouve.ToArray)
                 Me.Hide()
                 FormJeu.Show()
             End If
@@ -46,7 +56,7 @@
         End If
     End Sub
 
-    Private Sub ListeCaractereJouable_SelectedIndexChanged(sender As Object, e As EventArgs)
-
+    Private Sub FormCaractere_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Application.Exit()
     End Sub
 End Class
