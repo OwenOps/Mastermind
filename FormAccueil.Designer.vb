@@ -83,7 +83,7 @@ Partial Class FormAccueil
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Italic)
-        Me.Label4.Location = New System.Drawing.Point(47, 94)
+        Me.Label4.Location = New System.Drawing.Point(25, 93)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(396, 20)

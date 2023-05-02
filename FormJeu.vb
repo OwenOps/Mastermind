@@ -1,28 +1,24 @@
 ﻿Public Class FormJeu
-    Dim test() As Char = {"a", "z", "e", "r", "t"}
     Dim NbrCoup As Integer = 1
     Dim timerTest As Integer = 0
     Private Sub FormulaireJeu_Load() Handles MyBase.Load
-        If (ListeCaractereJouable.Items.Count = 0) Then
-            Dim te As String = ""
-            For Each t In test
-                te += "  " & t & "  "
-            Next
-            ListeCaractereJouable.Items.Add(te)
-        End If
+        Dim caraChaine As String = ""
+        For Each cara In ModuleConfig.CaraJouable
+            caraChaine += "  " & cara & "  "
+        Next
+        CaraJouable.Text = caraChaine
 
-        'Pour trie dans ordre, sans ca probleme
+        'Pour trie dans ordre la liste des txtBox, sans ca probleme
         Dim ctrlList As List(Of Control) = PnlCaractereJoue.Controls.Cast(Of Control).OrderBy(Function(c) c.TabIndex).ToList()
 
         For i As Integer = 0 To ctrlList.Count - 1
             PnlCaractereJoue.Controls.SetChildIndex(ctrlList(i), i)
         Next
 
-
         Me.Text = "Il vous reste " & NbrCoup.ToString & " coup(s)..."
     End Sub
 
-    Private Sub LblBravoPerdu_Click() Handles LblBravoPerdu.Click
+    Private Sub LblBravoPerdu_Click()
         If (ToutValide()) Then
             LblBravoPerdu.Text = "Gagné !!"
             LblBravoPerdu.Left += 12
@@ -61,16 +57,16 @@
             Next
 
             For i As Integer = 0 To PnlCaractereJoue.Controls.Count - 1
-                For j As Integer = 0 To test.Length - 1
-                    If (PnlCaractereJoue.Controls(i).Text = test(j) And i = j) Then 'Si bon et bien place
+                For j As Integer = 0 To ModuleConfig.CaraJouable.Length - 1
+                    If (PnlCaractereJoue.Controls(i).Text = ModuleConfig.CaraJouable(j) And i = j) Then 'Si bon et bien place
                         LstCara = LstCara.Remove(i, 1).Insert(i, "B")
                         PnlCaractereJoue.Controls(i).BackColor = Color.Green
 
-                    ElseIf (PnlCaractereJoue.Controls(i).Text = test(j)) Then 'Si present
+                    ElseIf (PnlCaractereJoue.Controls(i).Text = ModuleConfig.CaraJouable(j)) Then 'Si present
                         LstCara = LstCara.Replace(PnlCaractereJoue.Controls(i).Text, "P")
                         PnlCaractereJoue.Controls(i).BackColor = Color.Blue
 
-                    ElseIf Not test.Contains(PnlCaractereJoue.Controls(i).Text) Then 'Si caractere n'est pas present
+                    ElseIf Not ModuleConfig.CaraJouable.Contains(PnlCaractereJoue.Controls(i).Text) Then 'Si caractere n'est pas present
                         LstCara = LstCara.Replace(PnlCaractereJoue.Controls(i).Text, "F")
                         PnlCaractereJoue.Controls(i).BackColor = Color.Red
 
