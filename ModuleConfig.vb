@@ -2,6 +2,7 @@
     Private CaraJouableDefautlt() As String = {"A", "B", "C", "D", "E"}
     Private NombreDeCoupPossible As Integer = 3
     Private Const NBR_CARA As Integer = 5
+    Private timerActive = True
 
     Sub enleveNombreCoup()
         NombreDeCoupPossible = NombreDeCoupPossible - 1
