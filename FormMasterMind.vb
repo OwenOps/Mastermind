@@ -12,6 +12,6 @@
     End Sub
 
     Private Sub BtnConfig_Click(sender As Object, e As EventArgs) Handles BtnConfig.Click
-
+        FormulaireConfig.Show()
     End Sub
 End Class

@@ -33,7 +33,6 @@ Partial Class FormulaireConfig
         Me.TxtNbrCoup = New System.Windows.Forms.TextBox()
         Me.TxtCaraChange = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.CbxChoixTemps = New System.Windows.Forms.ComboBox()
         Me.PanelCaractere = New System.Windows.Forms.Panel()
         Me.RN3 = New System.Windows.Forms.RadioButton()
         Me.RO3 = New System.Windows.Forms.RadioButton()
@@ -52,6 +51,10 @@ Partial Class FormulaireConfig
         Me.TxtNomJoueur = New System.Windows.Forms.TextBox()
         Me.LblNomActu = New System.Windows.Forms.Label()
         Me.BtnValidNom = New System.Windows.Forms.Button()
+        Me.PnlChoix2 = New System.Windows.Forms.Panel()
+        Me.PnlChoix3 = New System.Windows.Forms.Panel()
+        Me.PnlChoixNom = New System.Windows.Forms.Panel()
+        Me.TxtTemps = New System.Windows.Forms.TextBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelTimer.SuspendLayout()
         Me.PanelCaractere.SuspendLayout()
@@ -59,6 +62,9 @@ Partial Class FormulaireConfig
         Me.PnlTimerCache.SuspendLayout()
         Me.PnlCoupCache.SuspendLayout()
         Me.PnlCaraCache.SuspendLayout()
+        Me.PnlChoix2.SuspendLayout()
+        Me.PnlChoix3.SuspendLayout()
+        Me.PnlChoixNom.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -75,7 +81,7 @@ Partial Class FormulaireConfig
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Bookman Old Style", 12.0!)
-        Me.Label2.Location = New System.Drawing.Point(12, 208)
+        Me.Label2.Location = New System.Drawing.Point(3, 10)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(282, 20)
         Me.Label2.TabIndex = 1
@@ -108,7 +114,7 @@ Partial Class FormulaireConfig
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Bookman Old Style", 12.0!)
-        Me.Label3.Location = New System.Drawing.Point(12, 324)
+        Me.Label3.Location = New System.Drawing.Point(3, 10)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(284, 20)
         Me.Label3.TabIndex = 40
@@ -121,7 +127,7 @@ Partial Class FormulaireConfig
         Me.PanelTimer.Location = New System.Drawing.Point(302, 85)
         Me.PanelTimer.Name = "PanelTimer"
         Me.PanelTimer.Size = New System.Drawing.Size(132, 41)
-        Me.PanelTimer.TabIndex = 41
+        Me.PanelTimer.TabIndex = 0
         '
         'RN1
         '
@@ -129,8 +135,7 @@ Partial Class FormulaireConfig
         Me.RN1.Location = New System.Drawing.Point(74, 13)
         Me.RN1.Name = "RN1"
         Me.RN1.Size = New System.Drawing.Size(45, 17)
-        Me.RN1.TabIndex = 2
-        Me.RN1.TabStop = True
+        Me.RN1.TabIndex = 0
         Me.RN1.Text = "Non"
         Me.RN1.UseVisualStyleBackColor = True
         '
@@ -141,7 +146,6 @@ Partial Class FormulaireConfig
         Me.RO1.Name = "RO1"
         Me.RO1.Size = New System.Drawing.Size(41, 17)
         Me.RO1.TabIndex = 1
-        Me.RO1.TabStop = True
         Me.RO1.Text = "Oui"
         Me.RO1.UseVisualStyleBackColor = True
         '
@@ -169,23 +173,15 @@ Partial Class FormulaireConfig
         Me.Label4.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(3, 5)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(172, 16)
+        Me.Label4.Size = New System.Drawing.Size(252, 16)
         Me.Label4.TabIndex = 44
-        Me.Label4.Text = "Le temps laissé au Joueur "
-        '
-        'CbxChoixTemps
-        '
-        Me.CbxChoixTemps.FormattingEnabled = True
-        Me.CbxChoixTemps.Location = New System.Drawing.Point(200, 3)
-        Me.CbxChoixTemps.Name = "CbxChoixTemps"
-        Me.CbxChoixTemps.Size = New System.Drawing.Size(104, 21)
-        Me.CbxChoixTemps.TabIndex = 45
+        Me.Label4.Text = "Le temps laissé au Joueur (en seconde) "
         '
         'PanelCaractere
         '
         Me.PanelCaractere.Controls.Add(Me.RN3)
         Me.PanelCaractere.Controls.Add(Me.RO3)
-        Me.PanelCaractere.Location = New System.Drawing.Point(302, 311)
+        Me.PanelCaractere.Location = New System.Drawing.Point(290, 3)
         Me.PanelCaractere.Name = "PanelCaractere"
         Me.PanelCaractere.Size = New System.Drawing.Size(132, 41)
         Me.PanelCaractere.TabIndex = 42
@@ -197,7 +193,6 @@ Partial Class FormulaireConfig
         Me.RN3.Name = "RN3"
         Me.RN3.Size = New System.Drawing.Size(45, 17)
         Me.RN3.TabIndex = 1
-        Me.RN3.TabStop = True
         Me.RN3.Text = "Non"
         Me.RN3.UseVisualStyleBackColor = True
         '
@@ -208,7 +203,6 @@ Partial Class FormulaireConfig
         Me.RO3.Name = "RO3"
         Me.RO3.Size = New System.Drawing.Size(41, 17)
         Me.RO3.TabIndex = 0
-        Me.RO3.TabStop = True
         Me.RO3.Text = "Oui"
         Me.RO3.UseVisualStyleBackColor = True
         '
@@ -216,7 +210,7 @@ Partial Class FormulaireConfig
         '
         Me.PanelCoup.Controls.Add(Me.RN2)
         Me.PanelCoup.Controls.Add(Me.RO2)
-        Me.PanelCoup.Location = New System.Drawing.Point(302, 198)
+        Me.PanelCoup.Location = New System.Drawing.Point(290, 0)
         Me.PanelCoup.Name = "PanelCoup"
         Me.PanelCoup.Size = New System.Drawing.Size(132, 41)
         Me.PanelCoup.TabIndex = 42
@@ -228,7 +222,6 @@ Partial Class FormulaireConfig
         Me.RN2.Name = "RN2"
         Me.RN2.Size = New System.Drawing.Size(45, 17)
         Me.RN2.TabIndex = 1
-        Me.RN2.TabStop = True
         Me.RN2.Text = "Non"
         Me.RN2.UseVisualStyleBackColor = True
         '
@@ -239,7 +232,6 @@ Partial Class FormulaireConfig
         Me.RO2.Name = "RO2"
         Me.RO2.Size = New System.Drawing.Size(41, 17)
         Me.RO2.TabIndex = 0
-        Me.RO2.TabStop = True
         Me.RO2.Text = "Oui"
         Me.RO2.UseVisualStyleBackColor = True
         '
@@ -265,18 +257,18 @@ Partial Class FormulaireConfig
         '
         'PnlTimerCache
         '
+        Me.PnlTimerCache.Controls.Add(Me.TxtTemps)
         Me.PnlTimerCache.Controls.Add(Me.BtnValidTimer)
-        Me.PnlTimerCache.Controls.Add(Me.CbxChoixTemps)
         Me.PnlTimerCache.Controls.Add(Me.Label4)
-        Me.PnlTimerCache.Location = New System.Drawing.Point(114, 142)
+        Me.PnlTimerCache.Location = New System.Drawing.Point(49, 132)
         Me.PnlTimerCache.Name = "PnlTimerCache"
-        Me.PnlTimerCache.Size = New System.Drawing.Size(404, 27)
+        Me.PnlTimerCache.Size = New System.Drawing.Size(469, 27)
         Me.PnlTimerCache.TabIndex = 48
         Me.PnlTimerCache.Visible = False
         '
         'BtnValidTimer
         '
-        Me.BtnValidTimer.Location = New System.Drawing.Point(328, 3)
+        Me.BtnValidTimer.Location = New System.Drawing.Point(373, 3)
         Me.BtnValidTimer.Name = "BtnValidTimer"
         Me.BtnValidTimer.Size = New System.Drawing.Size(53, 22)
         Me.BtnValidTimer.TabIndex = 48
@@ -288,7 +280,7 @@ Partial Class FormulaireConfig
         Me.PnlCoupCache.Controls.Add(Me.BtnValidCoup)
         Me.PnlCoupCache.Controls.Add(Me.TxtNbrCoup)
         Me.PnlCoupCache.Controls.Add(Me.Label5)
-        Me.PnlCoupCache.Location = New System.Drawing.Point(102, 257)
+        Me.PnlCoupCache.Location = New System.Drawing.Point(90, 47)
         Me.PnlCoupCache.Name = "PnlCoupCache"
         Me.PnlCoupCache.Size = New System.Drawing.Size(416, 30)
         Me.PnlCoupCache.TabIndex = 46
@@ -296,7 +288,7 @@ Partial Class FormulaireConfig
         '
         'BtnValidCoup
         '
-        Me.BtnValidCoup.Location = New System.Drawing.Point(340, 4)
+        Me.BtnValidCoup.Location = New System.Drawing.Point(320, 5)
         Me.BtnValidCoup.Name = "BtnValidCoup"
         Me.BtnValidCoup.Size = New System.Drawing.Size(53, 22)
         Me.BtnValidCoup.TabIndex = 49
@@ -308,7 +300,7 @@ Partial Class FormulaireConfig
         Me.PnlCaraCache.Controls.Add(Me.BtnValidCara)
         Me.PnlCaraCache.Controls.Add(Me.TxtCaraChange)
         Me.PnlCaraCache.Controls.Add(Me.Label6)
-        Me.PnlCaraCache.Location = New System.Drawing.Point(30, 371)
+        Me.PnlCaraCache.Location = New System.Drawing.Point(18, 47)
         Me.PnlCaraCache.Name = "PnlCaraCache"
         Me.PnlCaraCache.Size = New System.Drawing.Size(488, 25)
         Me.PnlCaraCache.TabIndex = 49
@@ -316,7 +308,7 @@ Partial Class FormulaireConfig
         '
         'BtnValidCara
         '
-        Me.BtnValidCara.Location = New System.Drawing.Point(412, 2)
+        Me.BtnValidCara.Location = New System.Drawing.Point(392, 0)
         Me.BtnValidCara.Name = "BtnValidCara"
         Me.BtnValidCara.Size = New System.Drawing.Size(53, 22)
         Me.BtnValidCara.TabIndex = 50
@@ -327,7 +319,7 @@ Partial Class FormulaireConfig
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Bookman Old Style", 12.0!)
-        Me.Label7.Location = New System.Drawing.Point(132, 439)
+        Me.Label7.Location = New System.Drawing.Point(15, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(157, 20)
         Me.Label7.TabIndex = 50
@@ -335,7 +327,7 @@ Partial Class FormulaireConfig
         '
         'TxtNomJoueur
         '
-        Me.TxtNomJoueur.Location = New System.Drawing.Point(302, 469)
+        Me.TxtNomJoueur.Location = New System.Drawing.Point(179, 23)
         Me.TxtNomJoueur.MaxLength = 500
         Me.TxtNomJoueur.Multiline = True
         Me.TxtNomJoueur.Name = "TxtNomJoueur"
@@ -347,7 +339,7 @@ Partial Class FormulaireConfig
         '
         Me.LblNomActu.AutoSize = True
         Me.LblNomActu.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblNomActu.Location = New System.Drawing.Point(311, 439)
+        Me.LblNomActu.Location = New System.Drawing.Point(191, 4)
         Me.LblNomActu.Name = "LblNomActu"
         Me.LblNomActu.Size = New System.Drawing.Size(89, 16)
         Me.LblNomActu.TabIndex = 49
@@ -355,33 +347,66 @@ Partial Class FormulaireConfig
         '
         'BtnValidNom
         '
-        Me.BtnValidNom.Location = New System.Drawing.Point(321, 503)
+        Me.BtnValidNom.Location = New System.Drawing.Point(194, 49)
         Me.BtnValidNom.Name = "BtnValidNom"
         Me.BtnValidNom.Size = New System.Drawing.Size(79, 22)
         Me.BtnValidNom.TabIndex = 51
         Me.BtnValidNom.Text = "Valider"
         Me.BtnValidNom.UseVisualStyleBackColor = True
         '
+        'PnlChoix2
+        '
+        Me.PnlChoix2.Controls.Add(Me.Label2)
+        Me.PnlChoix2.Controls.Add(Me.PanelCoup)
+        Me.PnlChoix2.Controls.Add(Me.PnlCoupCache)
+        Me.PnlChoix2.Location = New System.Drawing.Point(12, 175)
+        Me.PnlChoix2.Name = "PnlChoix2"
+        Me.PnlChoix2.Size = New System.Drawing.Size(524, 85)
+        Me.PnlChoix2.TabIndex = 2
+        '
+        'PnlChoix3
+        '
+        Me.PnlChoix3.Controls.Add(Me.Label3)
+        Me.PnlChoix3.Controls.Add(Me.PanelCaractere)
+        Me.PnlChoix3.Controls.Add(Me.PnlCaraCache)
+        Me.PnlChoix3.Location = New System.Drawing.Point(12, 266)
+        Me.PnlChoix3.Name = "PnlChoix3"
+        Me.PnlChoix3.Size = New System.Drawing.Size(524, 85)
+        Me.PnlChoix3.TabIndex = 2
+        '
+        'PnlChoixNom
+        '
+        Me.PnlChoixNom.Controls.Add(Me.BtnValidNom)
+        Me.PnlChoixNom.Controls.Add(Me.Label7)
+        Me.PnlChoixNom.Controls.Add(Me.TxtNomJoueur)
+        Me.PnlChoixNom.Controls.Add(Me.LblNomActu)
+        Me.PnlChoixNom.Location = New System.Drawing.Point(134, 377)
+        Me.PnlChoixNom.Name = "PnlChoixNom"
+        Me.PnlChoixNom.Size = New System.Drawing.Size(314, 77)
+        Me.PnlChoixNom.TabIndex = 52
+        '
+        'TxtTemps
+        '
+        Me.TxtTemps.Location = New System.Drawing.Point(265, 4)
+        Me.TxtTemps.MaxLength = 10
+        Me.TxtTemps.Name = "TxtTemps"
+        Me.TxtTemps.Size = New System.Drawing.Size(93, 20)
+        Me.TxtTemps.TabIndex = 50
+        Me.TxtTemps.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'FormulaireConfig
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(548, 537)
-        Me.Controls.Add(Me.BtnValidNom)
-        Me.Controls.Add(Me.LblNomActu)
-        Me.Controls.Add(Me.TxtNomJoueur)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.PnlCaraCache)
-        Me.Controls.Add(Me.PnlCoupCache)
-        Me.Controls.Add(Me.PnlTimerCache)
-        Me.Controls.Add(Me.PanelCoup)
-        Me.Controls.Add(Me.PanelCaractere)
+        Me.ClientSize = New System.Drawing.Size(548, 487)
+        Me.Controls.Add(Me.PnlChoixNom)
         Me.Controls.Add(Me.PanelTimer)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Titre)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.PnlTimerCache)
+        Me.Controls.Add(Me.PnlChoix3)
+        Me.Controls.Add(Me.PnlChoix2)
         Me.Name = "FormulaireConfig"
         Me.Text = "Configuration "
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -397,6 +422,12 @@ Partial Class FormulaireConfig
         Me.PnlCoupCache.PerformLayout()
         Me.PnlCaraCache.ResumeLayout(False)
         Me.PnlCaraCache.PerformLayout()
+        Me.PnlChoix2.ResumeLayout(False)
+        Me.PnlChoix2.PerformLayout()
+        Me.PnlChoix3.ResumeLayout(False)
+        Me.PnlChoix3.PerformLayout()
+        Me.PnlChoixNom.ResumeLayout(False)
+        Me.PnlChoixNom.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -413,7 +444,6 @@ Partial Class FormulaireConfig
     Friend WithEvents TxtNbrCoup As TextBox
     Friend WithEvents TxtCaraChange As TextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents CbxChoixTemps As ComboBox
     Friend WithEvents PanelCaractere As Panel
     Friend WithEvents RN3 As RadioButton
     Friend WithEvents RO3 As RadioButton
@@ -432,4 +462,8 @@ Partial Class FormulaireConfig
     Friend WithEvents TxtNomJoueur As TextBox
     Friend WithEvents LblNomActu As Label
     Friend WithEvents BtnValidNom As Button
+    Friend WithEvents PnlChoix2 As Panel
+    Friend WithEvents PnlChoix3 As Panel
+    Friend WithEvents PnlChoixNom As Panel
+    Friend WithEvents TxtTemps As TextBox
 End Class

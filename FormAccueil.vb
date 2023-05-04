@@ -27,7 +27,7 @@
     End Sub
 
     Private Sub btnQuitter_Click(sender As Object, e As EventArgs) Handles btnQuitter.Click
-        FormulaireConfig.Show()
+        Me.Close()
     End Sub
 
     Private Sub FormJoueur_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

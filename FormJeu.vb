@@ -22,9 +22,7 @@
         Dim BravoPerdu As Boolean = False
         If ToutValide() Then
             BravoPerdu = True
-        End If
-
-        If getNombreCoup() > 1 Then
+        ElseIf getNombreCoup() > 0 Then
             Exit Sub
         End If
 
@@ -56,8 +54,8 @@
                         PnlCaractereJoue.Controls(i).BackColor = Color.Red
 
                     End If
-                    PnlCaractereJoue.Controls(i).ForeColor = Color.White
                 Next
+                PnlCaractereJoue.Controls(i).ForeColor = Color.White
             Next
 
             Dim LstCara As String = ""
@@ -110,7 +108,7 @@
 
     Sub resetTxtBox()
         For Each txt As TextBox In PnlCaractereJoue.Controls
-            txt.Text = ""
+            ModulePartie.resetTxt(txt)
         Next
     End Sub
 

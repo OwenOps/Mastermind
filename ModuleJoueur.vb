@@ -1,6 +1,8 @@
 ﻿
 Module ModuleJoueur
     Private Const NBR_MAX_JOUEUR = 2
+    Private ancienNom As String = ""
+    Private valid As Boolean = False
     Structure Joueur
         Dim nom As String
         Dim score As Integer
@@ -29,6 +31,22 @@ Module ModuleJoueur
     Function getNomDesJoueurs() As String
         Return getPremierJoueur() + ", " + getDeuxiemeJoueur()
     End Function
+
+    Function getValid() As Boolean
+        Return valid
+    End Function
+
+    Sub setAncienNom(nouveauNom As String)
+        ancienNom = nouveauNom
+    End Sub
+
+    Function getAncienNom() As String
+        Return ancienNom
+    End Function
+
+    Sub setValid()
+        valid = True
+    End Sub
 
     Sub enregistrerJoueur()
         JoueurActuel(0).nom = FormAccueil.cbxNomJoueur1.Text

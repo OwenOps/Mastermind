@@ -10,6 +10,14 @@
         Next
     End Sub
 
+    Function getTempsMax() As Integer
+        Return tempsMax
+    End Function
+
+    Sub setTempsMax(nbr As Integer)
+        tempsMax = nbr
+    End Sub
+
     Function getCaraATrouver() As String
         Dim caractere As String = ""
         For Each cara In CaraATrouver
@@ -26,6 +34,10 @@
         Return tps
     End Function
 
+    Sub resetTxt(nom As TextBox)
+
+    End Sub
+
     Function timerFinis() As Boolean
         If tps = tempsMax Then
             Return True
@@ -35,7 +47,7 @@
 
     Function ToutValide() As Boolean
         For Each txtBox As TextBox In FormJeu.PnlCaractereJoue.Controls
-            If (txtBox.BackColor <> Color.Green Or ModuleConfig.getNombreCoup = 0) Then
+            If (txtBox.BackColor <> Color.Green) Then
                 Return False
             End If
         Next
