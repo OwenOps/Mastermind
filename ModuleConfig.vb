@@ -1,16 +1,28 @@
 ﻿Module ModuleConfig
     Private CaraJouableDefautlt() As String = {"A", "B", "C", "D", "E"}
-    Private NombreDeCoupPossible As Integer = 3
+    Private NombreDeCoupPossible As Integer = 1
     Private Const NBR_CARA As Integer = 5
-    Private timerActive = True
+    Private timerActive = False
 
     Sub enleveNombreCoup()
         NombreDeCoupPossible = NombreDeCoupPossible - 1
     End Sub
 
+    Sub setTimerActive(timerC As Boolean)
+        timerActive = timerC
+    End Sub
+
+    Function getNbrCaraMax() As Integer
+        Return NBR_CARA
+    End Function
+
     Sub setNombreCoup(nbr As Integer)
         NombreDeCoupPossible = nbr
     End Sub
+
+    Function timerEstActive() As Boolean
+        Return timerActive
+    End Function
 
     Function getNombreCoup() As Integer
         Return NombreDeCoupPossible

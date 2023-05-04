@@ -24,9 +24,12 @@
             BravoPerdu = True
         End If
 
+        If getNombreCoup() > 1 Then
+            Exit Sub
+        End If
+
         gagnePerdu(BravoPerdu)
-        BtnGuess.Hide()
-        LblBravoPerdu.Show()
+        partieFinis()
     End Sub
 
     Private Sub LblTimer_Click(sender As Object, e As EventArgs) Handles LblTimer.Click
@@ -64,9 +67,9 @@
             LstCaratereHistorique.Items.Add(LstCara)
 
             resetTxtBox()
-            LblBravoPerdu_Click()
             ModuleConfig.enleveNombreCoup()
             nombreCoup()
+            LblBravoPerdu_Click()
         End If
     End Sub
 
@@ -100,6 +103,11 @@
         End If
     End Sub
 
+    Sub partieFinis()
+        BtnGuess.Hide()
+        LblBravoPerdu.Show()
+    End Sub
+
     Sub resetTxtBox()
         For Each txt As TextBox In PnlCaractereJoue.Controls
             txt.Text = ""
@@ -108,7 +116,7 @@
 
     Private Sub BtnBye_Click(sender As Object, e As EventArgs) Handles BtnBye.Click
         Me.Hide()
-        FormJoueur.Show()
+        FormAccueil.Show()
     End Sub
 
     Sub nombreCoup()

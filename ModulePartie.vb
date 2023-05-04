@@ -1,8 +1,8 @@
 ﻿Module ModulePartie
-    Private tps As Integer
+    Private tps As Integer = 0
     Private CaraATrouver(NBR_CARA) As String
     Private Const NBR_CARA As Integer = 5
-    Private Const MAX_TEMPS As Integer = 90
+    Private tempsMax As Integer = 90
 
     Sub setCaraATrouver(cara() As Char)
         For i As Integer = 0 To NBR_CARA - 1
@@ -27,7 +27,7 @@
     End Function
 
     Function timerFinis() As Boolean
-        If tps = MAX_TEMPS Then
+        If tps = tempsMax Then
             Return True
         End If
         Return False
