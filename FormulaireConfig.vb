@@ -1,6 +1,9 @@
 ﻿Imports System.Diagnostics.Eventing.Reader
 
 Public Class FormulaireConfig
+    Dim nbrCoupDefault As Integer = 15
+    Dim tempsDefault As Integer = 90
+    Dim caraDefault As String = "A,B,C,D,E"
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'ModuleJoueur.addJoueur("Namo")
     End Sub
@@ -124,5 +127,13 @@ Public Class FormulaireConfig
     Private Sub btnRetour_Click(sender As Object, e As EventArgs) Handles btnRetour.Click
         Me.Hide()
         FormMasterMind.Show()
+    End Sub
+
+    Private Sub BtnReset_Click(sender As Object, e As EventArgs) Handles BtnReset.Click
+        ModuleConfig.setNombreCoup(nbrCoupDefault)
+        ModuleConfig.setTimerActive(True)
+        ModulePartie.setTempsMax(tempsDefault)
+        ModuleConfig.setCaraJouable(caraDefault)
+        MsgBox("Configuration remis par default.")
     End Sub
 End Class

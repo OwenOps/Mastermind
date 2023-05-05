@@ -1,8 +1,9 @@
 ﻿Module ModuleConfig
-    Private CaraJouableDefautlt() As String = {"A", "B", "C", "D", "E"}
+    Private CaraJouable() As String = {"A", "B", "C", "D", "E"}
     Private NombreDeCoupPossible As Integer = 3
+    Private Const NBR_COUP_DEFAULT As Integer = 15
     Private Const NBR_CARA As Integer = 5
-    Private timerActive = False
+    Private timerActive = True
 
     Sub enleveNombreCoup()
         NombreDeCoupPossible = NombreDeCoupPossible - 1
@@ -32,7 +33,7 @@
         If cara <> "" And cara.Length = NBR_CARA Then
             cara = cara.ToArray
             For i As Integer = 0 To NBR_CARA - 1
-                CaraJouableDefautlt(i) = cara(i)
+                CaraJouable(i) = cara(i)
             Next
         End If
     End Sub
@@ -40,7 +41,7 @@
     Function getCaraJouable() As String
         Dim caractere As String = ""
         For i As Integer = 0 To NBR_CARA - 1
-            caractere += CaraJouableDefautlt(i)
+            caractere += CaraJouable(i)
         Next
         Return caractere
     End Function
