@@ -1,8 +1,11 @@
-﻿Public Class FormulaireConfig
+﻿Imports System.Diagnostics.Eventing.Reader
+
+Public Class FormulaireConfig
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'ModuleJoueur.addJoueur("Namo")
     End Sub
 
-    Private Sub Radio_CheckedChanged(sender As Object, e As EventArgs) Handles RO1.CheckedChanged, RO2.CheckedChanged, RO3.CheckedChanged, RN1.CheckedChanged, RN2.CheckedChanged, RN3.CheckedChanged
+    Private Sub Radio_CheckedChanged(sender As Object, e As EventArgs) Handles RO1.CheckedChanged, RO2.CheckedChanged, RO3.CheckedChanged, RO4.CheckedChanged, RN1.CheckedChanged, RN2.CheckedChanged, RN3.CheckedChanged, RN4.CheckedChanged
         Dim radioBoutton As RadioButton = TryCast(sender, RadioButton)
         Dim nomRadio = radioBoutton.Name
 
@@ -13,16 +16,27 @@
                 PnlCoupCache.Visible = radioBoutton.Checked
             Case RO3.Name
                 PnlCaraCache.Visible = radioBoutton.Checked
+            Case RO4.Name
+                If ModuleJoueur.joueurHistoriqueEstVide() And RO4.Checked Then
+                    RO4.Checked = False
+                    MsgBox("Il n'y a pas encore de joueurs enregistrés", vbOKOnly, "Erreur")
+                Else
+                    ModuleJoueur.chargercbxNomJoueur()
+                    PnlNomCache.Visible = radioBoutton.Checked
+                End If
             Case RN1.Name
                 PnlTimerCache.Visible = False
             Case RN2.Name
                 PnlCoupCache.Visible = False
             Case RN3.Name
                 PnlCaraCache.Visible = False
+            Case RN4.Name
+                PnlNomCache.Visible = False
         End Select
+
     End Sub
 
-    Private Sub Txt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtNbrCoup.KeyPress, TxtCaraChange.KeyPress, TxtNomJoueur.KeyPress
+    Private Sub Txt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtNbrCoup.KeyPress, TxtCaraChange.KeyPress
         Dim textBox As TextBoxBase = TryCast(sender, TextBox)
         Dim textActive = textBox.Name
 
@@ -64,33 +78,40 @@
     End Sub
 
     Private Sub BtnValidNom_Click(sender As Object, e As EventArgs) Handles BtnValidNom.Click
-        If TxtNomJoueur.Text = "" Then
+
+        If cbxNomJoueurChange.Text = "" Then
             MsgBox("Veuillez entrer un nom valide.")
             Exit Sub
         End If
 
-        If ModuleJoueur.estContenuDansHistorique(TxtNomJoueur.Text) Then
-            ModuleJoueur.setAncienNom(TxtNomJoueur.Text)
+        If ModuleJoueur.estContenuDansHistorique(cbxNomJoueurChange.Text) Then
+            ModuleJoueur.setAncienNom(cbxNomJoueurChange.Text)
             ModuleJoueur.setValid()
-            ModulePartie.resetTxt(TxtNomJoueur)
+            cbxNomJoueurChange.Text = ""
             LblNomActu.Tag = LblNomActu.Text
-            LblNomActu.Text = "Votre nouveau Nom"
-            LblNomActu.Left -= 15
+            LblNomActu.Text = "Entrez votre nouveau nom :"
+            BtnValidNom.Width = 75
+            BtnValidNom.Text = "Renommer"
         ElseIf Not ModuleJoueur.getValid Then
             MsgBox("Le nom ne correspond pas.")
             Exit Sub
         End If
 
         If ModuleJoueur.getValid Then
-            If ModuleJoueur.getAncienNom() = TxtNomJoueur.Text Then
+            If ModuleJoueur.getAncienNom() = cbxNomJoueurChange.Text Then
                 MsgBox("Vous avez rentré le même nom.")
-            ElseIf TxtNomJoueur.Text <> "" Then
-                ModuleJoueur.changementNomJoueur(TxtNomJoueur.Text)
-                MsgBox("Votre nouveau nom a été changé." + vbCrLf + "Ancien nom : " + ModuleJoueur.getAncienNom() + vbCrLf + "Nouveau nom : " + TxtNomJoueur.Text)
+            ElseIf cbxNomJoueurChange.Text <> "" Then
+                ModuleJoueur.changementNomJoueur(cbxNomJoueurChange.Text)
+                MsgBox("Votre nouveau nom a été changé." + vbCrLf + "Ancien nom : " + ModuleJoueur.getAncienNom() + vbCrLf + "Nouveau nom : " + cbxNomJoueurChange.Text)
                 LblNomActu.Text = LblNomActu.Tag
-                ModulePartie.resetTxt(TxtNomJoueur)
+                cbxNomJoueurChange.Text = ""
+                BtnValidNom.Text = "Valider"
+                ModuleJoueur.chargercbxNomJoueur()
             End If
         End If
+
+
+        'FormAccueil.Show()
     End Sub
 
     Private Sub TxtTemps_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtTemps.KeyPress
@@ -98,5 +119,10 @@
         If Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub btnRetour_Click(sender As Object, e As EventArgs) Handles btnRetour.Click
+        Me.Hide()
+        FormMasterMind.Show()
     End Sub
 End Class

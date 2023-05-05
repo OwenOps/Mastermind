@@ -47,7 +47,10 @@ Module ModuleJoueur
     Sub setValid()
         valid = True
     End Sub
-
+    Sub addJoueur(nom As String)
+        JoueurHistorique(0).nom = nom
+        JoueurHistorique(1).nom = nom + "2"
+    End Sub
     Sub enregistrerJoueur()
         JoueurActuel(0).nom = FormAccueil.cbxNomJoueur1.Text
         JoueurActuel(0).estPremierJoueur = True
@@ -70,12 +73,20 @@ Module ModuleJoueur
         chargercbxNomJoueur()
     End Sub
     Sub chargercbxNomJoueur()
-        FormAccueil.cbxNomJoueur1.Items.Clear()
-        FormAccueil.cbxNomJoueur2.Items.Clear()
-        For i As Integer = 0 To JoueurHistorique.Length - 1
-            FormAccueil.cbxNomJoueur1.Items.Add(JoueurHistorique(i).nom)
-            FormAccueil.cbxNomJoueur2.Items.Add(JoueurHistorique(i).nom)
-        Next
+        If Not joueurHistoriqueEstVide() Then
+            FormAccueil.cbxNomJoueur1.Items.Clear()
+            FormAccueil.cbxNomJoueur2.Items.Clear()
+            For i As Integer = 0 To JoueurHistorique.Length - 1
+                FormAccueil.cbxNomJoueur1.Items.Add(JoueurHistorique(i).nom)
+                FormAccueil.cbxNomJoueur2.Items.Add(JoueurHistorique(i).nom)
+            Next
+
+            FormulaireConfig.cbxNomJoueurChange.Items.Clear()
+            For i As Integer = 0 To JoueurHistorique.Length - 1
+                FormulaireConfig.cbxNomJoueurChange.Items.Add(JoueurHistorique(i).nom)
+            Next
+
+        End If
     End Sub
 
     Function verifJoueur() As Boolean
@@ -114,11 +125,24 @@ Module ModuleJoueur
         Next
         Return False
     End Function
-
+    Function joueurHistoriqueEstVide() As Boolean
+        If JoueurHistorique(0).nom = Nothing Then
+            Return True
+        End If
+        Return False
+    End Function
     Sub changementNomJoueur(nouveauNom As String)
-        For Each joueur In JoueurHistorique
-            If joueur.nom = nouveauNom Then
-                joueur.nom = nouveauNom
+        'For Each joueur In JoueurHistorique
+        '    If joueur.nom = ancienNom Then
+        '        joueur.nom = nouveauNom
+        '        Exit Sub
+        '    End If
+        'Next
+
+        For i As Integer = 0 To JoueurHistorique.Length - 1
+            If JoueurHistorique(i).nom = ancienNom Then
+                JoueurHistorique(i).nom = nouveauNom
+                Exit Sub
             End If
         Next
     End Sub

@@ -13,5 +13,7 @@
 
     Private Sub BtnConfig_Click(sender As Object, e As EventArgs) Handles BtnConfig.Click
         FormulaireConfig.Show()
+        Me.Hide()
     End Sub
+
 End Class

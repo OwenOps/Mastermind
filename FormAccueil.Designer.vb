@@ -156,7 +156,7 @@ Partial Class FormAccueil
         Me.Label3.Text = "Joueur 2"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'FormJoueur
+        'FormAccueil
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -173,7 +173,7 @@ Partial Class FormAccueil
         Me.Controls.Add(Me.cbxNomJoueur1)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximumSize = New System.Drawing.Size(591, 355)
-        Me.Name = "FormJoueur"
+        Me.Name = "FormAccueil"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FormJoueur"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
