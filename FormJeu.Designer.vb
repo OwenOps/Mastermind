@@ -35,7 +35,6 @@ Partial Class FormJeu
         Me.Txt5 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PnlCaractereJoue = New System.Windows.Forms.Panel()
-        Me.LstCaratereHistorique = New System.Windows.Forms.ListBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.LblNomJoueur = New System.Windows.Forms.Label()
         Me.LblBravoPerdu = New System.Windows.Forms.Label()
@@ -47,6 +46,7 @@ Partial Class FormJeu
         Me.Label7 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.CaraJouable = New System.Windows.Forms.Label()
+        Me.LstCaraHisto = New System.Windows.Forms.RichTextBox()
         Me.PnlCaractereJoue.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -65,6 +65,7 @@ Partial Class FormJeu
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Red
         Me.Label3.Location = New System.Drawing.Point(242, 466)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(44, 15)
@@ -184,15 +185,6 @@ Partial Class FormJeu
         Me.PnlCaractereJoue.Size = New System.Drawing.Size(322, 59)
         Me.PnlCaractereJoue.TabIndex = 6
         '
-        'LstCaratereHistorique
-        '
-        Me.LstCaratereHistorique.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.LstCaratereHistorique.FormattingEnabled = True
-        Me.LstCaratereHistorique.Location = New System.Drawing.Point(450, 234)
-        Me.LstCaratereHistorique.Name = "LstCaratereHistorique"
-        Me.LstCaratereHistorique.Size = New System.Drawing.Size(139, 225)
-        Me.LstCaratereHistorique.TabIndex = 21
-        '
         'Label8
         '
         Me.Label8.AutoSize = True
@@ -302,11 +294,22 @@ Partial Class FormJeu
         Me.CaraJouable.TabIndex = 36
         Me.CaraJouable.Text = "CaraJouable"
         '
+        'LstCaraHisto
+        '
+        Me.LstCaraHisto.Location = New System.Drawing.Point(450, 225)
+        Me.LstCaraHisto.MaxLength = 100000000
+        Me.LstCaraHisto.Name = "LstCaraHisto"
+        Me.LstCaraHisto.ReadOnly = True
+        Me.LstCaraHisto.Size = New System.Drawing.Size(139, 242)
+        Me.LstCaraHisto.TabIndex = 37
+        Me.LstCaraHisto.Text = ""
+        '
         'FormJeu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(616, 575)
+        Me.Controls.Add(Me.LstCaraHisto)
         Me.Controls.Add(Me.CaraJouable)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PictureBox1)
@@ -318,7 +321,6 @@ Partial Class FormJeu
         Me.Controls.Add(Me.LblBravoPerdu)
         Me.Controls.Add(Me.LblNomJoueur)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.LstCaratereHistorique)
         Me.Controls.Add(Me.PnlCaractereJoue)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BtnGuess)
@@ -352,7 +354,6 @@ Partial Class FormJeu
     Friend WithEvents Txt5 As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PnlCaractereJoue As Panel
-    Friend WithEvents LstCaratereHistorique As ListBox
     Friend WithEvents Label8 As Label
     Friend WithEvents LblNomJoueur As Label
     Friend WithEvents LblBravoPerdu As Label
@@ -364,4 +365,5 @@ Partial Class FormJeu
     Friend WithEvents Label7 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents CaraJouable As Label
+    Friend WithEvents LstCaraHisto As RichTextBox
 End Class

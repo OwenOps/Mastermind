@@ -42,29 +42,35 @@
         If Not CaseVide() Then
             Console.WriteLine(ModulePartie.getCaraATrouver)
             For i As Integer = 0 To PnlCaractereJoue.Controls.Count - 1
-                For j As Integer = 0 To ModulePartie.getCaraATrouver.ToArray.Length - 1
+                For j As Integer = i To ModulePartie.getCaraATrouver.ToArray.Length - 1
                     If (PnlCaractereJoue.Controls(i).Text = ModulePartie.getCaraATrouver.ToArray(j) And i = j) Then 'Si bon et bien place
                         PnlCaractereJoue.Controls(i).BackColor = Color.Green
+                        LstCaraHisto.SelectionColor = Color.Green
+                        ModulePartie.removeCara(PnlCaractereJoue.Controls(i).Text)
                         Exit For
 
-                    ElseIf (PnlCaractereJoue.Controls(i).Text = ModulePartie.getCaraATrouver.ToArray(j)) Then 'Si present
+                    ElseIf ModulePartie.getCaraRestant.ToArray.Contains(PnlCaractereJoue.Controls(i).Text) Then 'Si present
+                        Console.WriteLine(getCaraRestant)
                         PnlCaractereJoue.Controls(i).BackColor = Color.Blue
+                        LstCaraHisto.SelectionColor = Color.Blue
+                        Exit For
 
-                    ElseIf Not ModulePartie.getCaraATrouver.ToArray.Contains(PnlCaractereJoue.Controls(i).Text) Then 'Si caractere n'est pas present
+                    Else 'Si caractere n'est pas present
                         PnlCaractereJoue.Controls(i).BackColor = Color.Red
+                        LstCaraHisto.SelectionColor = Color.Red
+                        Exit For
 
                     End If
                 Next
+                LstCaraHisto.AppendText("   " + PnlCaractereJoue.Controls(i).Text + "   ")
                 PnlCaractereJoue.Controls(i).ForeColor = Color.White
             Next
 
-            Dim LstCara As String = ""
-            For Each cara As TextBox In PnlCaractereJoue.Controls
-                LstCara += "   " & cara.Text & "   "
+            LstCaraHisto.AppendText(vbCrLf)
+            For Each txt As TextBox In PnlCaractereJoue.Controls
+                ModulePartie.resetTxt(txt)
             Next
-            LstCaratereHistorique.Items.Add(LstCara)
 
-            resetTxtBox()
             ModuleConfig.enleveNombreCoup()
             nombreCoup()
             LblBravoPerdu_Click()
@@ -106,12 +112,6 @@
         LblBravoPerdu.Show()
     End Sub
 
-    Sub resetTxtBox()
-        For Each txt As TextBox In PnlCaractereJoue.Controls
-            ModulePartie.resetTxt(txt)
-        Next
-    End Sub
-
     Private Sub BtnBye_Click(sender As Object, e As EventArgs) Handles BtnBye.Click
         Me.Hide()
         FormAccueil.Show()
@@ -124,4 +124,5 @@
     Private Sub FormJeu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
     End Sub
+
 End Class

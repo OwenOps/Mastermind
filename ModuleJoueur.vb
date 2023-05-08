@@ -1,5 +1,4 @@
-﻿
-Module ModuleJoueur
+﻿Module ModuleJoueur
     Private Const NBR_MAX_JOUEUR = 2
     Private ancienNom As String = ""
     Private valid As Boolean = False
