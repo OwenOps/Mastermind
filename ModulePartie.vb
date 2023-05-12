@@ -5,14 +5,14 @@
     Private Const NBR_CARA As Integer = 5
     Private tempsMax As Integer = 90
 
-    Sub setCaraATrouver(cara() As Char)
+    Public Sub setCaraATrouver(cara() As Char)
         For i As Integer = 0 To NBR_CARA - 1
             CaraATrouver(i) = cara(i)
         Next
         CaraRestant = getCaraATrouver()
     End Sub
 
-    Sub setCaraAleatoire()
+    Public Sub setCaraAleatoire()
         Dim rand As New Random()
         Dim nombreUnique As New HashSet(Of Integer)()
 
@@ -28,29 +28,29 @@
         For i As Integer = 0 To nombreUnique.Count - 1
             cara(i) = ModuleConfig.getCaraJouable.ToArray(nombreUnique(i))
         Next
-        setCaraATrouver(cara)
+        FormCaractere.caraDansTxtBox(cara)
     End Sub
 
-    Sub removeCara(indice As Char)
+    Public Sub removeCara(indice As Char)
         Dim index = CaraRestant.IndexOf(indice)
         If index <> -1 Then
             CaraRestant = CaraRestant.Remove(index, 1)
         End If
     End Sub
 
-    Function getCaraRestant() As String
+    Public Function getCaraRestant() As String
         Return CaraRestant
     End Function
 
-    Function getTempsMax() As Integer
+    Public Function getTempsMax() As Integer
         Return tempsMax
     End Function
 
-    Sub setTempsMax(nbr As Integer)
+    Public Sub setTempsMax(nbr As Integer)
         tempsMax = nbr
     End Sub
 
-    Function getCaraATrouver() As String
+    Public Function getCaraATrouver() As String
         Dim caractere As String = ""
         For Each cara In CaraATrouver
             caractere += cara
@@ -58,26 +58,26 @@
         Return caractere
     End Function
 
-    Sub lancementTimer()
+    Public Sub lancementTimer()
 
     End Sub
 
-    Function getTimer() As Integer
+    Public Function getTimer() As Integer
         Return tps
     End Function
 
-    Sub resetTxt(nom As TextBox)
+    Public Sub resetTxt(nom As TextBox)
         nom.Text = ""
     End Sub
 
-    Function timerFinis() As Boolean
+    Public Function timerFinis() As Boolean
         If tps = tempsMax Then
             Return True
         End If
         Return False
     End Function
 
-    Function ToutValide() As Boolean
+    Public Function ToutValide() As Boolean
         For Each txtBox As TextBox In FormJeu.PnlCaractereJoue.Controls
             If (txtBox.BackColor <> Color.Green) Then
                 Return False
@@ -86,7 +86,7 @@
         Return True
     End Function
 
-    Function CaseVide() As Boolean
+    Public Function CaseVide() As Boolean
         For Each txtBox As TextBox In FormJeu.PnlCaractereJoue.Controls
             If (txtBox.Text.Length = 0) Then
                 MsgBox("Veuillez remplir toute les cases.", vbOKOnly, "Erreur")

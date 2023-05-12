@@ -10,47 +10,50 @@
         Dim nbrPartiesSecondJoueur As Integer
         Dim cumulTemps As Integer
         Dim estPremierJoueur As Boolean
+        Dim ancienNom As String
     End Structure
     Private JoueurActuel(NBR_MAX_JOUEUR - 1) As Joueur
     Private JoueurHistorique(NBR_MAX_JOUEUR - 1) As Joueur
     Dim estPremiereFois As Boolean = True
 
-    Function getPremierJoueur() As String
+    Public Function getPremierJoueur() As String
         Return JoueurActuel(0).nom
     End Function
 
-    Function getDeuxiemeJoueur() As String
+    Public Function getDeuxiemeJoueur() As String
         Return JoueurActuel(1).nom
     End Function
 
-    Function getNombreJoueur() As Integer
+    Public Function getNombreJoueur() As Integer
         Return NBR_MAX_JOUEUR
     End Function
 
-    Function getNomDesJoueurs() As String
+    Public Function getNomDesJoueurs() As String
         Return getPremierJoueur() + ", " + getDeuxiemeJoueur()
     End Function
 
-    Function getValid() As Boolean
+    Public Function getValid() As Boolean
         Return valid
     End Function
 
-    Sub setAncienNom(nouveauNom As String)
+    Public Sub setAncienNom(nouveauNom As String)
         ancienNom = nouveauNom
     End Sub
 
-    Function getAncienNom() As String
+    Public Function getAncienNom() As String
         Return ancienNom
     End Function
 
-    Sub setValid()
+    Public Sub setValid()
         valid = True
     End Sub
-    Sub addJoueur(nom As String)
+
+    Public Sub addJoueur(nom As String)
         JoueurHistorique(0).nom = nom
         JoueurHistorique(1).nom = nom + "2"
     End Sub
-    Sub enregistrerJoueur()
+
+    Public Sub enregistrerJoueur()
         JoueurActuel(0).nom = FormAccueil.cbxNomJoueur1.Text
         JoueurActuel(0).estPremierJoueur = True
 
@@ -60,6 +63,7 @@
         For i As Integer = 0 To JoueurActuel.Length - 1
             JoueurActuel(i).score = 0
             JoueurActuel(i).meilleurTemps = 0
+            JoueurActuel(i).ancienNom = ""
             If (JoueurActuel(i).estPremierJoueur) Then
                 JoueurActuel(i).nbrPartiesPremierJoueur += 1
             Else
@@ -71,7 +75,8 @@
         archiverJoueur()
         chargercbxNomJoueur()
     End Sub
-    Sub chargercbxNomJoueur()
+
+    Public Sub chargercbxNomJoueur()
         If Not joueurHistoriqueEstVide() Then
             FormAccueil.cbxNomJoueur1.Items.Clear()
             FormAccueil.cbxNomJoueur2.Items.Clear()
@@ -88,7 +93,7 @@
         End If
     End Sub
 
-    Function verifJoueur() As Boolean
+    Public Function verifJoueur() As Boolean
 
         If FormAccueil.cbxNomJoueur1.Text = "" Or FormAccueil.cbxNomJoueur2.Text = "" Then
             MsgBox("Veuillez entrer un nom pour chaque joueur", vbOKOnly, "Erreur")
@@ -102,7 +107,7 @@
         Return True
     End Function
 
-    Private Sub archiverJoueur()
+    Public Sub archiverJoueur()
         For j As Integer = 0 To JoueurActuel.Length - 1
             If estContenuDansHistorique(JoueurActuel(j).nom) = False Then
                 If Not estPremiereFois Then
@@ -116,7 +121,7 @@
         Next
     End Sub
 
-    Function estContenuDansHistorique(nom As String) As Boolean
+    Public Function estContenuDansHistorique(nom As String) As Boolean
         For i As Integer = 0 To JoueurHistorique.Length - 1
             If JoueurHistorique(i).nom = nom Then
                 Return True
@@ -125,16 +130,17 @@
         Return False
     End Function
 
-    Function joueurHistoriqueEstVide() As Boolean
+    Public Function joueurHistoriqueEstVide() As Boolean
         If JoueurHistorique(0).nom = Nothing Then
             Return True
         End If
         Return False
     End Function
 
-    Sub changementNomJoueur(nouveauNom As String)
+    Public Sub changementNomJoueur(nouveauNom As String)
         For i As Integer = 0 To JoueurHistorique.Length - 1
             If JoueurHistorique(i).nom = ancienNom Then
+                JoueurHistorique(i).ancienNom = ancienNom
                 JoueurHistorique(i).nom = nouveauNom
                 Exit Sub
             End If

@@ -5,31 +5,31 @@
     Private Const NBR_CARA As Integer = 5
     Private timerActive = True
 
-    Sub enleveNombreCoup()
+    Public Sub enleveNombreCoup()
         NombreDeCoupPossible = NombreDeCoupPossible - 1
     End Sub
 
-    Sub setTimerActive(timerC As Boolean)
+    Public Sub setTimerActive(timerC As Boolean)
         timerActive = timerC
     End Sub
 
-    Function getNbrCaraMax() As Integer
+    Public Function getNbrCaraMax() As Integer
         Return NBR_CARA
     End Function
 
-    Sub setNombreCoup(nbr As Integer)
+    Public Sub setNombreCoup(nbr As Integer)
         NombreDeCoupPossible = nbr
     End Sub
 
-    Function timerEstActive() As Boolean
+    Public Function timerEstActive() As Boolean
         Return timerActive
     End Function
 
-    Function getNombreCoup() As Integer
+    Public Function getNombreCoup() As Integer
         Return NombreDeCoupPossible
     End Function
 
-    Sub setCaraJouable(cara As String)
+    Public Sub setCaraJouable(cara As String)
         If cara <> "" And cara.Length = NBR_CARA Then
             cara = cara.ToArray
             For i As Integer = 0 To NBR_CARA - 1
@@ -38,7 +38,7 @@
         End If
     End Sub
 
-    Function getCaraJouable() As String
+    Public Function getCaraJouable() As String
         Dim caractere As String = ""
         For i As Integer = 0 To NBR_CARA - 1
             caractere += CaraJouable(i)

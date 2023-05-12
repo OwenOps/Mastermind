@@ -67,11 +67,17 @@
 
     Private Sub BtnAleatoire_Click(sender As Object, e As EventArgs) Handles BtnAleatoire.Click
         ModulePartie.setCaraAleatoire()
-        demandeJouer()
     End Sub
 
     Private Sub FormCaractere_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
     End Sub
 
+    Sub caraDansTxtBox(cara() As Char)
+        Dim cpt As Integer = 0
+        For Each txt As TextBox In PnlCaractereJoue.Controls
+            txt.Text = cara(cpt)
+            cpt += 1
+        Next
+    End Sub
 End Class
