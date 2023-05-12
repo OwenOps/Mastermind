@@ -113,7 +113,6 @@ Public Class FormulaireConfig
             End If
         End If
 
-
         'FormAccueil.Show()
     End Sub
 

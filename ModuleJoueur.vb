@@ -124,20 +124,15 @@
         Next
         Return False
     End Function
+
     Function joueurHistoriqueEstVide() As Boolean
         If JoueurHistorique(0).nom = Nothing Then
             Return True
         End If
         Return False
     End Function
-    Sub changementNomJoueur(nouveauNom As String)
-        'For Each joueur In JoueurHistorique
-        '    If joueur.nom = ancienNom Then
-        '        joueur.nom = nouveauNom
-        '        Exit Sub
-        '    End If
-        'Next
 
+    Sub changementNomJoueur(nouveauNom As String)
         For i As Integer = 0 To JoueurHistorique.Length - 1
             If JoueurHistorique(i).nom = ancienNom Then
                 JoueurHistorique(i).nom = nouveauNom

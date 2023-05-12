@@ -12,12 +12,29 @@
         CaraRestant = getCaraATrouver()
     End Sub
 
+    Sub setCaraAleatoire()
+        Dim rand As New Random()
+        Dim nombreUnique As New HashSet(Of Integer)()
+
+        While nombreUnique.Count < NBR_CARA
+            Dim nbr As Integer = rand.Next(0, 5)
+
+            If Not nombreUnique.Contains(nbr) Then
+                nombreUnique.Add(nbr)
+            End If
+        End While
+
+        Dim cara(NBR_CARA) As Char
+        For i As Integer = 0 To nombreUnique.Count - 1
+            cara(i) = ModuleConfig.getCaraJouable.ToArray(nombreUnique(i))
+        Next
+        setCaraATrouver(cara)
+    End Sub
+
     Sub removeCara(indice As Char)
         Dim index = CaraRestant.IndexOf(indice)
-        Console.WriteLine(index)
         If index <> -1 Then
             CaraRestant = CaraRestant.Remove(index, 1)
-            Console.WriteLine(CaraRestant)
         End If
     End Sub
 

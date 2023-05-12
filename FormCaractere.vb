@@ -45,18 +45,33 @@
         Next
 
         If erreur = False Then
-            Dim demande As DialogResult = MessageBox.Show("Voulez-vous commencer à jouer?", "La partie va commencer !", MessageBoxButtons.YesNo)
-            If demande = DialogResult.Yes Then
+            If demandeJouer() Then
                 ModulePartie.setCaraATrouver(chaineATrouve.ToArray)
-                Me.Hide()
-                FormJeu.Show()
             End If
+
         Else
             MessageBox.Show("Veuillez remplir toutes les cases pour commencer à jouer.")
         End If
     End Sub
 
+    Function demandeJouer() As Boolean
+        Dim demande As DialogResult = MessageBox.Show("Voulez-vous commencer à jouer?", "La partie va commencer !", MessageBoxButtons.YesNo)
+        If demande = DialogResult.Yes Then
+            Me.Hide()
+            FormJeu.Show()
+
+            Return True
+        End If
+        Return False
+    End Function
+
+    Private Sub BtnAleatoire_Click(sender As Object, e As EventArgs) Handles BtnAleatoire.Click
+        ModulePartie.setCaraAleatoire()
+        demandeJouer()
+    End Sub
+
     Private Sub FormCaractere_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
     End Sub
+
 End Class

@@ -1,6 +1,6 @@
 ﻿Module ModuleConfig
     Private CaraJouable() As String = {"A", "B", "C", "D", "E"}
-    Private NombreDeCoupPossible As Integer = 3
+    Private NombreDeCoupPossible As Integer = 15
     Private Const NBR_COUP_DEFAULT As Integer = 15
     Private Const NBR_CARA As Integer = 5
     Private timerActive = True

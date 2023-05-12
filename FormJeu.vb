@@ -50,7 +50,6 @@
                         Exit For
 
                     ElseIf ModulePartie.getCaraRestant.ToArray.Contains(PnlCaractereJoue.Controls(i).Text) Then 'Si present
-                        Console.WriteLine(getCaraRestant)
                         PnlCaractereJoue.Controls(i).BackColor = Color.Blue
                         LstCaraHisto.SelectionColor = Color.Blue
                         Exit For

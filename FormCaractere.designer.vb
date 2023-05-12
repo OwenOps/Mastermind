@@ -34,6 +34,7 @@ Partial Class FormCaractere
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.CaraJouable = New System.Windows.Forms.Label()
+        Me.BtnAleatoire = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PnlCaractereJoue.SuspendLayout()
         Me.SuspendLayout()
@@ -159,11 +160,21 @@ Partial Class FormCaractere
         Me.CaraJouable.TabIndex = 47
         Me.CaraJouable.Text = "CaraJouable"
         '
+        'BtnAleatoire
+        '
+        Me.BtnAleatoire.Location = New System.Drawing.Point(58, 160)
+        Me.BtnAleatoire.Name = "BtnAleatoire"
+        Me.BtnAleatoire.Size = New System.Drawing.Size(83, 34)
+        Me.BtnAleatoire.TabIndex = 48
+        Me.BtnAleatoire.Text = "Aleatoire"
+        Me.BtnAleatoire.UseVisualStyleBackColor = True
+        '
         'FormCaractere
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(628, 308)
+        Me.ClientSize = New System.Drawing.Size(657, 310)
+        Me.Controls.Add(Me.BtnAleatoire)
         Me.Controls.Add(Me.CaraJouable)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label1)
@@ -171,7 +182,7 @@ Partial Class FormCaractere
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ButtonHIDE)
-        Me.MaximumSize = New System.Drawing.Size(644, 348)
+        Me.MaximumSize = New System.Drawing.Size(673, 349)
         Me.Name = "FormCaractere"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pattern à deviner"
@@ -195,4 +206,5 @@ Partial Class FormCaractere
     Friend WithEvents Label1 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents CaraJouable As Label
+    Friend WithEvents BtnAleatoire As Button
 End Class
