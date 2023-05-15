@@ -41,9 +41,10 @@ Partial Class FormCaractere
         '
         'ButtonHIDE
         '
-        Me.ButtonHIDE.Location = New System.Drawing.Point(512, 160)
+        Me.ButtonHIDE.Location = New System.Drawing.Point(1024, 308)
+        Me.ButtonHIDE.Margin = New System.Windows.Forms.Padding(6)
         Me.ButtonHIDE.Name = "ButtonHIDE"
-        Me.ButtonHIDE.Size = New System.Drawing.Size(83, 34)
+        Me.ButtonHIDE.Size = New System.Drawing.Size(166, 65)
         Me.ButtonHIDE.TabIndex = 0
         Me.ButtonHIDE.Text = "Hide"
         Me.ButtonHIDE.UseVisualStyleBackColor = True
@@ -54,20 +55,20 @@ Partial Class FormCaractere
         Me.Label7.BackColor = System.Drawing.Color.Maroon
         Me.Label7.Font = New System.Drawing.Font("Sylfaen", 30.0!)
         Me.Label7.ForeColor = System.Drawing.Color.Transparent
-        Me.Label7.Location = New System.Drawing.Point(216, 18)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label7.Location = New System.Drawing.Point(432, 35)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(228, 52)
+        Me.Label7.Size = New System.Drawing.Size(457, 105)
         Me.Label7.TabIndex = 37
         Me.Label7.Text = "MasterMind"
         '
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Maroon
-        Me.PictureBox1.Location = New System.Drawing.Point(-2, 1)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.PictureBox1.Location = New System.Drawing.Point(-4, 2)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(705, 77)
+        Me.PictureBox1.Size = New System.Drawing.Size(1410, 148)
         Me.PictureBox1.TabIndex = 36
         Me.PictureBox1.TabStop = False
         '
@@ -80,54 +81,60 @@ Partial Class FormCaractere
         Me.PnlCaractereJoue.Controls.Add(Me.TxtBox4)
         Me.PnlCaractereJoue.Controls.Add(Me.TxtBox2)
         Me.PnlCaractereJoue.Controls.Add(Me.TxtBox3)
-        Me.PnlCaractereJoue.Location = New System.Drawing.Point(163, 147)
+        Me.PnlCaractereJoue.Location = New System.Drawing.Point(326, 283)
+        Me.PnlCaractereJoue.Margin = New System.Windows.Forms.Padding(6)
         Me.PnlCaractereJoue.Name = "PnlCaractereJoue"
-        Me.PnlCaractereJoue.Size = New System.Drawing.Size(322, 59)
+        Me.PnlCaractereJoue.Size = New System.Drawing.Size(640, 110)
         Me.PnlCaractereJoue.TabIndex = 43
         '
         'TxtBox5
         '
-        Me.TxtBox5.Location = New System.Drawing.Point(267, 19)
+        Me.TxtBox5.Location = New System.Drawing.Point(534, 37)
+        Me.TxtBox5.Margin = New System.Windows.Forms.Padding(6)
         Me.TxtBox5.MaxLength = 1
         Me.TxtBox5.Name = "TxtBox5"
-        Me.TxtBox5.Size = New System.Drawing.Size(38, 20)
+        Me.TxtBox5.Size = New System.Drawing.Size(72, 31)
         Me.TxtBox5.TabIndex = 5
         Me.TxtBox5.Tag = ""
         Me.TxtBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TxtBox1
         '
-        Me.TxtBox1.Location = New System.Drawing.Point(17, 19)
+        Me.TxtBox1.Location = New System.Drawing.Point(34, 37)
+        Me.TxtBox1.Margin = New System.Windows.Forms.Padding(6)
         Me.TxtBox1.MaxLength = 1
         Me.TxtBox1.Name = "TxtBox1"
-        Me.TxtBox1.Size = New System.Drawing.Size(38, 20)
+        Me.TxtBox1.Size = New System.Drawing.Size(72, 31)
         Me.TxtBox1.TabIndex = 1
         Me.TxtBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TxtBox4
         '
-        Me.TxtBox4.Location = New System.Drawing.Point(206, 19)
+        Me.TxtBox4.Location = New System.Drawing.Point(412, 37)
+        Me.TxtBox4.Margin = New System.Windows.Forms.Padding(6)
         Me.TxtBox4.MaxLength = 1
         Me.TxtBox4.Name = "TxtBox4"
-        Me.TxtBox4.Size = New System.Drawing.Size(38, 20)
+        Me.TxtBox4.Size = New System.Drawing.Size(72, 31)
         Me.TxtBox4.TabIndex = 4
         Me.TxtBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TxtBox2
         '
-        Me.TxtBox2.Location = New System.Drawing.Point(74, 19)
+        Me.TxtBox2.Location = New System.Drawing.Point(148, 37)
+        Me.TxtBox2.Margin = New System.Windows.Forms.Padding(6)
         Me.TxtBox2.MaxLength = 1
         Me.TxtBox2.Name = "TxtBox2"
-        Me.TxtBox2.Size = New System.Drawing.Size(38, 20)
+        Me.TxtBox2.Size = New System.Drawing.Size(72, 31)
         Me.TxtBox2.TabIndex = 2
         Me.TxtBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TxtBox3
         '
-        Me.TxtBox3.Location = New System.Drawing.Point(141, 19)
+        Me.TxtBox3.Location = New System.Drawing.Point(282, 37)
+        Me.TxtBox3.Margin = New System.Windows.Forms.Padding(6)
         Me.TxtBox3.MaxLength = 1
         Me.TxtBox3.Name = "TxtBox3"
-        Me.TxtBox3.Size = New System.Drawing.Size(38, 20)
+        Me.TxtBox3.Size = New System.Drawing.Size(72, 31)
         Me.TxtBox3.TabIndex = 3
         Me.TxtBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -135,9 +142,10 @@ Partial Class FormCaractere
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(133, 98)
+        Me.Label1.Location = New System.Drawing.Point(266, 188)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(418, 17)
+        Me.Label1.Size = New System.Drawing.Size(833, 34)
         Me.Label1.TabIndex = 44
         Me.Label1.Text = "Choisissez les caractères que vous voulez faire deviner."
         '
@@ -145,35 +153,38 @@ Partial Class FormCaractere
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(250, 230)
+        Me.Label6.Location = New System.Drawing.Point(500, 442)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(139, 15)
+        Me.Label6.Size = New System.Drawing.Size(265, 30)
         Me.Label6.TabIndex = 46
         Me.Label6.Text = "Caractères jouables"
         '
         'CaraJouable
         '
         Me.CaraJouable.AutoSize = True
-        Me.CaraJouable.Location = New System.Drawing.Point(267, 262)
+        Me.CaraJouable.Location = New System.Drawing.Point(534, 504)
+        Me.CaraJouable.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.CaraJouable.Name = "CaraJouable"
-        Me.CaraJouable.Size = New System.Drawing.Size(66, 13)
+        Me.CaraJouable.Size = New System.Drawing.Size(134, 25)
         Me.CaraJouable.TabIndex = 47
         Me.CaraJouable.Text = "CaraJouable"
         '
         'BtnAleatoire
         '
-        Me.BtnAleatoire.Location = New System.Drawing.Point(58, 160)
+        Me.BtnAleatoire.Location = New System.Drawing.Point(116, 308)
+        Me.BtnAleatoire.Margin = New System.Windows.Forms.Padding(6)
         Me.BtnAleatoire.Name = "BtnAleatoire"
-        Me.BtnAleatoire.Size = New System.Drawing.Size(83, 34)
+        Me.BtnAleatoire.Size = New System.Drawing.Size(166, 65)
         Me.BtnAleatoire.TabIndex = 48
         Me.BtnAleatoire.Text = "Aleatoire"
         Me.BtnAleatoire.UseVisualStyleBackColor = True
         '
         'FormCaractere
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(657, 310)
+        Me.ClientSize = New System.Drawing.Size(1294, 601)
         Me.Controls.Add(Me.BtnAleatoire)
         Me.Controls.Add(Me.CaraJouable)
         Me.Controls.Add(Me.Label6)
@@ -182,7 +193,8 @@ Partial Class FormCaractere
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ButtonHIDE)
-        Me.MaximumSize = New System.Drawing.Size(673, 349)
+        Me.Margin = New System.Windows.Forms.Padding(6)
+        Me.MaximumSize = New System.Drawing.Size(1320, 672)
         Me.Name = "FormCaractere"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pattern à deviner"
