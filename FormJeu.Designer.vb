@@ -237,6 +237,7 @@ Partial Class FormJeu
         Me.BtnBye.TabIndex = 30
         Me.BtnBye.Text = "Bye"
         Me.BtnBye.UseVisualStyleBackColor = True
+        Me.BtnBye.Visible = False
         '
         'Label10
         '

@@ -105,7 +105,9 @@
     End Sub
 
     Sub partieFinis()
+        TimerJeu.Stop()
         BtnGuess.Hide()
+        BtnBye.Visible = True
         LblBravoPerdu.Show()
     End Sub
 
