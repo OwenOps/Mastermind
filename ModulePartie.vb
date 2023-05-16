@@ -71,7 +71,7 @@
     End Sub
 
     Public Function timerFinis() As Boolean
-        If tps = tempsMax Then
+        If tempsMax = 0 Then
             Return True
         End If
         Return False

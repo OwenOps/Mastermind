@@ -1,6 +1,12 @@
 ﻿Public Class FormJeu
     'Toutes les petites fonctions utilises sont en bas
-    Private Sub FormulaireJeu_Load() Handles MyBase.Load
+    Private Sub FormJeu_Load() Handles MyBase.Load
+        'On initialise le timer et la progressbar
+        Dim TempsMax As Integer = ModulePartie.getTempsMax()
+        AfficheLabelTimer(TempsMax)
+        ProgressBarJeu.Maximum = TempsMax
+
+
         Dim caraChaine As String = ""
         For Each cara In ModuleConfig.getCaraJouable.ToArray
             caraChaine += "  " & cara & "  "
@@ -28,14 +34,6 @@
 
         gagnePerdu(BravoPerdu)
         partieFinis()
-    End Sub
-
-    Private Sub LblTimer_Click(sender As Object, e As EventArgs) Handles LblTimer.Click
-
-    End Sub
-
-    Private Sub ProgressBar1_Click(sender As Object, e As EventArgs) Handles ProgressBar1.Click
-
     End Sub
 
     Private Sub ButtonGuess_Click(sender As Object, e As EventArgs) Handles BtnGuess.Click
@@ -124,4 +122,36 @@
         Application.Exit()
     End Sub
 
+
+    Private Sub TimerJeu_Tick(sender As Object, e As EventArgs) Handles TimerJeu.Tick
+        Dim tempsMax = ModulePartie.getTempsMax()
+        tempsMax -= 1
+        ProgressBarJeu.Value = tempsMax
+        AfficheLabelTimer(tempsMax)
+
+        'LblTimer.Text = tempsMax
+        ModulePartie.setTempsMax(tempsMax)
+        If ModulePartie.timerFinis() Then
+            TimerJeu.Stop()
+            gagnePerdu(False)
+            partieFinis()
+        End If
+
+    End Sub
+
+    Sub AfficheLabelTimer(tempsMax As Integer)
+        Dim ts As Integer = 0, h = 0, m = 0, s = 0
+        ts = tempsMax
+        h = ts / 3600
+        m = Math.Floor((ts / 60) - 60 * h)
+        s = ts - 3600 * h - 60 * m
+
+        If tempsMax >= 3600 Then
+            LblTimer.Text = h & " h : " & m & " min : " & s & " sec"
+        ElseIf tempsMax >= 60 Then
+            LblTimer.Text = m & " min : " & s & " sec"
+        Else
+            LblTimer.Text = s & " sec"
+        End If
+    End Sub
 End Class
