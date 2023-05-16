@@ -19,6 +19,7 @@
             resetTxt(txt)
         Next
     End Sub
+
     Private Sub TextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtBox1.KeyPress, TxtBox2.KeyPress, TxtBox3.KeyPress, TxtBox4.KeyPress, TxtBox5.KeyPress
         Dim textBox As TextBox = CType(sender, TextBox)
         If Char.IsLetter(e.KeyChar) Then
