@@ -34,12 +34,12 @@ Partial Class FormMasterMind
         'BtnRules
         '
         Me.BtnRules.BackColor = System.Drawing.Color.Brown
-        Me.BtnRules.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.BtnRules.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.BtnRules.ForeColor = System.Drawing.Color.White
-        Me.BtnRules.Location = New System.Drawing.Point(75, 152)
+        Me.BtnRules.Location = New System.Drawing.Point(64, 144)
         Me.BtnRules.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnRules.Name = "BtnRules"
-        Me.BtnRules.Size = New System.Drawing.Size(355, 36)
+        Me.BtnRules.Size = New System.Drawing.Size(304, 42)
         Me.BtnRules.TabIndex = 10
         Me.BtnRules.Text = "Prendre connaissance des règles"
         Me.BtnRules.UseVisualStyleBackColor = False
@@ -47,12 +47,12 @@ Partial Class FormMasterMind
         'BtnStart
         '
         Me.BtnStart.BackColor = System.Drawing.Color.Green
-        Me.BtnStart.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.BtnStart.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold)
         Me.BtnStart.ForeColor = System.Drawing.Color.White
-        Me.BtnStart.Location = New System.Drawing.Point(75, 285)
+        Me.BtnStart.Location = New System.Drawing.Point(64, 204)
         Me.BtnStart.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnStart.Name = "BtnStart"
-        Me.BtnStart.Size = New System.Drawing.Size(355, 36)
+        Me.BtnStart.Size = New System.Drawing.Size(304, 41)
         Me.BtnStart.TabIndex = 11
         Me.BtnStart.Text = "Commençons !"
         Me.BtnStart.UseVisualStyleBackColor = False
@@ -60,8 +60,8 @@ Partial Class FormMasterMind
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point)
-        Me.Label4.Location = New System.Drawing.Point(13, 106)
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Italic)
+        Me.Label4.Location = New System.Drawing.Point(36, 98)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(396, 20)
@@ -72,9 +72,9 @@ Partial Class FormMasterMind
         '
         Me.Label7.AutoSize = True
         Me.Label7.BackColor = System.Drawing.Color.Maroon
-        Me.Label7.Font = New System.Drawing.Font("Sylfaen", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label7.Font = New System.Drawing.Font("Sylfaen", 30.0!)
         Me.Label7.ForeColor = System.Drawing.Color.Transparent
-        Me.Label7.Location = New System.Drawing.Point(135, 10)
+        Me.Label7.Location = New System.Drawing.Point(116, 7)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(227, 52)
@@ -84,40 +84,40 @@ Partial Class FormMasterMind
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Maroon
-        Me.PictureBox1.Location = New System.Drawing.Point(-1, -5)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.PictureBox1.Location = New System.Drawing.Point(-1, -4)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(822, 89)
+        Me.PictureBox1.Size = New System.Drawing.Size(704, 77)
         Me.PictureBox1.TabIndex = 36
         Me.PictureBox1.TabStop = False
         '
         'BtnConfig
         '
         Me.BtnConfig.BackColor = System.Drawing.Color.Gray
-        Me.BtnConfig.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.BtnConfig.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold)
         Me.BtnConfig.ForeColor = System.Drawing.Color.White
-        Me.BtnConfig.Location = New System.Drawing.Point(75, 217)
+        Me.BtnConfig.Location = New System.Drawing.Point(64, 266)
         Me.BtnConfig.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnConfig.Name = "BtnConfig"
-        Me.BtnConfig.Size = New System.Drawing.Size(355, 36)
+        Me.BtnConfig.Size = New System.Drawing.Size(304, 31)
         Me.BtnConfig.TabIndex = 38
         Me.BtnConfig.Text = "Configuration Du Jeu"
         Me.BtnConfig.UseVisualStyleBackColor = False
         '
         'FormMasterMind
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(532, 361)
+        Me.ClientSize = New System.Drawing.Size(454, 306)
         Me.Controls.Add(Me.BtnConfig)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.BtnStart)
         Me.Controls.Add(Me.BtnRules)
-        Me.Cursor = System.Windows.Forms.Cursors.Cross
-        Me.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.MaximumSize = New System.Drawing.Size(548, 400)
+        Me.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MaximumSize = New System.Drawing.Size(472, 352)
         Me.Name = "FormMasterMind"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MasterMind"

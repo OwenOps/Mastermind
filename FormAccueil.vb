@@ -1,13 +1,19 @@
 ﻿Public Class FormAccueil
     Private Sub FormAccueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        chargerFichierDansHistorique()
+        chargercbxNomJoueur()
+
+        cbxNomJoueur1.AutoCompleteMode = AutoCompleteMode.Append
+        cbxNomJoueur1.AutoCompleteSource = AutoCompleteSource.ListItems
+
+        cbxNomJoueur2.AutoCompleteMode = AutoCompleteMode.Append
+        cbxNomJoueur2.AutoCompleteSource = AutoCompleteSource.ListItems
     End Sub
     Private Sub btnJouer_Click(sender As Object, e As EventArgs) Handles btnJouer.Click
         If (verifJoueur()) Then
+            'ArchiverJoueurDansFichier()
             enregistrerJoueur()
-            'MsgBox(ModuleJoueur.getPremierJoueur + ", " + ModuleJoueur.getDeuxiemeJoueur)
-            MsgBox(getNomDesJoueurs)
             Me.Hide()
-            'FormulaireConfig.Show()
             FormCaractere.Show()
         End If
     End Sub
@@ -24,11 +30,11 @@
     End Sub
 
     Private Sub btnQuitter_Click(sender As Object, e As EventArgs) Handles btnQuitter.Click
-        Me.Close()
-    End Sub
 
-    Private Sub FormJoueur_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Application.Exit()
+        'Me.Hide()
+        Me.Close()
+        'FormMasterMind.Close()
+        'Application.Exit()
     End Sub
 
 End Class
