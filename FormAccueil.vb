@@ -1,4 +1,7 @@
 ﻿Public Class FormAccueil
+    Private Sub FormAccueil_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Application.Exit()
+    End Sub
     Private Sub FormAccueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         chargerFichierDansHistorique()
         chargercbxNomJoueur()
@@ -15,6 +18,7 @@
             enregistrerJoueur()
             Me.Hide()
             FormCaractere.Show()
+
         End If
     End Sub
 
@@ -30,11 +34,7 @@
     End Sub
 
     Private Sub btnQuitter_Click(sender As Object, e As EventArgs) Handles btnQuitter.Click
-
-        'Me.Hide()
         Me.Close()
-        'FormMasterMind.Close()
-        'Application.Exit()
     End Sub
 
 End Class

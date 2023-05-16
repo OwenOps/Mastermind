@@ -1,5 +1,6 @@
 ﻿Public Class FormCaractere
     Private Sub FormCaractere_Load() Handles MyBase.Load
+
         'Pour trie dans ordre la liste des txtBox, sans ca probleme
         Dim ctrlList As List(Of Control) = PnlCaractereJoue.Controls.Cast(Of Control).OrderBy(Function(c) c.TabIndex).ToList()
 
@@ -13,7 +14,11 @@
         Next
         CaraJouable.Text = caraChaine
     End Sub
-
+    Sub resetForm()
+        For Each txt As TextBox In PnlCaractereJoue.Controls
+            resetTxt(txt)
+        Next
+    End Sub
     Private Sub TextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtBox1.KeyPress, TxtBox2.KeyPress, TxtBox3.KeyPress, TxtBox4.KeyPress, TxtBox5.KeyPress
         Dim textBox As TextBox = CType(sender, TextBox)
         If Char.IsLetter(e.KeyChar) Then
@@ -33,6 +38,7 @@
     End Sub
 
     Private Sub ButtonHIDE_Click(sender As Object, e As EventArgs) Handles ButtonHIDE.Click
+
         Dim erreur As Boolean = False
         Dim chaineATrouve As String = ""
 
@@ -52,6 +58,8 @@
         Else
             MessageBox.Show("Veuillez remplir toutes les cases pour commencer à jouer.")
         End If
+        resetForm()
+        FormJeu.resetFormJeu()
     End Sub
 
     Function demandeJouer() As Boolean

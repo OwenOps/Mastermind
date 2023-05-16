@@ -4,6 +4,9 @@ Public Class FormulaireConfig
     Dim nbrCoupDefault As Integer = 15
     Dim tempsDefault As Integer = 90
     Dim caraDefault As String = "A,B,C,D,E"
+    Private Sub FormConfig_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Application.Exit()
+    End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'ModuleJoueur.addJoueur("Namo")
     End Sub
@@ -134,5 +137,9 @@ Public Class FormulaireConfig
         ModulePartie.setTempsMax(tempsDefault)
         ModuleConfig.setCaraJouable(caraDefault)
         MsgBox("Configuration remis par default.")
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+
     End Sub
 End Class

@@ -3,7 +3,7 @@
     Private CaraATrouver(NBR_CARA) As String
     Private CaraRestant As String
     Private Const NBR_CARA As Integer = 5
-    Private tempsMax As Integer = 90
+    Private tempsMax As Integer = 10
 
     Public Sub setCaraATrouver(cara() As Char)
         For i As Integer = 0 To NBR_CARA - 1

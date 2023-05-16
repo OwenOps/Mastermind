@@ -1,6 +1,7 @@
 ﻿Public Class FormJeu
     'Toutes les petites fonctions utilises sont en bas
     Private Sub FormJeu_Load() Handles MyBase.Load
+
         'On initialise le timer et la progressbar
         Dim TempsMax As Integer = ModulePartie.getTempsMax()
         AfficheLabelTimer(TempsMax)
@@ -23,7 +24,34 @@
         nombreCoup()
         LblNomJoueur.Text = getDeuxiemeJoueur()
     End Sub
+    Sub resetFormJeu()
+        For Each txt As TextBox In PnlCaractereJoue.Controls
+            resetTxt(txt)
+            txt.BackColor = Color.White
+            txt.ForeColor = Color.Black
+        Next
 
+        'If LblBravoPerdu.ForeColor = Color.Green Then
+        '    LblBravoPerdu.Left = LblBravoPerdu.Tag
+        'ElseIf LblBravoPerdu.ForeColor = Color.Red Then
+        '    LblBravoPerdu.Left = LblBravoPerdu.Tag
+        'End If
+
+        BtnGuess.Show()
+        LblBravoPerdu.Hide()
+        LstCaraHisto.Clear()
+        ModuleConfig.setNombreCoup(ModuleConfig.getCoupDefaut)
+        ModulePartie.setTempsMax(ModuleConfig.getTempsDefaut)
+        nombreCoup()
+
+        ModulePartie.setTempsMax(ModuleConfig.getTempsDefaut)
+        AfficheLabelTimer(ModuleConfig.getTempsDefaut)
+        ProgressBarJeu.Maximum = ModulePartie.getTempsMax
+        ProgressBarJeu.Value = ModulePartie.getTempsMax
+        TimerJeu.Start()
+
+        BtnBye.Hide()
+    End Sub
     Private Sub LblBravoPerdu_Click()
         Dim BravoPerdu As Boolean = False
         If ToutValide() Then
@@ -95,11 +123,11 @@
     Sub gagnePerdu(bravoPerdu As Boolean)
         If bravoPerdu Then
             LblBravoPerdu.Text = "Gagné !!"
-            LblBravoPerdu.Left += 12
+            'LblBravoPerdu.Left += 12
             LblBravoPerdu.ForeColor = Color.Green
         Else
             LblBravoPerdu.Text = "Perdu, Peut-être la prochaine fois"
-            LblBravoPerdu.Left -= 75
+            'LblBravoPerdu.Left -= 75
             LblBravoPerdu.ForeColor = Color.Red
         End If
     End Sub
