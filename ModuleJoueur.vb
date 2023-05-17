@@ -67,11 +67,12 @@ Module ModuleJoueur
                 End If
             End If
         Next
-    End Sub
-    Public Sub ajouterStats(joueur As Joueur)
-        joueur.score += 1
-        joueur.cumulTemps += FormPartie.getTimer()
 
+    End Sub
+
+    Public Sub ajouterStats(joueur As Joueur)
+        'joueur.score += 1
+        'joueur.cumulTemps += FormPartie.getTimer()
     End Sub
 
     Public Sub sauvegarderDansHisto()

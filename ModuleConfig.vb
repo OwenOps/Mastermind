@@ -1,14 +1,30 @@
 ﻿Module ModuleConfig
     Private CaraJouable() As String = {"A", "B", "C", "D", "E"}
+    'Les coups au court de la partie
     Private NombreDeCoupPossible As Integer = 15
-    Private Const NBR_COUP_DEFAULT As Integer = 15
+
+    'Les coups defauts choisis par l'utilisateur ou non
+    Private NbrCoupDefaut As Integer = 15
     Private Const NBR_CARA As Integer = 5
-    Private Const TEMPS_PARDEFAULT As Integer = 90
+    Private timerActuelle As Integer = 90
     Private timerActive = True
+    Private tempsMax As Integer = 10
 
     Public Sub enleveNombreCoup()
         NombreDeCoupPossible = NombreDeCoupPossible - 1
     End Sub
+
+    Public Sub setTempsMax(nbr As Integer)
+        tempsMax = nbr
+    End Sub
+
+    Public Sub setTempsActuelle(nbr As Integer)
+        timerActuelle = nbr
+    End Sub
+
+    Function getTempsMax() As Integer
+        Return tempsMax
+    End Function
 
     Public Sub setTimerActive(timerC As Boolean)
         timerActive = timerC
@@ -18,9 +34,9 @@
         Return NBR_CARA
     End Function
 
-
     Public Sub setNombreCoup(nbr As Integer)
         NombreDeCoupPossible = nbr
+        NbrCoupDefaut = nbr
     End Sub
 
     Public Function timerEstActive() As Boolean
@@ -49,10 +65,10 @@
     End Function
 
     Public Function getCoupDefaut() As Integer
-        Return NBR_COUP_DEFAULT
+        Return NbrCoupDefaut
     End Function
     Public Function getTempsDefaut() As Integer
-        Return TEMPS_PARDEFAULT
+        Return timerActuelle
     End Function
 
 End Module

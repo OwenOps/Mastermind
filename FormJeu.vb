@@ -3,7 +3,7 @@
     Private Sub FormJeu_Load() Handles MyBase.Load
 
         'On initialise le timer et la progressbar
-        Dim TempsMax As Integer = ModulePartie.getTempsMax()
+        Dim TempsMax As Integer = ModuleConfig.getTempsDefaut
         AfficheLabelTimer(TempsMax)
         ProgressBarJeu.Maximum = TempsMax
 
@@ -41,13 +41,12 @@
         LblBravoPerdu.Hide()
         LstCaraHisto.Clear()
         ModuleConfig.setNombreCoup(ModuleConfig.getCoupDefaut)
-        ModulePartie.setTempsMax(ModuleConfig.getTempsDefaut)
+        ModuleConfig.setTempsMax(ModuleConfig.getTempsDefaut)
         nombreCoup()
 
-        ModulePartie.setTempsMax(ModuleConfig.getTempsDefaut)
         AfficheLabelTimer(ModuleConfig.getTempsDefaut)
-        ProgressBarJeu.Maximum = ModulePartie.getTempsMax
-        ProgressBarJeu.Value = ModulePartie.getTempsMax
+        ProgressBarJeu.Maximum = ModuleConfig.getTempsMax
+        ProgressBarJeu.Value = ModuleConfig.getTempsMax
         TimerJeu.Start()
 
         BtnBye.Hide()
@@ -75,7 +74,7 @@
                         ModulePartie.removeCara(PnlCaractereJoue.Controls(i).Text)
                         Exit For
 
-                    ElseIf ModulePartie.getCaraRestant.ToArray.Contains(PnlCaractereJoue.Controls(i).Text) Then 'Si present
+                    ElseIf ModulePartie.getCaraRestant.IndexOf(PnlCaractereJoue.Controls(i).Text) > 0 Then 'Si present
                         PnlCaractereJoue.Controls(i).BackColor = Color.Blue
                         LstCaraHisto.SelectionColor = Color.Blue
                         Exit For
@@ -161,13 +160,13 @@
 
 
     Private Sub TimerJeu_Tick(sender As Object, e As EventArgs) Handles TimerJeu.Tick
-        Dim tempsMax = ModulePartie.getTempsMax()
+        Dim tempsMax = ModuleConfig.getTempsMax()
         tempsMax -= 1
         ProgressBarJeu.Value = tempsMax
         AfficheLabelTimer(tempsMax)
 
         'LblTimer.Text = tempsMax
-        ModulePartie.setTempsMax(tempsMax)
+        ModuleConfig.setTempsMax(tempsMax)
         If ModulePartie.timerFinis() Then
             TimerJeu.Stop()
             gagnePerdu(False)
