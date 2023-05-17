@@ -22,15 +22,20 @@
         Next
 
         nombreCoup()
-        LblNomJoueur.Text = getDeuxiemeJoueur()
+        LblNomJoueur.Text = getDeuxiemeJoueur().nom
     End Sub
-
     Sub resetFormJeu()
         For Each txt As TextBox In PnlCaractereJoue.Controls
             resetTxt(txt)
             txt.BackColor = Color.White
             txt.ForeColor = Color.Black
         Next
+
+        'If LblBravoPerdu.ForeColor = Color.Green Then
+        '    LblBravoPerdu.Left = LblBravoPerdu.Tag
+        'ElseIf LblBravoPerdu.ForeColor = Color.Red Then
+        '    LblBravoPerdu.Left = LblBravoPerdu.Tag
+        'End If
 
         BtnGuess.Show()
         LblBravoPerdu.Hide()
@@ -47,7 +52,6 @@
 
         BtnBye.Hide()
     End Sub
-
     Private Sub LblBravoPerdu_Click()
         Dim BravoPerdu As Boolean = False
         If ToutValide() Then
@@ -58,16 +62,6 @@
 
         gagnePerdu(BravoPerdu)
         partieFinis()
-    End Sub
-
-    Sub bienPlace()
-        For i As Integer = 0 To PnlCaractereJoue.Controls.Count - 1
-            If (PnlCaractereJoue.Controls(i).Text = ModulePartie.getCaraATrouver.ToArray(i)) Then 'Si bon et bien place
-                PnlCaractereJoue.Controls(i).BackColor = Color.Green
-                LstCaraHisto.SelectionColor = Color.Green
-                ModulePartie.removeCara(PnlCaractereJoue.Controls(i).Text)
-            End If
-        Next
     End Sub
 
     Private Sub ButtonGuess_Click(sender As Object, e As EventArgs) Handles BtnGuess.Click
@@ -128,13 +122,20 @@
 
     Sub gagnePerdu(bravoPerdu As Boolean)
         If bravoPerdu Then
-            LblBravoPerdu.Left += 16
             LblBravoPerdu.Text = "Gagné !!"
+            'LblBravoPerdu.Left += 12
             LblBravoPerdu.ForeColor = Color.Green
+
+            ajouterStats(getDeuxiemeJoueur)
+            sauvegarderDansHisto()
+
         Else
-            LblBravoPerdu.Left -= 75
             LblBravoPerdu.Text = "Perdu, Peut-être la prochaine fois"
+            'LblBravoPerdu.Left -= 75
             LblBravoPerdu.ForeColor = Color.Red
+
+            ajouterStats(getPremierJoueur)
+            sauvegarderDansHisto()
         End If
     End Sub
 
@@ -146,13 +147,6 @@
     End Sub
 
     Private Sub BtnBye_Click(sender As Object, e As EventArgs) Handles BtnBye.Click
-
-        If LblBravoPerdu.ForeColor = Color.Green Then
-            LblBravoPerdu.Left -= 16
-        ElseIf LblBravoPerdu.ForeColor = Color.Red Then
-            LblBravoPerdu.Left += 75
-        End If
-
         Me.Hide()
         FormAccueil.Show()
     End Sub
@@ -197,4 +191,5 @@
             LblTimer.Text = s & " sec"
         End If
     End Sub
+
 End Class

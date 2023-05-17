@@ -16,9 +16,10 @@
         If (verifJoueur()) Then
             'ArchiverJoueurDansFichier()
             enregistrerJoueur()
-            Me.Hide()
-            FormCaractere.Show()
-
+            resetFormAccueil()
+            changeJoueur1ToJoueur2()
+            'Me.Hide()
+            'FormCaractere.Show()
         End If
     End Sub
 

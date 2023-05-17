@@ -3,7 +3,7 @@
     Private NombreDeCoupPossible As Integer = 15
     Private Const NBR_COUP_DEFAULT As Integer = 15
     Private Const NBR_CARA As Integer = 5
-    Private Const TEMPS_DEFAULT As Integer = 90
+    Private Const TEMPS_PARDEFAULT As Integer = 90
     Private timerActive = True
 
     Public Sub enleveNombreCoup()
@@ -51,9 +51,8 @@
     Public Function getCoupDefaut() As Integer
         Return NBR_COUP_DEFAULT
     End Function
-
     Public Function getTempsDefaut() As Integer
-        Return TEMPS_DEFAULT
+        Return TEMPS_PARDEFAULT
     End Function
 
 End Module

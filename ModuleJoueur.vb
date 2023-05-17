@@ -22,7 +22,7 @@ Module ModuleJoueur
     Dim nbJoueurHistorique As Integer
     Dim cheminFichier As String
     Public Sub enregistrerJoueur()
-
+        resetJoueurActuel()
         JoueurActuel(0).nom = FormAccueil.cbxNomJoueur1.Text
         JoueurActuel(0).estPremierJoueur = True
 
@@ -32,16 +32,76 @@ Module ModuleJoueur
         For i As Integer = 0 To JoueurActuel.Length - 1
             JoueurActuel(i).score = 0
             JoueurActuel(i).meilleurTemps = 0
+            JoueurActuel(i).cumulTemps = 0
             JoueurActuel(i).ancienNom = ""
             If (JoueurActuel(i).estPremierJoueur) Then
                 JoueurActuel(i).nbrPartiesPremierJoueur += 1
             Else
                 JoueurActuel(i).nbrPartiesSecondJoueur += 1
             End If
-            JoueurActuel(i).cumulTemps = 0
+
+
         Next
-        archiverJoueur()
+        ajouterJoueurDansHisto()
         chargercbxNomJoueur()
+    End Sub
+
+    Public Sub changeJoueur1ToJoueur2()
+        FormAccueil.cbxNomJoueur1.Text = JoueurActuel(1).nom
+        FormAccueil.cbxNomJoueur2.Text = JoueurActuel(0).nom
+    End Sub
+
+    Public Sub resetJoueurActuel()
+        Array.Clear(JoueurActuel, 0, JoueurActuel.Length)
+    End Sub
+
+    Public Sub ajouterJoueurDansHisto()
+        For j As Integer = 0 To JoueurActuel.Length - 1
+            If estContenuDansHistorique(JoueurActuel(j).nom) = False Then
+                If Not estPremiereFois Then
+                    ReDim Preserve JoueurHistorique(JoueurHistorique.Length)
+                    JoueurHistorique(JoueurHistorique.Length - 1) = JoueurActuel(j)
+                Else
+                    Array.Copy(JoueurActuel, JoueurHistorique, JoueurActuel.Length)
+                    estPremiereFois = False
+                End If
+            End If
+        Next
+    End Sub
+    Public Sub ajouterStats(joueur As Joueur)
+        joueur.score += 1
+        joueur.cumulTemps += FormPartie.getTimer()
+
+    End Sub
+
+    Public Sub sauvegarderDansHisto()
+        For i As Integer = 0 To JoueurHistorique.Length - 1
+            If JoueurHistorique(i).nom = JoueurActuel(0).nom Then
+                JoueurHistorique(i).score += JoueurActuel(0).score
+                JoueurHistorique(i).cumulTemps += JoueurActuel(0).cumulTemps
+                If JoueurActuel(0).meilleurTemps > JoueurHistorique(i).meilleurTemps Then
+                    JoueurHistorique(i).meilleurTemps = JoueurActuel(0).meilleurTemps
+                End If
+            End If
+        Next
+
+    End Sub
+
+    Public Sub chargercbxNomJoueur()
+        If Not joueurHistoriqueEstVide() Then
+            FormAccueil.cbxNomJoueur1.Items.Clear()
+            FormAccueil.cbxNomJoueur2.Items.Clear()
+            For i As Integer = 0 To JoueurHistorique.Length - 1
+                FormAccueil.cbxNomJoueur1.Items.Add(JoueurHistorique(i).nom)
+                FormAccueil.cbxNomJoueur2.Items.Add(JoueurHistorique(i).nom)
+            Next
+
+            FormulaireConfig.cbxNomJoueurChange.Items.Clear()
+            For i As Integer = 0 To JoueurHistorique.Length - 1
+                FormulaireConfig.cbxNomJoueurChange.Items.Add(JoueurHistorique(i).nom)
+            Next
+
+        End If
     End Sub
 
     Public Sub chargerFichierDansHistorique()
@@ -78,34 +138,10 @@ Module ModuleJoueur
         Next
         FileClose(num)
     End Sub
-    Public Sub chargercbxNomJoueur()
-        If Not joueurHistoriqueEstVide() Then
-            FormAccueil.cbxNomJoueur1.Items.Clear()
-            FormAccueil.cbxNomJoueur2.Items.Clear()
-            For i As Integer = 0 To JoueurHistorique.Length - 1
-                FormAccueil.cbxNomJoueur1.Items.Add(JoueurHistorique(i).nom)
-                FormAccueil.cbxNomJoueur2.Items.Add(JoueurHistorique(i).nom)
-            Next
 
-            FormulaireConfig.cbxNomJoueurChange.Items.Clear()
-            For i As Integer = 0 To JoueurHistorique.Length - 1
-                FormulaireConfig.cbxNomJoueurChange.Items.Add(JoueurHistorique(i).nom)
-            Next
-
-        End If
-    End Sub
-    Public Sub archiverJoueur()
-        For j As Integer = 0 To JoueurActuel.Length - 1
-            If estContenuDansHistorique(JoueurActuel(j).nom) = False Then
-                If Not estPremiereFois Then
-                    ReDim Preserve JoueurHistorique(JoueurHistorique.Length)
-                    JoueurHistorique(JoueurHistorique.Length - 1).nom = JoueurActuel(j).nom
-                Else
-                    Array.Copy(JoueurActuel, JoueurHistorique, JoueurActuel.Length)
-                    estPremiereFois = False
-                End If
-            End If
-        Next
+    Public Sub resetFormAccueil()
+        FormAccueil.cbxNomJoueur1.Text = ""
+        FormAccueil.cbxNomJoueur2.Text = ""
     End Sub
 
     Public Function verifJoueur() As Boolean
@@ -148,12 +184,12 @@ Module ModuleJoueur
     End Sub
 
 
-    Public Function getPremierJoueur() As String
-        Return JoueurActuel(0).nom
+    Public Function getPremierJoueur() As Joueur
+        Return JoueurActuel(0)
     End Function
 
-    Public Function getDeuxiemeJoueur() As String
-        Return JoueurActuel(1).nom
+    Public Function getDeuxiemeJoueur() As Joueur
+        Return JoueurActuel(1)
     End Function
 
     Public Function getNombreJoueur() As Integer
@@ -161,7 +197,7 @@ Module ModuleJoueur
     End Function
 
     Public Function getNomDesJoueurs() As String
-        Return getPremierJoueur() + ", " + getDeuxiemeJoueur()
+        Return getPremierJoueur().nom + ", " + getDeuxiemeJoueur().nom
     End Function
 
     Public Function getValid() As Boolean
@@ -179,4 +215,6 @@ Module ModuleJoueur
     Public Sub setValid()
         valid = True
     End Sub
+
+
 End Module
