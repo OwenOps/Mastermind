@@ -1,17 +1,19 @@
 ﻿Public Class FormMasterMind
     Private Sub FormMasterMind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Me.AcceptButton = btnStart
     End Sub
-
-    Private Sub ButtonStart_Click(sender As Object, e As EventArgs) Handles BtnStart.Click
+    Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
         FormAccueil.Show()
         Me.Hide()
     End Sub
 
-    Private Sub BtnConfig_Click(sender As Object, e As EventArgs) Handles BtnConfig.Click
-
+    Private Sub btnConfig_Click(sender As Object, e As EventArgs)
         FormulaireConfig.Show()
         Me.Hide()
+    End Sub
+    Private Sub btnRegles_Click(sender As Object, e As EventArgs) Handles btnRegles.Click
+        Me.Hide()
+        'FormRegles.Show()
     End Sub
 
     Private Sub FormAccueil_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

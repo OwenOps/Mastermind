@@ -21,6 +21,7 @@ Module ModuleJoueur
     Dim estPremiereChargement As Boolean = True
     Dim nbJoueurHistorique As Integer
     Dim cheminFichier As String
+
     Public Sub enregistrerJoueur()
         resetJoueurActuel()
         JoueurActuel(0).nom = FormAccueil.cbxNomJoueur1.Text
@@ -183,8 +184,6 @@ Module ModuleJoueur
             End If
         Next
     End Sub
-
-
     Public Function getPremierJoueur() As Joueur
         Return JoueurActuel(0)
     End Function
@@ -216,6 +215,5 @@ Module ModuleJoueur
     Public Sub setValid()
         valid = True
     End Sub
-
 
 End Module

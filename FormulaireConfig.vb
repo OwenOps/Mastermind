@@ -2,22 +2,11 @@
 
 Public Class FormulaireConfig
     Dim caraDefault As String = "A,B,C,D,E"
-    Dim coupDefaut As Integer = 15
-    Dim tmpsDefault As Integer = 90
-
     Private Sub FormConfig_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
     End Sub
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'ModuleJoueur.addJoueur("Namo")
-    End Sub
-
-    Sub resetForm()
-        RN1.Checked = True
-        RN2.Checked = True
-        RN3.Checked = True
-        RN4.Checked = True
     End Sub
 
     Private Sub Radio_CheckedChanged(sender As Object, e As EventArgs) Handles RO1.CheckedChanged, RO2.CheckedChanged, RO3.CheckedChanged, RO4.CheckedChanged, RN1.CheckedChanged, RN2.CheckedChanged, RN3.CheckedChanged, RN4.CheckedChanged
@@ -55,7 +44,6 @@ Public Class FormulaireConfig
         Dim textBox As TextBoxBase = TryCast(sender, TextBox)
         Dim textActive = textBox.Name
 
-        If e.KeyChar = vbBack Then Exit Sub
         If PnlCoupCache.Visible Then
             If textActive = TxtNbrCoup.Name And Not Char.IsDigit(e.KeyChar) Then
                 e.Handled = True
@@ -76,7 +64,7 @@ Public Class FormulaireConfig
         Dim btnActive = btn.Name
 
         If btnActive = BtnValidCoup.Name Then
-            If TxtNbrCoup.Text.Length > 0 And TxtNbrCoup.Text <> "" And TxtNbrCoup.Text > 0 Then
+            If TxtNbrCoup.Text.Length > 0 And TxtNbrCoup.Text <> "" Then
                 ModuleConfig.setNombreCoup(TxtNbrCoup.Text)
                 ModulePartie.resetTxt(TxtNbrCoup)
             End If
@@ -87,7 +75,7 @@ Public Class FormulaireConfig
             End If
         ElseIf btnActive = BtnValidTimer.Name Then
             If TxtTemps.Text > 9 Then
-                ModuleConfig.setTempsActuelle(TxtTemps.Text)
+                ModulePartie.setTempsMax(TxtTemps.Text)
                 ModulePartie.resetTxt(TxtTemps)
             End If
         End If
@@ -142,9 +130,9 @@ Public Class FormulaireConfig
     End Sub
 
     Private Sub BtnReset_Click(sender As Object, e As EventArgs) Handles BtnReset.Click
-        ModuleConfig.setNombreCoup(coupDefaut)
+        ModuleConfig.setNombreCoup(ModuleConfig.getCoupDefaut)
         ModuleConfig.setTimerActive(True)
-        ModuleConfig.setTempsActuelle(tmpsDefault)
+        ModulePartie.setTempsMax(ModuleConfig.getTempsDefaut)
         ModuleConfig.setCaraJouable(caraDefault)
         MsgBox("Configuration remis par default.")
     End Sub
