@@ -6,7 +6,7 @@ Public Class FormulaireConfig
         Application.Exit()
     End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'ModuleJoueur.addJoueur("Namo")
+
     End Sub
 
     Private Sub Radio_CheckedChanged(sender As Object, e As EventArgs) Handles RO1.CheckedChanged, RO2.CheckedChanged, RO3.CheckedChanged, RO4.CheckedChanged, RN1.CheckedChanged, RN2.CheckedChanged, RN3.CheckedChanged, RN4.CheckedChanged
@@ -75,7 +75,7 @@ Public Class FormulaireConfig
             End If
         ElseIf btnActive = BtnValidTimer.Name Then
             If TxtTemps.Text > 9 Then
-                ModulePartie.setTempsMax(TxtTemps.Text)
+                ModuleConfig.setTempsMax(TxtTemps.Text)
                 ModulePartie.resetTxt(TxtTemps)
             End If
         End If
@@ -132,7 +132,7 @@ Public Class FormulaireConfig
     Private Sub BtnReset_Click(sender As Object, e As EventArgs) Handles BtnReset.Click
         ModuleConfig.setNombreCoup(ModuleConfig.getCoupDefaut)
         ModuleConfig.setTimerActive(True)
-        ModulePartie.setTempsMax(ModuleConfig.getTempsDefaut)
+        ModuleConfig.setTempsMax(ModuleConfig.getTempsDefaut)
         ModuleConfig.setCaraJouable(caraDefault)
         MsgBox("Configuration remis par default.")
     End Sub

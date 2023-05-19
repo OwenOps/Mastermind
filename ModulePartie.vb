@@ -3,15 +3,13 @@
     Private CaraATrouver(NBR_CARA) As String
     Private CaraRestant As String
     Private Const NBR_CARA As Integer = 5
-    Private tempsMax As Integer = 10
-
+    Private tempsPartie As Integer
     Public Sub setCaraATrouver(cara() As Char)
         For i As Integer = 0 To NBR_CARA - 1
             CaraATrouver(i) = cara(i)
         Next
         CaraRestant = getCaraATrouver()
     End Sub
-
     Public Sub setCaraAleatoire()
         Dim rand As New Random()
         Dim nombreUnique As New HashSet(Of Integer)()
@@ -41,12 +39,12 @@
         Return CaraRestant
     End Function
 
-    Public Function getTempsMax() As Integer
-        Return tempsMax
+    Public Function getTempsPartie() As Integer
+        Return tempsPartie
     End Function
 
-    Public Sub setTempsMax(nbr As Integer)
-        tempsMax = nbr
+    Public Sub setTempsPartie(nbr As Integer)
+        tempsPartie = nbr
     End Sub
 
     Public Function getCaraATrouver() As String

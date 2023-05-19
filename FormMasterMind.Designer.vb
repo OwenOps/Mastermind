@@ -27,6 +27,7 @@ Partial Class FormMasterMind
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnConfig = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -50,10 +51,10 @@ Partial Class FormMasterMind
         Me.btnStart.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnStart.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnStart.ForeColor = System.Drawing.Color.White
-        Me.btnStart.Location = New System.Drawing.Point(64, 214)
+        Me.btnStart.Location = New System.Drawing.Point(222, 214)
         Me.btnStart.Margin = New System.Windows.Forms.Padding(2)
         Me.btnStart.Name = "btnStart"
-        Me.btnStart.Size = New System.Drawing.Size(306, 41)
+        Me.btnStart.Size = New System.Drawing.Size(148, 41)
         Me.btnStart.TabIndex = 11
         Me.btnStart.Text = "Commençons !"
         Me.btnStart.UseVisualStyleBackColor = False
@@ -78,7 +79,7 @@ Partial Class FormMasterMind
         Me.Label7.Location = New System.Drawing.Point(116, 9)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(228, 52)
+        Me.Label7.Size = New System.Drawing.Size(227, 52)
         Me.Label7.TabIndex = 37
         Me.Label7.Text = "MasterMind"
         '
@@ -92,11 +93,26 @@ Partial Class FormMasterMind
         Me.PictureBox1.TabIndex = 36
         Me.PictureBox1.TabStop = False
         '
+        'btnConfig
+        '
+        Me.btnConfig.BackColor = System.Drawing.Color.Gray
+        Me.btnConfig.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnConfig.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnConfig.ForeColor = System.Drawing.Color.White
+        Me.btnConfig.Location = New System.Drawing.Point(64, 214)
+        Me.btnConfig.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnConfig.Name = "btnConfig"
+        Me.btnConfig.Size = New System.Drawing.Size(148, 41)
+        Me.btnConfig.TabIndex = 39
+        Me.btnConfig.Text = "Option"
+        Me.btnConfig.UseVisualStyleBackColor = False
+        '
         'FormMasterMind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(450, 304)
+        Me.ClientSize = New System.Drawing.Size(450, 297)
+        Me.Controls.Add(Me.btnConfig)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label4)
@@ -118,4 +134,5 @@ Partial Class FormMasterMind
     Friend WithEvents Label4 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents btnConfig As Button
 End Class

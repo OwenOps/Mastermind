@@ -1,10 +1,7 @@
 ﻿Public Class FormJeu
     Private Sub FormJeu_Load() Handles MyBase.Load
 
-        'On initialise le timer et la progressbar
-        Dim TempsMax As Integer = ModuleConfig.getTempsDefaut
-        AfficheLabelTimer(TempsMax)
-        ProgressBarJeu.Maximum = TempsMax
+        initTimerEtProgressBar()
 
         Dim caraChaine As String = ""
         For Each cara In ModuleConfig.getCaraJouable.ToArray
@@ -29,16 +26,19 @@
             txt.ForeColor = Color.Black
         Next
 
+        'If LblBravoPerdu.ForeColor = Color.Green Then
+        '    LblBravoPerdu.Left = LblBravoPerdu.Tag
+        'ElseIf LblBravoPerdu.ForeColor = Color.Red Then
+        '    LblBravoPerdu.Left = LblBravoPerdu.Tag
+        'End If
+
         BtnGuess.Show()
         LblBravoPerdu.Hide()
         LstCaraHisto.Clear()
         ModuleConfig.setNombreCoup(ModuleConfig.getCoupDefaut)
-        ModuleConfig.setTempsMax(ModuleConfig.getTempsDefaut)
         nombreCoup()
 
-        AfficheLabelTimer(ModuleConfig.getTempsDefaut)
-        ProgressBarJeu.Maximum = ModuleConfig.getTempsMax
-        ProgressBarJeu.Value = ModuleConfig.getTempsMax
+        initTimerEtProgressBar()
         TimerJeu.Start()
 
         btnExit.Hide()
@@ -112,20 +112,26 @@
     End Sub
 
     Sub gagnePerdu(bravoPerdu As Boolean)
+        Dim cumul As Integer
+        Dim temps As Integer
+
+        cumul = ModuleConfig.getTempsMax - ModulePartie.getTempsPartie()
+        temps = ModulePartie.getTempsPartie()
+
         If bravoPerdu Then
             LblBravoPerdu.Text = "Gagné !!"
-            LblBravoPerdu.Left += 40
+            'LblBravoPerdu.Left += 12
             LblBravoPerdu.ForeColor = Color.Green
 
-            ajouterStats(getDeuxiemeJoueur)
+            ajouterStats(getDeuxiemeJoueur, cumul, temps)
             sauvegarderDansHisto()
 
         Else
             LblBravoPerdu.Text = "Perdu, Peut-être la prochaine fois"
-            LblBravoPerdu.Left -= 66
+            'LblBravoPerdu.Left -= 75
             LblBravoPerdu.ForeColor = Color.Red
 
-            ajouterStats(getPremierJoueur)
+            ajouterStats(getPremierJoueur, cumul, temps)
             sauvegarderDansHisto()
         End If
     End Sub
@@ -137,13 +143,7 @@
         LblBravoPerdu.Show()
     End Sub
 
-    Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        If LblBravoPerdu.ForeColor = Color.Green Then
-            LblBravoPerdu.Left -= 40
-        ElseIf LblBravoPerdu.ForeColor = Color.Red Then
-            LblBravoPerdu.Left += 66
-        End If
-
+    Private Sub BtnBye_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Me.Hide()
         FormAccueil.Show()
     End Sub
@@ -152,23 +152,34 @@
         Me.Text = "Il vous reste " & ModuleConfig.getNombreCoup.ToString & " coup(s)..."
     End Sub
 
+    Sub initTimerEtProgressBar()
+        'On initialise le timer et la progressbar
+        Dim tempsMax As Integer = ModuleConfig.getTempsMax
+        ModulePartie.setTempsPartie(tempsMax)
+        AfficheLabelTimer(tempsMax)
+        ProgressBarJeu.Maximum = tempsMax
+        ProgressBarJeu.Value = tempsMax
+    End Sub
+
     Private Sub FormJeu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
     End Sub
 
+
     Private Sub TimerJeu_Tick(sender As Object, e As EventArgs) Handles TimerJeu.Tick
-        Dim tempsMax = ModuleConfig.getTempsMax()
+
+        Dim tempsMax = ModulePartie.getTempsPartie()
         tempsMax -= 1
         ProgressBarJeu.Value = tempsMax
         AfficheLabelTimer(tempsMax)
 
-        'LblTimer.Text = tempsMax
-        ModuleConfig.setTempsMax(tempsMax)
+        ModulePartie.setTempsPartie(tempsMax)
         If ModulePartie.timerFinis() Then
             TimerJeu.Stop()
             gagnePerdu(False)
             partieFinis()
         End If
+
     End Sub
 
     Sub AfficheLabelTimer(tempsMax As Integer)
@@ -186,4 +197,5 @@
             LblTimer.Text = s & " sec"
         End If
     End Sub
+
 End Class

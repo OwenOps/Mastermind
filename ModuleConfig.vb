@@ -6,9 +6,11 @@
     'Les coups defauts choisis par l'utilisateur ou non
     Private NbrCoupDefaut As Integer = 15
     Private Const NBR_CARA As Integer = 5
-    Private timerActuelle As Integer = 90
+
     Private timerActive = True
-    Private tempsMax As Integer = 10
+
+    Private tempsDefaut As Integer = 90
+    Private tempsMax As Integer = tempsDefaut
 
     Public Sub enleveNombreCoup()
         NombreDeCoupPossible = NombreDeCoupPossible - 1
@@ -17,11 +19,6 @@
     Public Sub setTempsMax(nbr As Integer)
         tempsMax = nbr
     End Sub
-
-    Public Sub setTempsActuelle(nbr As Integer)
-        timerActuelle = nbr
-    End Sub
-
     Function getTempsMax() As Integer
         Return tempsMax
     End Function
@@ -68,7 +65,7 @@
         Return NbrCoupDefaut
     End Function
     Public Function getTempsDefaut() As Integer
-        Return timerActuelle
+        Return tempsDefaut
     End Function
 
 End Module

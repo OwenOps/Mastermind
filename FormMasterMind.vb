@@ -7,7 +7,7 @@
         Me.Hide()
     End Sub
 
-    Private Sub btnConfig_Click(sender As Object, e As EventArgs)
+    Private Sub btnConfig_Click(sender As Object, e As EventArgs) Handles btnConfig.Click
         FormulaireConfig.Show()
         Me.Hide()
     End Sub
@@ -23,4 +23,5 @@
             Application.Exit()
         End If
     End Sub
+
 End Class
