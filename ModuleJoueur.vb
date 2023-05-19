@@ -17,6 +17,7 @@ Module ModuleJoueur
 
     Private JoueurActuel(NBR_MAX_JOUEUR - 1) As Joueur
     Private JoueurHistorique(NBR_MAX_JOUEUR - 1) As Joueur
+    Private estPremiereFois As Boolean = True
     Private cheminFichier As String = "../../InfosJoueur.txt"
     Public Sub enregistrerJoueur()
         resetJoueurActuel()
@@ -55,11 +56,12 @@ Module ModuleJoueur
     Public Sub ajouterJoueurDansHisto()
         For j As Integer = 0 To JoueurActuel.Length - 1
             If estContenuDansHistorique(JoueurActuel(j).nom) = False Then
-                If JoueurHistorique.Length >= NBR_MAX_JOUEUR Then
+                If Not estPremiereFois Or JoueurHistorique.Length > NBR_MAX_JOUEUR - 1 Then
                     ReDim Preserve JoueurHistorique(JoueurHistorique.Length)
                     JoueurHistorique(JoueurHistorique.Length - 1) = JoueurActuel(j)
                 Else
                     Array.Copy(JoueurActuel, JoueurHistorique, JoueurActuel.Length)
+                    estPremiereFois = False
                 End If
             End If
         Next
@@ -117,6 +119,13 @@ Module ModuleJoueur
     End Sub
 
     Public Sub chargerFichierDansHistorique()
+
+        ' Vérifier si le fichier existe déjà sinon le crée
+        If Not File.Exists(cheminFichier) Then
+            Dim fichier As StreamWriter = File.CreateText(cheminFichier)
+            fichier.Close()
+        End If
+
         Dim nbJoueurHistorique As Integer
         If FileLen(cheminFichier) > 0 Then
             Dim num As Integer = FreeFile()
@@ -138,6 +147,13 @@ Module ModuleJoueur
     End Sub
 
     Public Sub ArchiverJoueurDansFichier()
+
+        ' Vérifier si le fichier existe déjà sinon le crée
+        If Not File.Exists(cheminFichier) Then
+            Dim fichier As StreamWriter = File.CreateText(cheminFichier)
+            fichier.Close()
+        End If
+
         Dim num As Integer = FreeFile()
         FileOpen(num, cheminFichier, OpenMode.Output)
         PrintLine(num, JoueurHistorique.Length)

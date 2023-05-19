@@ -44,6 +44,8 @@ Public Class FormulaireConfig
         Dim textBox As TextBoxBase = TryCast(sender, TextBox)
         Dim textActive = textBox.Name
 
+        If e.KeyChar = vbBack Then Exit Sub
+
         If PnlCoupCache.Visible Then
             If textActive = TxtNbrCoup.Name And Not Char.IsDigit(e.KeyChar) Then
                 e.Handled = True
@@ -74,10 +76,41 @@ Public Class FormulaireConfig
                 ModulePartie.resetTxt(TxtCaraChange)
             End If
         ElseIf btnActive = BtnValidTimer.Name Then
-            If TxtTemps.Text > 9 Then
-                ModuleConfig.setTempsMax(TxtTemps.Text)
-                ModulePartie.resetTxt(TxtTemps)
+
+            Dim min As Integer
+            Dim sec As Integer
+
+            If TxtTempsMin.Text = "" Then
+                min = 0
+            Else
+                min = TxtTempsMin.Text
             End If
+            If TxtTempsSec.Text = "" Then
+                sec = 0
+            Else
+                sec = TxtTempsSec.Text
+            End If
+
+            Dim tempsMax = min * 60 + sec
+
+            If sec < 0 Or sec > 60 Then
+                MsgBox("Le nombre de seconde doit être compris entre 0 et 60", vbOKOnly, "Erreur")
+                Return
+            End If
+
+            If min < 0 Or min > 60 Then
+                MsgBox("Le nombre de minutes doit être compris entre 0 et 60", vbOKOnly, "Erreur")
+                Return
+            End If
+
+            If tempsMax < 10 Then
+                MsgBox("Le temps minimum doit être de 10 secondes", vbOKOnly, "Erreur")
+                Return
+            End If
+
+            ModuleConfig.setTempsMax(tempsMax)
+            ModulePartie.resetTxt(TxtTempsSec)
+            ModulePartie.resetTxt(TxtTempsMin)
         End If
     End Sub
 
@@ -117,7 +150,8 @@ Public Class FormulaireConfig
         'FormAccueil.Show()
     End Sub
 
-    Private Sub TxtTemps_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtTemps.KeyPress
+    Private Sub TxtTemps_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtTempsMin.KeyPress, TxtTempsSec.KeyPress
+        If e.KeyChar = vbBack Then Exit Sub
         Dim textBox As TextBox = CType(sender, TextBox)
         If Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True
@@ -136,4 +170,5 @@ Public Class FormulaireConfig
         ModuleConfig.setCaraJouable(caraDefault)
         MsgBox("Configuration remis par default.")
     End Sub
+
 End Class

@@ -42,7 +42,8 @@ Partial Class FormulaireConfig
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.PnlTimerCache = New System.Windows.Forms.Panel()
-        Me.TxtTemps = New System.Windows.Forms.TextBox()
+        Me.TxtTempsSec = New System.Windows.Forms.TextBox()
+        Me.TxtTempsMin = New System.Windows.Forms.TextBox()
         Me.BtnValidTimer = New System.Windows.Forms.Button()
         Me.PnlCoupCache = New System.Windows.Forms.Panel()
         Me.BtnValidCoup = New System.Windows.Forms.Button()
@@ -184,9 +185,9 @@ Partial Class FormulaireConfig
         Me.Label4.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.Label4.Location = New System.Drawing.Point(3, 6)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(158, 16)
+        Me.Label4.Size = New System.Drawing.Size(201, 16)
         Me.Label4.TabIndex = 44
-        Me.Label4.Text = "Durée du timer (en sec) :"
+        Me.Label4.Text = "Durée du timer (en min et sec) :"
         '
         'PanelCaractere
         '
@@ -268,27 +269,37 @@ Partial Class FormulaireConfig
         '
         'PnlTimerCache
         '
-        Me.PnlTimerCache.Controls.Add(Me.TxtTemps)
+        Me.PnlTimerCache.Controls.Add(Me.TxtTempsSec)
+        Me.PnlTimerCache.Controls.Add(Me.TxtTempsMin)
         Me.PnlTimerCache.Controls.Add(Me.BtnValidTimer)
         Me.PnlTimerCache.Controls.Add(Me.Label4)
         Me.PnlTimerCache.Location = New System.Drawing.Point(373, 120)
         Me.PnlTimerCache.Name = "PnlTimerCache"
-        Me.PnlTimerCache.Size = New System.Drawing.Size(330, 27)
+        Me.PnlTimerCache.Size = New System.Drawing.Size(353, 27)
         Me.PnlTimerCache.TabIndex = 48
         Me.PnlTimerCache.Visible = False
         '
-        'TxtTemps
+        'TxtTempsSec
         '
-        Me.TxtTemps.Location = New System.Drawing.Point(162, 3)
-        Me.TxtTemps.MaxLength = 10
-        Me.TxtTemps.Name = "TxtTemps"
-        Me.TxtTemps.Size = New System.Drawing.Size(93, 20)
-        Me.TxtTemps.TabIndex = 50
-        Me.TxtTemps.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TxtTempsSec.Location = New System.Drawing.Point(251, 4)
+        Me.TxtTempsSec.MaxLength = 10
+        Me.TxtTempsSec.Name = "TxtTempsSec"
+        Me.TxtTempsSec.Size = New System.Drawing.Size(31, 20)
+        Me.TxtTempsSec.TabIndex = 51
+        Me.TxtTempsSec.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TxtTempsMin
+        '
+        Me.TxtTempsMin.Location = New System.Drawing.Point(214, 4)
+        Me.TxtTempsMin.MaxLength = 10
+        Me.TxtTempsMin.Name = "TxtTempsMin"
+        Me.TxtTempsMin.Size = New System.Drawing.Size(31, 20)
+        Me.TxtTempsMin.TabIndex = 50
+        Me.TxtTempsMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'BtnValidTimer
         '
-        Me.BtnValidTimer.Location = New System.Drawing.Point(261, 3)
+        Me.BtnValidTimer.Location = New System.Drawing.Point(288, 4)
         Me.BtnValidTimer.Name = "BtnValidTimer"
         Me.BtnValidTimer.Size = New System.Drawing.Size(53, 20)
         Me.BtnValidTimer.TabIndex = 48
@@ -485,7 +496,7 @@ Partial Class FormulaireConfig
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(733, 357)
+        Me.ClientSize = New System.Drawing.Size(738, 357)
         Me.Controls.Add(Me.BtnReset)
         Me.Controls.Add(Me.btnRetour)
         Me.Controls.Add(Me.Label8)
@@ -563,7 +574,7 @@ Partial Class FormulaireConfig
     Friend WithEvents PnlChoix2 As Panel
     Friend WithEvents PnlChoix3 As Panel
     Friend WithEvents PnlChoixNom As Panel
-    Friend WithEvents TxtTemps As TextBox
+    Friend WithEvents TxtTempsMin As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents PnlNomCache As Panel
@@ -573,4 +584,5 @@ Partial Class FormulaireConfig
     Friend WithEvents RO4 As RadioButton
     Friend WithEvents btnRetour As Button
     Friend WithEvents BtnReset As Button
+    Friend WithEvents TxtTempsSec As TextBox
 End Class
