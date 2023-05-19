@@ -56,7 +56,7 @@ Module ModuleJoueur
     Public Sub ajouterJoueurDansHisto()
         For j As Integer = 0 To JoueurActuel.Length - 1
             If estContenuDansHistorique(JoueurActuel(j).nom) = False Then
-                If Not estPremiereFois Or JoueurHistorique.Length > NBR_MAX_JOUEUR - 1 Then
+                If Not estPremiereFois And JoueurHistorique(j).nom <> Nothing Then
                     ReDim Preserve JoueurHistorique(JoueurHistorique.Length)
                     JoueurHistorique(JoueurHistorique.Length - 1) = JoueurActuel(j)
                 Else
@@ -68,19 +68,21 @@ Module ModuleJoueur
 
     End Sub
 
-    Public Sub ajouterStats(joueur As Joueur, cumul As Integer, temps As Integer)
+    Public Sub ajouterStats(joueur As Joueur, temps As Integer)
         If (joueur.estPremierJoueur) Then
             JoueurActuel(0).score += 1
-            JoueurActuel(0).cumulTemps += cumul
+            JoueurActuel(0).cumulTemps += temps
             If JoueurActuel(0).meilleurTemps = 0 Or JoueurActuel(0).meilleurTemps > temps Then
                 JoueurActuel(0).meilleurTemps = temps
             End If
+            JoueurActuel(1).cumulTemps += temps
         Else
             JoueurActuel(1).score += 1
-            JoueurActuel(1).cumulTemps += cumul
+            JoueurActuel(1).cumulTemps += temps
             If JoueurActuel(1).meilleurTemps = 0 Or JoueurActuel(1).meilleurTemps > temps Then
                 JoueurActuel(1).meilleurTemps = temps
             End If
+            JoueurActuel(0).cumulTemps += temps
         End If
     End Sub
 

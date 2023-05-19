@@ -64,7 +64,7 @@
     End Sub
 
     Public Function timerFinis() As Boolean
-        If ModuleConfig.getTempsMax = 0 Then
+        If ModulePartie.getTempsPartie = 0 Then
             Return True
         End If
         Return False

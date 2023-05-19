@@ -112,26 +112,25 @@
     End Sub
 
     Sub gagnePerdu(bravoPerdu As Boolean)
-        Dim cumul As Integer
+
         Dim temps As Integer
 
-        cumul = ModuleConfig.getTempsMax - ModulePartie.getTempsPartie()
-        temps = ModulePartie.getTempsPartie()
+        temps = ModuleConfig.getTempsMax - ModulePartie.getTempsPartie()
 
         If bravoPerdu Then
-            LblBravoPerdu.Text = "Gagné !!"
-            'LblBravoPerdu.Left += 12
+            LblBravoPerdu.Text = "Bravo, tu remportes cette manche !!!"
+            LblBravoPerdu.Left += 12
             LblBravoPerdu.ForeColor = Color.Green
 
-            ajouterStats(getDeuxiemeJoueur, cumul, temps)
+            ajouterStats(getDeuxiemeJoueur, temps)
             sauvegarderDansHisto()
 
         Else
-            LblBravoPerdu.Text = "Perdu, Peut-être la prochaine fois"
+            LblBravoPerdu.Text = "Perdu tu feras mieux la prochaine fois !"
             'LblBravoPerdu.Left -= 75
             LblBravoPerdu.ForeColor = Color.Red
 
-            ajouterStats(getPremierJoueur, cumul, temps)
+            ajouterStats(getPremierJoueur, temps)
             sauvegarderDansHisto()
         End If
     End Sub
@@ -175,6 +174,7 @@
 
         ModulePartie.setTempsPartie(tempsMax)
         If ModulePartie.timerFinis() Then
+
             TimerJeu.Stop()
             gagnePerdu(False)
             partieFinis()
@@ -198,4 +198,7 @@
         End If
     End Sub
 
+    Private Sub FormJeu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

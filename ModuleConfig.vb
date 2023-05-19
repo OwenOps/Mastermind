@@ -9,7 +9,7 @@
 
     Private timerActive = True
 
-    Private tempsDefaut As Integer = 90
+    Private tempsDefaut As Integer = 5
     Private tempsMax As Integer = tempsDefaut
 
     Public Sub enleveNombreCoup()

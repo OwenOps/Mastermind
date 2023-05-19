@@ -103,7 +103,7 @@ Public Class FormulaireConfig
                 Return
             End If
 
-            If tempsMax < 10 Then
+            If tempsMax < 5 Then
                 MsgBox("Le temps minimum doit être de 10 secondes", vbOKOnly, "Erreur")
                 Return
             End If
