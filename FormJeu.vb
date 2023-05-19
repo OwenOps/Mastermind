@@ -1,6 +1,5 @@
 ﻿Public Class FormJeu
     Private Sub FormJeu_Load() Handles MyBase.Load
-
         initTimerEtProgressBar()
 
         Dim caraChaine As String = ""
@@ -19,6 +18,7 @@
         nombreCoup()
         LblNomJoueur.Text = getDeuxiemeJoueur().nom
     End Sub
+
     Sub resetFormJeu()
         For Each txt As TextBox In PnlCaractereJoue.Controls
             resetTxt(txt)
@@ -26,25 +26,20 @@
             txt.ForeColor = Color.Black
         Next
 
-        'If LblBravoPerdu.ForeColor = Color.Green Then
-        '    LblBravoPerdu.Left = LblBravoPerdu.Tag
-        'ElseIf LblBravoPerdu.ForeColor = Color.Red Then
-        '    LblBravoPerdu.Left = LblBravoPerdu.Tag
-        'End If
-
-        BtnGuess.Show()
-        LblBravoPerdu.Hide()
-        LstCaraHisto.Clear()
         ModuleConfig.setNombreCoup(ModuleConfig.getCoupDefaut)
         nombreCoup()
-
         initTimerEtProgressBar()
-        TimerJeu.Start()
 
+        LblBravoPerdu.Hide()
+        LstCaraHisto.Clear()
+        TimerJeu.Start()
+        BtnGuess.Show()
         btnExit.Hide()
     End Sub
+
     Private Sub LblBravoPerdu_Click()
         Dim BravoPerdu As Boolean = False
+
         If ToutValide() Then
             BravoPerdu = True
         ElseIf getNombreCoup() > 0 Then
@@ -57,28 +52,24 @@
 
     Private Sub ButtonGuess_Click(sender As Object, e As EventArgs) Handles BtnGuess.Click
         If Not CaseVide() Then
-            Console.WriteLine(ModulePartie.getCaraATrouver)
+            Dim cara As Char = ""
+
             For i As Integer = 0 To PnlCaractereJoue.Controls.Count - 1
-                For j As Integer = i To ModulePartie.getCaraATrouver.ToArray.Length - 1
-                    If (PnlCaractereJoue.Controls(i).Text = ModulePartie.getCaraATrouver.ToArray(j) And i = j) Then 'Si bon et bien place
-                        PnlCaractereJoue.Controls(i).BackColor = Color.Green
-                        LstCaraHisto.SelectionColor = Color.Green
-                        ModulePartie.removeCara(PnlCaractereJoue.Controls(i).Text)
-                        Exit For
+                cara = PnlCaractereJoue.Controls(i).Text
 
-                    ElseIf ModulePartie.getCaraRestant.IndexOf(PnlCaractereJoue.Controls(i).Text) > 0 Then 'Si present
-                        PnlCaractereJoue.Controls(i).BackColor = Color.Blue
-                        LstCaraHisto.SelectionColor = Color.Blue
-                        Exit For
+                If bienPlace(cara, i) Then
+                    PnlCaractereJoue.Controls(i).BackColor = Color.Green
+                    LstCaraHisto.SelectionColor = Color.Green
 
-                    Else 'Si caractere n'est pas present
-                        PnlCaractereJoue.Controls(i).BackColor = Color.Red
-                        LstCaraHisto.SelectionColor = Color.Red
-                        Exit For
+                ElseIf malPlace(cara) Then
+                    PnlCaractereJoue.Controls(i).BackColor = Color.Blue
+                    LstCaraHisto.SelectionColor = Color.Blue
+                Else
+                    PnlCaractereJoue.Controls(i).BackColor = Color.Red
+                    LstCaraHisto.SelectionColor = Color.Red
+                End If
 
-                    End If
-                Next
-                LstCaraHisto.AppendText("   " + PnlCaractereJoue.Controls(i).Text + "   ")
+                LstCaraHisto.AppendText("   " + cara + "   ")
                 PnlCaractereJoue.Controls(i).ForeColor = Color.White
             Next
 
@@ -93,8 +84,33 @@
         End If
     End Sub
 
+    Private Function bienPlace(car As Char, index As Integer) As Boolean
+        If car = ModulePartie.getCaraATrouver.ToArray(index) Then
+            Return True
+        End If
+        Return False
+    End Function
+
+    Private Function malPlace(car As Char) As Boolean
+        Dim chaineUti As String = ""
+        Dim chaineAtrouver = ModulePartie.getCaraATrouver
+
+        For i As Integer = 0 To PnlCaractereJoue.Controls.Count - 1
+            chaineUti += PnlCaractereJoue.Controls(i).Text
+        Next
+
+        'On prend ceux qui ne sont pas bien placé
+        For i As Integer = PnlCaractereJoue.Controls.Count - 1 To 0 Step -1
+            If chaineUti(i) = ModulePartie.getCaraATrouver(i) Then
+                chaineAtrouver = chaineAtrouver.Remove(i, 1)
+            End If
+        Next
+        Return chaineAtrouver.Contains(car)
+    End Function
+
     Private Sub Txt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Txt1.KeyPress, Txt2.KeyPress, Txt3.KeyPress, Txt4.KeyPress, Txt5.KeyPress
         Dim textBox As TextBox = CType(sender, TextBox)
+
         If Char.IsLetter(e.KeyChar) Then
             Dim entree As String = e.KeyChar.ToString()
             If ModuleConfig.getCaraJouable.ToArray.Contains(entree) Then
@@ -103,7 +119,6 @@
                 End If
             Else
                 e.Handled = True
-
             End If
         ElseIf Char.IsControl(e.KeyChar) Then
         Else
@@ -112,37 +127,32 @@
     End Sub
 
     Sub gagnePerdu(bravoPerdu As Boolean)
-
-        Dim temps As Integer
-
-        temps = ModuleConfig.getTempsMax - ModulePartie.getTempsPartie()
+        Dim temps = ModuleConfig.getTempsMax - ModulePartie.getTempsPartie()
 
         If bravoPerdu Then
             LblBravoPerdu.Text = "Bravo, tu remportes cette manche !!!"
             LblBravoPerdu.Left += 12
             LblBravoPerdu.ForeColor = Color.Green
 
-            ajouterStats(getDeuxiemeJoueur, temps)
-            sauvegarderDansHisto()
-
+            ModuleJoueur.ajouterStats(getDeuxiemeJoueur, temps)
         Else
-            LblBravoPerdu.Text = "Perdu tu feras mieux la prochaine fois !"
-            'LblBravoPerdu.Left -= 75
+            LblBravoPerdu.Text = "Perdu, tu feras mieux la prochaine fois !"
+            LblBravoPerdu.Left -= 4
             LblBravoPerdu.ForeColor = Color.Red
 
-            ajouterStats(getPremierJoueur, temps)
-            sauvegarderDansHisto()
+            ModuleJoueur.ajouterStats(getPremierJoueur, temps)
         End If
+        sauvegarderDansHisto()
     End Sub
 
     Sub partieFinis()
         TimerJeu.Stop()
         BtnGuess.Hide()
-        btnExit.Visible = True
         LblBravoPerdu.Show()
+        btnExit.Visible = True
     End Sub
 
-    Private Sub BtnBye_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+    Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Me.Hide()
         FormAccueil.Show()
     End Sub
@@ -160,13 +170,7 @@
         ProgressBarJeu.Value = tempsMax
     End Sub
 
-    Private Sub FormJeu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Application.Exit()
-    End Sub
-
-
     Private Sub TimerJeu_Tick(sender As Object, e As EventArgs) Handles TimerJeu.Tick
-
         Dim tempsMax = ModulePartie.getTempsPartie()
         tempsMax -= 1
         ProgressBarJeu.Value = tempsMax
@@ -174,12 +178,14 @@
 
         ModulePartie.setTempsPartie(tempsMax)
         If ModulePartie.timerFinis() Then
-
             TimerJeu.Stop()
             gagnePerdu(False)
             partieFinis()
         End If
+    End Sub
 
+    Private Sub FormJeu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Application.Exit()
     End Sub
 
     Sub AfficheLabelTimer(tempsMax As Integer)
@@ -196,9 +202,5 @@
         Else
             LblTimer.Text = s & " sec"
         End If
-    End Sub
-
-    Private Sub FormJeu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
     End Sub
 End Class

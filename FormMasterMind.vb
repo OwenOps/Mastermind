@@ -2,6 +2,7 @@
     Private Sub FormMasterMind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.AcceptButton = btnStart
     End Sub
+
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
         FormAccueil.Show()
         Me.Hide()
@@ -11,6 +12,7 @@
         FormulaireConfig.Show()
         Me.Hide()
     End Sub
+
     Private Sub btnRegles_Click(sender As Object, e As EventArgs) Handles btnRegles.Click
         'Me.Hide()
         'FormRegles.Show()
@@ -23,5 +25,4 @@
             Application.Exit()
         End If
     End Sub
-
 End Class

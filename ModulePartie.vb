@@ -4,12 +4,14 @@
     Private CaraRestant As String
     Private Const NBR_CARA As Integer = 5
     Private tempsPartie As Integer
+
     Public Sub setCaraATrouver(cara() As Char)
         For i As Integer = 0 To NBR_CARA - 1
             CaraATrouver(i) = cara(i)
         Next
         CaraRestant = getCaraATrouver()
     End Sub
+
     Public Sub setCaraAleatoire()
         Dim rand As New Random()
         Dim nombreUnique As New HashSet(Of Integer)()
@@ -35,6 +37,7 @@
             CaraRestant = CaraRestant.Remove(index, 1)
         End If
     End Sub
+
     Public Function getCaraRestant() As String
         Return CaraRestant
     End Function

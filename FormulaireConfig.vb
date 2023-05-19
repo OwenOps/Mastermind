@@ -2,11 +2,9 @@
 
 Public Class FormulaireConfig
     Dim caraDefault As String = "A,B,C,D,E"
+
     Private Sub FormConfig_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
-    End Sub
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
     End Sub
 
     Private Sub Radio_CheckedChanged(sender As Object, e As EventArgs) Handles RO1.CheckedChanged, RO2.CheckedChanged, RO3.CheckedChanged, RO4.CheckedChanged, RN1.CheckedChanged, RN2.CheckedChanged, RN3.CheckedChanged, RN4.CheckedChanged
@@ -37,7 +35,6 @@ Public Class FormulaireConfig
             Case RN4.Name
                 PnlNomCache.Visible = False
         End Select
-
     End Sub
 
     Private Sub Txt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtNbrCoup.KeyPress, TxtCaraChange.KeyPress
@@ -66,56 +63,67 @@ Public Class FormulaireConfig
         Dim btnActive = btn.Name
 
         If btnActive = BtnValidCoup.Name Then
-            If TxtNbrCoup.Text.Length > 0 And TxtNbrCoup.Text <> "" Then
+
+            Dim nbrCoup As Integer = 0
+            If TxtNbrCoup.Text <> "" And Integer.TryParse(TxtNbrCoup.Text, nbrCoup) AndAlso nbrCoup > 0 Then
                 ModuleConfig.setNombreCoup(TxtNbrCoup.Text)
                 ModulePartie.resetTxt(TxtNbrCoup)
+            Else
+                MessageBox.Show("Le nombre de coup doit etre supérieur a 0.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
+
         ElseIf btnActive = BtnValidCara.Name Then
+
             If TxtCaraChange.Text.Length = ModuleConfig.getNbrCaraMax Then
                 ModuleConfig.setCaraJouable(TxtCaraChange.Text)
                 ModulePartie.resetTxt(TxtCaraChange)
+            Else
+                MessageBox.Show("Le nombre de caractere minmum est de 5.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
+
         ElseIf btnActive = BtnValidTimer.Name Then
-
-            Dim min As Integer
-            Dim sec As Integer
-
-            If TxtTempsMin.Text = "" Then
-                min = 0
-            Else
-                min = TxtTempsMin.Text
-            End If
-            If TxtTempsSec.Text = "" Then
-                sec = 0
-            Else
-                sec = TxtTempsSec.Text
-            End If
-
-            Dim tempsMax = min * 60 + sec
-
-            If sec < 0 Or sec > 60 Then
-                MsgBox("Le nombre de seconde doit être compris entre 0 et 60", vbOKOnly, "Erreur")
-                Return
-            End If
-
-            If min < 0 Or min > 60 Then
-                MsgBox("Le nombre de minutes doit être compris entre 0 et 60", vbOKOnly, "Erreur")
-                Return
-            End If
-
-            If tempsMax < 5 Then
-                MsgBox("Le temps minimum doit être de 10 secondes", vbOKOnly, "Erreur")
-                Return
-            End If
-
-            ModuleConfig.setTempsMax(tempsMax)
-            ModulePartie.resetTxt(TxtTempsSec)
-            ModulePartie.resetTxt(TxtTempsMin)
+            temps()
         End If
     End Sub
 
-    Private Sub BtnValidNom_Click(sender As Object, e As EventArgs) Handles BtnValidNom.Click
+    Sub temps()
+        Dim min As Integer
+        Dim sec As Integer
 
+        If TxtTempsMin.Text = "" Then
+            min = 0
+        Else
+            min = TxtTempsMin.Text
+        End If
+
+        If TxtTempsSec.Text = "" Then
+            sec = 0
+        Else
+            sec = TxtTempsSec.Text
+        End If
+
+        Dim tempsMax = min * 60 + sec
+        If sec < 0 Or sec > 60 Then
+            MsgBox("Le nombre de seconde doit être compris entre 0 et 60", vbOKOnly, "Erreur")
+            Exit Sub
+        End If
+
+        If min < 0 Or min > 60 Then
+            MsgBox("Le nombre de minutes doit être compris entre 0 et 60", vbOKOnly, "Erreur")
+            Exit Sub
+        End If
+
+        If tempsMax < 5 Then
+            MsgBox("Le temps minimum doit être de 5 secondes", vbOKOnly, "Erreur")
+            Exit Sub
+        End If
+
+        ModuleConfig.setTempsMax(tempsMax)
+        ModulePartie.resetTxt(TxtTempsSec)
+        ModulePartie.resetTxt(TxtTempsMin)
+    End Sub
+
+    Private Sub BtnValidNom_Click(sender As Object, e As EventArgs) Handles BtnValidNom.Click
         If cbxNomJoueurChange.Text = "" Then
             MsgBox("Veuillez entrer un nom valide.")
             Exit Sub
@@ -170,5 +178,4 @@ Public Class FormulaireConfig
         ModuleConfig.setCaraJouable(caraDefault)
         MsgBox("Configuration remis par default.")
     End Sub
-
 End Class

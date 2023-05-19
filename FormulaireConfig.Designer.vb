@@ -108,7 +108,7 @@ Partial Class FormulaireConfig
         Me.Titre.Location = New System.Drawing.Point(261, 8)
         Me.Titre.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Titre.Name = "Titre"
-        Me.Titre.Size = New System.Drawing.Size(227, 52)
+        Me.Titre.Size = New System.Drawing.Size(228, 52)
         Me.Titre.TabIndex = 39
         Me.Titre.Text = "MasterMind"
         '
@@ -185,7 +185,7 @@ Partial Class FormulaireConfig
         Me.Label4.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.Label4.Location = New System.Drawing.Point(3, 6)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(201, 16)
+        Me.Label4.Size = New System.Drawing.Size(202, 16)
         Me.Label4.TabIndex = 44
         Me.Label4.Text = "Durée du timer (en min et sec) :"
         '
@@ -253,7 +253,7 @@ Partial Class FormulaireConfig
         Me.Label5.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.Label5.Location = New System.Drawing.Point(3, 8)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(119, 16)
+        Me.Label5.Size = New System.Drawing.Size(120, 16)
         Me.Label5.TabIndex = 46
         Me.Label5.Text = "Nombre de coups :"
         '
@@ -263,7 +263,7 @@ Partial Class FormulaireConfig
         Me.Label6.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.Label6.Location = New System.Drawing.Point(3, 5)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(161, 16)
+        Me.Label6.Size = New System.Drawing.Size(162, 16)
         Me.Label6.TabIndex = 47
         Me.Label6.Text = "Caracteres Jouables (5) : "
         '
@@ -362,13 +362,13 @@ Partial Class FormulaireConfig
         Me.LblNomActu.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.LblNomActu.Location = New System.Drawing.Point(3, 6)
         Me.LblNomActu.Name = "LblNomActu"
-        Me.LblNomActu.Size = New System.Drawing.Size(181, 16)
+        Me.LblNomActu.Size = New System.Drawing.Size(182, 16)
         Me.LblNomActu.TabIndex = 49
         Me.LblNomActu.Text = "Veuillez sectionner un nom :"
         '
         'BtnValidNom
         '
-        Me.BtnValidNom.Location = New System.Drawing.Point(261, 3)
+        Me.BtnValidNom.Location = New System.Drawing.Point(290, 2)
         Me.BtnValidNom.Name = "BtnValidNom"
         Me.BtnValidNom.Size = New System.Drawing.Size(53, 20)
         Me.BtnValidNom.TabIndex = 51
@@ -417,7 +417,7 @@ Partial Class FormulaireConfig
         'cbxNomJoueurChange
         '
         Me.cbxNomJoueurChange.FormattingEnabled = True
-        Me.cbxNomJoueurChange.Location = New System.Drawing.Point(162, 3)
+        Me.cbxNomJoueurChange.Location = New System.Drawing.Point(191, 2)
         Me.cbxNomJoueurChange.Name = "cbxNomJoueurChange"
         Me.cbxNomJoueurChange.Size = New System.Drawing.Size(93, 21)
         Me.cbxNomJoueurChange.TabIndex = 53

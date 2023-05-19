@@ -16,8 +16,10 @@
     End Sub
     Private Sub TextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtBox1.KeyPress, txtBox2.KeyPress, txtBox3.KeyPress, txtBox4.KeyPress, txtBox5.KeyPress
         Dim textBox As TextBox = CType(sender, TextBox)
+
         If Char.IsLetter(e.KeyChar) Then
             Dim entree As String = e.KeyChar.ToString()
+
             If ModuleConfig.getCaraJouable.ToArray.Contains(entree) Then
                 If textBox.Text.Length > 0 Then
                     e.Handled = True
@@ -54,19 +56,21 @@
         End If
 
     End Sub
+
     Private Sub btnAleatoire_Click(sender As Object, e As EventArgs) Handles btnAleatoire.Click
         ModulePartie.setCaraAleatoire()
     End Sub
+
     Sub resetFormCaractere()
         For Each txt As TextBox In PnlCaractereJoue.Controls
             resetTxt(txt)
         Next
     End Sub
+
     Private Sub FormCaractere_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
     End Sub
 
-    ' dans formulaire ou non?
     Function demandeJouer() As Boolean
         Dim demande As DialogResult = MessageBox.Show("Voulez-vous commencer à jouer?", "La partie va commencer !", MessageBoxButtons.YesNo)
         If demande = DialogResult.Yes Then
@@ -76,6 +80,7 @@
         End If
         Return False
     End Function
+
     Sub caraDansTxtBox(cara() As Char)
         Dim cpt As Integer = 0
         For Each txt As TextBox In PnlCaractereJoue.Controls
@@ -83,5 +88,4 @@
             cpt += 1
         Next
     End Sub
-
 End Class

@@ -8,8 +8,7 @@
     Private Const NBR_CARA As Integer = 5
 
     Private timerActive = True
-
-    Private tempsDefaut As Integer = 5
+    Private tempsDefaut As Integer = 90
     Private tempsMax As Integer = tempsDefaut
 
     Public Sub enleveNombreCoup()
@@ -19,6 +18,7 @@
     Public Sub setTempsMax(nbr As Integer)
         tempsMax = nbr
     End Sub
+
     Function getTempsMax() As Integer
         Return tempsMax
     End Function
@@ -64,8 +64,8 @@
     Public Function getCoupDefaut() As Integer
         Return NbrCoupDefaut
     End Function
+
     Public Function getTempsDefaut() As Integer
         Return tempsDefaut
     End Function
-
 End Module
