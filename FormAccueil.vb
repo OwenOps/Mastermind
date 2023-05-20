@@ -11,7 +11,6 @@ Public Class FormAccueil
         cbxNomJoueur2.AutoCompleteMode = AutoCompleteMode.Append
         cbxNomJoueur2.AutoCompleteSource = AutoCompleteSource.ListItems
     End Sub
-
     Private Sub btnJouer_Click(sender As Object, e As EventArgs) Handles btnJouer.Click
         If (verifJoueur()) Then
             'ArchiverJoueurDansFichier()
@@ -22,19 +21,30 @@ Public Class FormAccueil
             FormCaractere.Show()
         End If
     End Sub
-
     Private Sub cbxNomJoueur_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbxNomJoueur1.KeyPress, cbxNomJoueur2.KeyPress
         If e.KeyChar = vbBack Then Exit Sub
         If Not Char.IsLetter(e.KeyChar) Then
             e.KeyChar = Chr(0)
         End If
     End Sub
+    Private Sub btnQuitter_Click(sender As Object, e As EventArgs) Handles btnQuitter.Click
+        Me.Close()
+    End Sub
+    Private Sub btnStats_Click(sender As Object, e As EventArgs) Handles btnStats.Click
+        If (joueurHistoriqueEstVide()) Then
+            MsgBox("Aucune statistique n'est disponible, commencez d'abord à jouer! ", , "Erreur")
+        Else
+            Me.Hide()
+            FormStat.Show()
+        End If
+    End Sub
 
+    Private Sub btnRetour_Click(sender As Object, e As EventArgs) Handles btnRetour.Click
+        Me.Hide()
+        FormMasterMind.Show()
+    End Sub
     Private Sub FormAccueil_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
     End Sub
 
-    Private Sub btnQuitter_Click(sender As Object, e As EventArgs) Handles btnQuitter.Click
-        Me.Close()
-    End Sub
 End Class

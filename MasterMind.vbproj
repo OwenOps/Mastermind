@@ -97,6 +97,12 @@
     <Compile Include="FormMasterMind.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormStat.Designer.vb">
+      <DependentUpon>FormStat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormStat.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormulaireConfig.Designer.vb">
       <DependentUpon>FormulaireConfig.vb</DependentUpon>
     </Compile>
@@ -106,6 +112,7 @@
     <Compile Include="ModuleConfig.vb" />
     <Compile Include="ModuleJoueur.vb" />
     <Compile Include="ModulePartie.vb" />
+    <Compile Include="ModuleStats.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -136,6 +143,9 @@
     <EmbeddedResource Include="FormMasterMind.resx">
       <DependentUpon>FormMasterMind.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormStat.resx">
+      <DependentUpon>FormStat.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormulaireConfig.resx">
       <DependentUpon>FormulaireConfig.vb</DependentUpon>
     </EmbeddedResource>
@@ -157,9 +167,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="rouage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
