@@ -1,4 +1,5 @@
-﻿Module ModuleJoueur
+﻿Imports System.IO
+Module ModuleJoueur
     Private Const NBR_MAX_JOUEUR = 2
     Private valid As Boolean = False
     Private ancienNom As String = ""
@@ -17,9 +18,7 @@
     Private JoueurActuel(NBR_MAX_JOUEUR - 1) As Joueur
     Private JoueurHistorique(NBR_MAX_JOUEUR - 1) As Joueur
     Private estPremiereFois As Boolean = True
-    Private estPremiereChargement As Boolean = True
-    Private nbJoueurHistorique As Integer
-    Private cheminFichier As String
+    Private cheminFichier As String = "../../InfosJoueur.txt"
 
     Public Sub enregistrerJoueur()
         resetJoueurActuel()
@@ -28,6 +27,8 @@
 
         JoueurActuel(1).nom = FormAccueil.cbxNomJoueur2.Text
         JoueurActuel(1).estPremierJoueur = False
+
+        ajouterJoueurDansHisto()
 
         For i As Integer = 0 To JoueurActuel.Length - 1
             JoueurActuel(i).score = 0
@@ -40,7 +41,7 @@
                 JoueurActuel(i).nbrPartiesSecondJoueur += 1
             End If
         Next
-        ajouterJoueurDansHisto()
+
         chargercbxNomJoueur()
     End Sub
 
@@ -68,19 +69,36 @@
     End Sub
 
     Public Sub ajouterStats(joueur As Joueur, temps As Integer)
-        'joueur.score += 1
-        'joueur.cumulTemps += FormPartie.getTimer()
+        If (joueur.estPremierJoueur) Then
+            JoueurActuel(0).score += 1
+            JoueurActuel(0).cumulTemps += temps
+            If JoueurActuel(0).meilleurTemps = 0 Or JoueurActuel(0).meilleurTemps > temps Then
+                JoueurActuel(0).meilleurTemps = temps
+            End If
+            JoueurActuel(1).cumulTemps += temps
+        Else
+            JoueurActuel(1).score += 1
+            JoueurActuel(1).cumulTemps += temps
+            If JoueurActuel(1).meilleurTemps = 0 Or JoueurActuel(1).meilleurTemps > temps Then
+                JoueurActuel(1).meilleurTemps = temps
+            End If
+            JoueurActuel(0).cumulTemps += temps
+        End If
     End Sub
 
     Public Sub sauvegarderDansHisto()
         For i As Integer = 0 To JoueurHistorique.Length - 1
-            If JoueurHistorique(i).nom = JoueurActuel(0).nom Then
-                JoueurHistorique(i).score += JoueurActuel(0).score
-                JoueurHistorique(i).cumulTemps += JoueurActuel(0).cumulTemps
-                If JoueurActuel(0).meilleurTemps > JoueurHistorique(i).meilleurTemps Then
-                    JoueurHistorique(i).meilleurTemps = JoueurActuel(0).meilleurTemps
+            For j As Integer = 0 To JoueurActuel.Length - 1
+                If JoueurHistorique(i).nom = JoueurActuel(j).nom Then
+                    JoueurHistorique(i).score += JoueurActuel(j).score
+                    JoueurHistorique(i).cumulTemps += JoueurActuel(j).cumulTemps
+                    If JoueurActuel(j).meilleurTemps > JoueurHistorique(i).meilleurTemps Then
+                        JoueurHistorique(i).meilleurTemps = JoueurActuel(j).meilleurTemps
+                    End If
+                    JoueurHistorique(i).nbrPartiesPremierJoueur += JoueurActuel(j).nbrPartiesPremierJoueur
+                    JoueurHistorique(i).nbrPartiesSecondJoueur += JoueurActuel(j).nbrPartiesSecondJoueur
                 End If
-            End If
+            Next
         Next
     End Sub
 
@@ -101,9 +119,17 @@
     End Sub
 
     Public Sub chargerFichierDansHistorique()
-        If Not estPremiereChargement = True Then
+
+        ' Vérifier si le fichier existe déjà sinon le crée
+        If Not File.Exists(cheminFichier) Then
+            Dim fichier As StreamWriter = File.CreateText(cheminFichier)
+            fichier.Close()
+        End If
+
+        Dim nbJoueurHistorique As Integer
+        If FileLen(cheminFichier) > 0 Then
             Dim num As Integer = FreeFile()
-            FileOpen(num, "..\..\InfosJoueur.txt", OpenMode.Input)
+            FileOpen(num, cheminFichier, OpenMode.Input)
             nbJoueurHistorique = LineInput(num)
             ReDim Preserve JoueurHistorique(nbJoueurHistorique - 1)
             Do Until EOF(num)
@@ -121,8 +147,15 @@
     End Sub
 
     Public Sub ArchiverJoueurDansFichier()
+
+        ' Vérifier si le fichier existe déjà sinon le crée
+        If Not File.Exists(cheminFichier) Then
+            Dim fichier As StreamWriter = File.CreateText(cheminFichier)
+            fichier.Close()
+        End If
+
         Dim num As Integer = FreeFile()
-        FileOpen(num, "..\..\InfosJoueur.txt", OpenMode.Output)
+        FileOpen(num, cheminFichier, OpenMode.Output)
         PrintLine(num, JoueurHistorique.Length)
         For i As Integer = 0 To JoueurHistorique.Length - 1
             PrintLine(num, JoueurHistorique(i).nom)

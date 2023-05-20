@@ -14,6 +14,7 @@
         Next
         lblCaraJouable.Text = caraChaine
     End Sub
+
     Private Sub TextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtBox1.KeyPress, txtBox2.KeyPress, txtBox3.KeyPress, txtBox4.KeyPress, txtBox5.KeyPress
         Dim textBox As TextBox = CType(sender, TextBox)
 
@@ -54,7 +55,6 @@
         Else
             MessageBox.Show("Veuillez remplir toutes les cases pour commencer à jouer !", "Erreur")
         End If
-
     End Sub
 
     Private Sub btnAleatoire_Click(sender As Object, e As EventArgs) Handles btnAleatoire.Click

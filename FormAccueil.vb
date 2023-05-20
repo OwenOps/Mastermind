@@ -11,6 +11,7 @@ Public Class FormAccueil
         cbxNomJoueur2.AutoCompleteMode = AutoCompleteMode.Append
         cbxNomJoueur2.AutoCompleteSource = AutoCompleteSource.ListItems
     End Sub
+
     Private Sub btnJouer_Click(sender As Object, e As EventArgs) Handles btnJouer.Click
         If (verifJoueur()) Then
             'ArchiverJoueurDansFichier()
