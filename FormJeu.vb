@@ -1,6 +1,6 @@
 ﻿Public Class FormJeu
     Private Sub FormJeu_Load() Handles MyBase.Load
-        initTimerEtProgressBar()
+        gestionTimer()
 
         Dim caraChaine As String = ""
         For Each cara In ModuleConfig.getCaraJouable.ToArray
@@ -28,13 +28,25 @@
 
         ModuleConfig.setNombreCoup(ModuleConfig.getCoupDefaut)
         nombreCoup()
-        initTimerEtProgressBar()
+        gestionTimer()
 
         LblBravoPerdu.Hide()
         LstCaraHisto.Clear()
         TimerJeu.Start()
         BtnGuess.Show()
         btnExit.Hide()
+    End Sub
+
+    Sub gestionTimer()
+        If ModuleConfig.timerEstActive Then
+            initTimerEtProgressBar()
+            LblTimer.Show()
+            LblTimerReste.Text = "Il te reste : "
+        Else
+            LblTimerReste.Text = "Timer Désactivé."
+            LblTimer.Hide()
+            ProgressBarJeu.Value = ProgressBarJeu.Minimum
+        End If
     End Sub
 
     Private Sub LblBravoPerdu_Click()
@@ -153,6 +165,12 @@
     End Sub
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        If LblBravoPerdu.ForeColor = Color.Green Then
+            LblBravoPerdu.Left -= 12
+        ElseIf LblBravoPerdu.ForeColor = Color.Red Then
+            LblBravoPerdu.Left += 4
+        End If
+
         Me.Hide()
         FormAccueil.Show()
     End Sub
@@ -162,6 +180,10 @@
     End Sub
 
     Private Sub initTimerEtProgressBar()
+        If Not ModuleConfig.timerEstActive Then
+            Exit Sub
+        End If
+
         'On initialise le timer et la progressbar
         Dim tempsMax As Integer = ModuleConfig.getTempsMax
         ModulePartie.setTempsPartie(tempsMax)
@@ -171,6 +193,10 @@
     End Sub
 
     Private Sub TimerJeu_Tick(sender As Object, e As EventArgs) Handles TimerJeu.Tick
+        If Not ModuleConfig.timerEstActive Then
+            Exit Sub
+        End If
+
         Dim tempsMax = ModulePartie.getTempsPartie()
         tempsMax -= 1
         ProgressBarJeu.Value = tempsMax

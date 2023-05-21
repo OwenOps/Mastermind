@@ -1,8 +1,8 @@
 ﻿Imports System.IO
 Module ModuleJoueur
     Private Const NBR_MAX_JOUEUR = 2
-    Private ancienNom As String = ""
     Private valider As Boolean = False
+    Private ancienNomTemp As String = ""
 
     Structure Joueur
         Dim nom As String
@@ -43,6 +43,14 @@ Module ModuleJoueur
         Next
 
         chargercbxNomJoueur()
+    End Sub
+
+    Public Function getAncienNomTemp() As String
+        Return ancienNomTemp
+    End Function
+
+    Public Sub setAncienNomTemp(ancien As String)
+        ancienNomTemp = ancien
     End Sub
 
     Public Sub changeJoueur1ToJoueur2()

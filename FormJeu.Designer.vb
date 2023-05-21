@@ -41,7 +41,7 @@ Partial Class FormJeu
         Me.LblBravoPerdu = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.btnExit = New System.Windows.Forms.Button()
-        Me.Label10 = New System.Windows.Forms.Label()
+        Me.LblTimerReste = New System.Windows.Forms.Label()
         Me.LblTimer = New System.Windows.Forms.Label()
         Me.ProgressBarJeu = New System.Windows.Forms.ProgressBar()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -70,7 +70,7 @@ Partial Class FormJeu
         Me.Label3.ForeColor = System.Drawing.Color.Red
         Me.Label3.Location = New System.Drawing.Point(255, 373)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(49, 16)
+        Me.Label3.Size = New System.Drawing.Size(50, 16)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Absent"
         '
@@ -82,7 +82,7 @@ Partial Class FormJeu
         Me.Label4.ForeColor = System.Drawing.Color.Blue
         Me.Label4.Location = New System.Drawing.Point(255, 403)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(53, 16)
+        Me.Label4.Size = New System.Drawing.Size(54, 16)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Présent"
         '
@@ -93,7 +93,7 @@ Partial Class FormJeu
         Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Label5.Location = New System.Drawing.Point(214, 432)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(135, 16)
+        Me.Label5.Size = New System.Drawing.Size(136, 16)
         Me.Label5.TabIndex = 4
         Me.Label5.Text = "Présent et Bien Placé"
         '
@@ -246,15 +246,15 @@ Partial Class FormJeu
         Me.btnExit.UseVisualStyleBackColor = False
         Me.btnExit.Visible = False
         '
-        'Label10
+        'LblTimerReste
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.Label10.Location = New System.Drawing.Point(385, 101)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(79, 18)
-        Me.Label10.TabIndex = 31
-        Me.Label10.Text = "Il te reste : "
+        Me.LblTimerReste.AutoSize = True
+        Me.LblTimerReste.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.LblTimerReste.Location = New System.Drawing.Point(385, 101)
+        Me.LblTimerReste.Name = "LblTimerReste"
+        Me.LblTimerReste.Size = New System.Drawing.Size(79, 18)
+        Me.LblTimerReste.TabIndex = 31
+        Me.LblTimerReste.Text = "Il te reste : "
         '
         'LblTimer
         '
@@ -290,7 +290,7 @@ Partial Class FormJeu
         Me.CaraJouable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CaraJouable.Location = New System.Drawing.Point(46, 391)
         Me.CaraJouable.Name = "CaraJouable"
-        Me.CaraJouable.Size = New System.Drawing.Size(96, 16)
+        Me.CaraJouable.Size = New System.Drawing.Size(97, 16)
         Me.CaraJouable.TabIndex = 36
         Me.CaraJouable.Text = "CaraJouable"
         '
@@ -318,7 +318,7 @@ Partial Class FormJeu
         Me.Label11.Location = New System.Drawing.Point(182, 9)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(227, 52)
+        Me.Label11.Size = New System.Drawing.Size(228, 52)
         Me.Label11.TabIndex = 35
         Me.Label11.Text = "MasterMind"
         '
@@ -333,7 +333,7 @@ Partial Class FormJeu
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ProgressBarJeu)
         Me.Controls.Add(Me.LblTimer)
-        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.LblTimerReste)
         Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.LblBravoPerdu)
@@ -351,7 +351,7 @@ Partial Class FormJeu
         Me.MaximumSize = New System.Drawing.Size(594, 510)
         Me.Name = "FormJeu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "NbrCara"
+        Me.Text = "Partie"
         Me.PnlCaractereJoue.ResumeLayout(False)
         Me.PnlCaractereJoue.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -377,7 +377,7 @@ Partial Class FormJeu
     Friend WithEvents LblBravoPerdu As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents btnExit As Button
-    Friend WithEvents Label10 As Label
+    Friend WithEvents LblTimerReste As Label
     Friend WithEvents LblTimer As Label
     Friend WithEvents ProgressBarJeu As ProgressBar
     Friend WithEvents PictureBox1 As PictureBox

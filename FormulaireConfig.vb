@@ -2,7 +2,6 @@
 
 Public Class FormulaireConfig
     Dim caraDefault As String = "A,B,C,D,E"
-    Dim ancienNom
 
     Private Sub Radio_CheckedChanged(sender As Object, e As EventArgs) Handles RO1.CheckedChanged, RO2.CheckedChanged, RO3.CheckedChanged, RO4.CheckedChanged, RN1.CheckedChanged, RN2.CheckedChanged, RN3.CheckedChanged, RN4.CheckedChanged
         Dim radioBoutton As RadioButton = TryCast(sender, RadioButton)
@@ -11,6 +10,7 @@ Public Class FormulaireConfig
         Select Case nomRadio
             Case RO1.Name
                 PnlTimerCache.Visible = radioBoutton.Checked
+                ModuleConfig.setTimerActive(True)
             Case RO2.Name
                 PnlCoupCache.Visible = radioBoutton.Checked
             Case RO3.Name
@@ -25,6 +25,7 @@ Public Class FormulaireConfig
                 End If
             Case RN1.Name
                 PnlTimerCache.Visible = False
+                ModuleConfig.setTimerActive(False)
             Case RN2.Name
                 PnlCoupCache.Visible = False
             Case RN3.Name
@@ -65,11 +66,11 @@ Public Class FormulaireConfig
                 e.Handled = True
             End If
         ElseIf PnlCaraCache.Visible Then
-            If textActive = TxtCaraChange.Name And Not Char.IsLetter(e.KeyChar) AndAlso e.KeyChar <> Chr(8) Then
+            If textActive = TxtCaraChange.Name And Not Char.IsLetter(e.KeyChar) Then
                 e.Handled = True
             End If
         Else
-            If Not Char.IsLetter(e.KeyChar) AndAlso e.KeyChar <> Chr(8) Then
+            If Not Char.IsLetter(e.KeyChar) Then
                 e.Handled = True
             End If
         End If
@@ -156,18 +157,18 @@ Public Class FormulaireConfig
 
     Private Sub BtnValidNom_Click(sender As Object, e As EventArgs) Handles BtnValidNom.Click
         If cbxNomJoueurChange.Text = "" Then
-            MsgBox("Veuillez entrer un nom valide.")
+            MsgBox("Veuillez entrer un nom valide.", "Erreur")
             Exit Sub
         End If
 
         Dim nom = cbxNomJoueurChange.Text
         If ModuleJoueur.getValider = True Then
 
-            If String.Compare(nom, ancienNom) = 0 Then
+            If String.Compare(nom, ModuleJoueur.getAncienNomTemp) = 0 Then
                 MessageBox.Show("Vous avez rentré le meme nom.", "Erreur")
             Else
 
-                ModuleJoueur.changementNomJoueur(ancienNom, nom)
+                ModuleJoueur.changementNomJoueur(ModuleJoueur.getAncienNomTemp, nom)
                 ModuleJoueur.setValider(False)
                 MessageBox.Show("Votre nouveau nom : " & nom & ", et ancien nom : " & ModuleJoueur.getJoueurSpecifique(nom).ancienNom)
                 ModuleJoueur.chargercbxNomJoueur()
@@ -185,10 +186,12 @@ Public Class FormulaireConfig
             BtnValidNom.Width = 75
             BtnValidNom.Tag = BtnValidNom.Text
             BtnValidNom.Text = "Renommer"
+
             ModuleJoueur.setValider(True)
-            'MEttre poour alex son ancien nom alex
             ModuleJoueur.setAncienNomJoueur(nom)
-            ancienNom = nom
+            ModuleJoueur.setAncienNomTemp(nom)
+        Else
+            MessageBox.Show("La personne n'existe pas.", "Erreur")
         End If
         'FormAccueil.Show()
     End Sub
@@ -211,7 +214,7 @@ Public Class FormulaireConfig
         ModuleConfig.setTimerActive(True)
         ModuleConfig.setTempsMax(ModuleConfig.getTempsDefaut)
         ModuleConfig.setCaraJouable(caraDefault)
-        MsgBox("Configuration remis par default.")
+        MsgBox("Configuration remis par default.", "Erreur")
     End Sub
 
     Private Sub FormConfig_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
