@@ -1,6 +1,8 @@
 ﻿Public Class FormMasterMind
+
     Private Sub FormMasterMind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.AcceptButton = btnStart
+        ModuleJoueur.chargerFichierDansHistorique()
     End Sub
 
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
@@ -9,6 +11,7 @@
     End Sub
 
     Private Sub btnConfig_Click(sender As Object, e As EventArgs) Handles btnConfig.Click
+        FormulaireConfig.resetFormConfig()
         FormulaireConfig.Show()
         Me.Hide()
     End Sub
@@ -19,10 +22,10 @@
     End Sub
 
     Private Sub FormAccueil_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Dim ferm As DialogResult = MessageBox.Show("Voulez-vous vraiment quitter le jeu ?", "Fermer MasterMind", MessageBoxButtons.YesNo)
-        If ferm = DialogResult.Yes Then
-            ArchiverJoueurDansFichier()
+        If ModuleGestionAppli.fermetureFormDialog Then
             Application.Exit()
+        Else
+            e.Cancel = True
         End If
     End Sub
 End Class

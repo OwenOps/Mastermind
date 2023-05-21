@@ -40,12 +40,14 @@ Public Class FormStat
         cbxNomJoueur.AutoCompleteMode = AutoCompleteMode.Append
         cbxNomJoueur.AutoCompleteSource = AutoCompleteSource.ListItems
     End Sub
+
     Private Sub lstAll_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBox1.SelectedIndexChanged, lstBox2.SelectedIndexChanged, lstBox3.SelectedIndexChanged, lstBox4.SelectedIndexChanged, lstBox5.SelectedIndexChanged, lstBox6.SelectedIndexChanged
         Dim index As Integer = sender.SelectedIndex
         For Each ListBox In pnlStats.Controls
             ListBox.SelectedIndex = index
         Next
     End Sub
+
     Private Sub btnSortAlpha_Click(sender As Object, e As EventArgs) Handles btnSortAlpha.Click
         trierOrdreAlpha()
     End Sub
@@ -85,6 +87,7 @@ Public Class FormStat
             Next
         End If
     End Sub
+
     Private Sub UpdateListBoxes()
         Dim i As Integer
         i = 5
@@ -101,7 +104,8 @@ Public Class FormStat
             i = 5
         Next
     End Sub
-    Function trierOrdreAlpha()
+
+    Private Function trierOrdreAlpha()
         lstBox1.Sorted = True
         lstBox2.Items.Clear()
         lstBox3.Items.Clear()
@@ -122,14 +126,20 @@ Public Class FormStat
         Next
         Return Nothing
     End Function
+
     Private Sub btnRetour_Click(sender As Object, e As EventArgs) Handles btnRetour.Click
         Me.Hide()
         FormAccueil.Show()
-    End Sub
-    Private Sub FormStat_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Application.Exit()
+
     End Sub
 
+    Private Sub FormStat_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If ModuleGestionAppli.fermetureFormDialog Then
+            Application.Exit()
+        Else
+            e.Cancel = True
+        End If
+    End Sub
 End Class
 
 

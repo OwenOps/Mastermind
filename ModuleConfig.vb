@@ -11,6 +11,19 @@
     Private tempsDefaut As Integer = 90
     Private tempsMax As Integer = tempsDefaut
 
+
+
+    Public Sub HandleFormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs)
+        Dim ferm As DialogResult = MessageBox.Show("Voulez-vous vraiment quitter l'application ?", "Fermer", MessageBoxButtons.YesNo)
+
+        If ferm = DialogResult.No Then
+            e.Cancel = True ' Annuler la fermeture du formulaire
+        Else
+            ArchiverJoueurDansFichier()
+            Application.Exit()
+        End If
+    End Sub
+
     Public Sub enleveNombreCoup()
         NombreDeCoupPossible = NombreDeCoupPossible - 1
     End Sub

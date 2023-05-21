@@ -19,7 +19,7 @@
         LblNomJoueur.Text = getDeuxiemeJoueur().nom
     End Sub
 
-    Sub resetFormJeu()
+    Public Sub resetFormJeu()
         For Each txt As TextBox In PnlCaractereJoue.Controls
             resetTxt(txt)
             txt.BackColor = Color.White
@@ -126,7 +126,7 @@
         End If
     End Sub
 
-    Sub gagnePerdu(bravoPerdu As Boolean)
+    Private Sub gagnePerdu(bravoPerdu As Boolean)
         Dim temps = ModuleConfig.getTempsMax - ModulePartie.getTempsPartie()
 
         If bravoPerdu Then
@@ -145,7 +145,7 @@
         sauvegarderDansHisto()
     End Sub
 
-    Sub partieFinis()
+    Private Sub partieFinis()
         TimerJeu.Stop()
         BtnGuess.Hide()
         LblBravoPerdu.Show()
@@ -157,11 +157,11 @@
         FormAccueil.Show()
     End Sub
 
-    Sub nombreCoup()
+    Private Sub nombreCoup()
         Me.Text = "Il vous reste " & ModuleConfig.getNombreCoup.ToString & " coup(s)..."
     End Sub
 
-    Sub initTimerEtProgressBar()
+    Private Sub initTimerEtProgressBar()
         'On initialise le timer et la progressbar
         Dim tempsMax As Integer = ModuleConfig.getTempsMax
         ModulePartie.setTempsPartie(tempsMax)
@@ -185,10 +185,14 @@
     End Sub
 
     Private Sub FormJeu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Application.Exit()
+        If ModuleGestionAppli.fermetureFormDialog Then
+            Application.Exit()
+        Else
+            e.Cancel = True
+        End If
     End Sub
 
-    Sub AfficheLabelTimer(tempsMax As Integer)
+    Private Sub AfficheLabelTimer(tempsMax As Integer)
         Dim ts As Integer = 0, h = 0, m = 0, s = 0
         ts = tempsMax
         h = ts / 3600

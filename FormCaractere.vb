@@ -33,6 +33,7 @@
             e.Handled = True
         End If
     End Sub
+
     Private Sub btnHide_Click(sender As Object, e As EventArgs) Handles btnHide.Click
         Dim erreur As Boolean = False
         Dim chaineATrouve As String = ""
@@ -67,10 +68,6 @@
         Next
     End Sub
 
-    Private Sub FormCaractere_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Application.Exit()
-    End Sub
-
     Function demandeJouer() As Boolean
         Dim demande As DialogResult = MessageBox.Show("Voulez-vous commencer à jouer?", "La partie va commencer !", MessageBoxButtons.YesNo)
         If demande = DialogResult.Yes Then
@@ -87,5 +84,13 @@
             txt.Text = cara(cpt)
             cpt += 1
         Next
+    End Sub
+
+    Private Sub FormCaractere_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If ModuleGestionAppli.fermetureFormDialog Then
+            Application.Exit()
+        Else
+            e.Cancel = True
+        End If
     End Sub
 End Class

@@ -1,8 +1,8 @@
 ﻿Imports System.IO
 Module ModuleJoueur
     Private Const NBR_MAX_JOUEUR = 2
-    Private valid As Boolean = False
     Private ancienNom As String = ""
+    Private valider As Boolean = False
 
     Structure Joueur
         Dim nom As String
@@ -202,16 +202,6 @@ Module ModuleJoueur
         Return False
     End Function
 
-    Public Sub changementNomJoueur(nouveauNom As String)
-        For i As Integer = 0 To JoueurHistorique.Length - 1
-            If JoueurHistorique(i).nom = ancienNom Then
-                JoueurHistorique(i).ancienNom = ancienNom
-                JoueurHistorique(i).nom = nouveauNom
-                Exit Sub
-            End If
-        Next
-    End Sub
-
     Public Function getPremierJoueur() As Joueur
         Return JoueurActuel(0)
     End Function
@@ -228,20 +218,45 @@ Module ModuleJoueur
         Return getPremierJoueur().nom + ", " + getDeuxiemeJoueur().nom
     End Function
 
-    Public Function getValid() As Boolean
-        Return valid
-    End Function
-
-    Public Sub setAncienNom(nouveauNom As String)
-        ancienNom = nouveauNom
+    Public Sub changementNomJoueur(nomActu As String, nouveauNom As String)
+        For i As Integer = 0 To JoueurHistorique.Length - 1
+            If JoueurHistorique(i).nom = nomActu Then
+                JoueurHistorique(i).nom = nouveauNom
+            End If
+        Next
     End Sub
 
-    Public Function getAncienNom() As String
-        Return ancienNom
+    Public Function getAncienNomJoueur(nomActu As String) As String
+        For i As Integer = 0 To JoueurHistorique.Length - 1
+            If JoueurHistorique(i).nom = nomActu Then
+                Return JoueurHistorique(i).ancienNom
+            End If
+        Next
     End Function
 
-    Public Sub setValid()
-        valid = True
+    Public Sub setAncienNomJoueur(nomActu As String)
+        For i As Integer = 0 To JoueurHistorique.Length - 1
+            If JoueurHistorique(i).nom = nomActu Then
+                JoueurHistorique(i).ancienNom = nomActu
+            End If
+        Next
+    End Sub
+
+    Public Function getJoueurSpecifique(nomJouer As String) As Joueur
+        For i As Integer = 0 To JoueurHistorique.Length - 1
+            If JoueurHistorique(i).nom = nomJouer Then
+                Return JoueurHistorique(i)
+            End If
+        Next
+        Return Nothing
+    End Function
+
+    Public Function getValider() As Boolean
+        Return valider
+    End Function
+
+    Public Sub setValider(valid As Boolean)
+        valider = valid
     End Sub
 
     Public Function getJoueurHistorique() As Joueur()
