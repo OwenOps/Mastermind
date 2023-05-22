@@ -16,7 +16,12 @@
         Next
 
         nombreCoup()
-        LblNomJoueur.Text = getDeuxiemeJoueur().nom
+
+        If (ModulePartie.getModeEntrainement()) Then
+            LblNomJoueur.Text = ModulePartie.getNomJoueur()
+        Else
+            LblNomJoueur.Text = ModuleJoueur.getDeuxiemeJoueur().nom
+        End If
     End Sub
 
     Public Sub resetFormJeu()
@@ -26,6 +31,7 @@
             txt.ForeColor = Color.Black
         Next
 
+        ModulePartie.setModeEntrainement(False, "")
         ModuleConfig.setNombreCoup(ModuleConfig.getCoupDefaut)
         nombreCoup()
         gestionTimer()
@@ -170,9 +176,14 @@
         ElseIf LblBravoPerdu.ForeColor = Color.Red Then
             LblBravoPerdu.Left += 4
         End If
-
         Me.Hide()
-        FormAccueil.Show()
+        If ModulePartie.getModeEntrainement() Then
+            ModulePartie.setModeEntrainement(False, "")
+            FormRegles.Show()
+        Else
+            FormAccueil.Show()
+        End If
+
     End Sub
 
     Private Sub nombreCoup()
