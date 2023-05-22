@@ -20,14 +20,15 @@ Module ModuleStats
         Dim temp As Joueur
         joueursCopy = joueurs.Clone
         For i As Integer = 0 To podium.Length - 1
-            temp = joueursCopy(0)
+            temp.score = -1
+            temp.nom = "Personne"
             For j As Integer = 0 To joueursCopy.Length - 1
-                If joueursCopy(j).score > temp.score Then
+                If joueursCopy(j).score > temp.score And joueursCopy(j).score <> 0 Then
                     temp = joueursCopy(j)
                 End If
             Next
             podium(i) = temp
-            supprimerJoueur(temp.nom)
+            supprimerJoueur(temp)
         Next
     End Sub
     Public Sub remplirPodiumTemps()
@@ -35,20 +36,21 @@ Module ModuleStats
         Dim temp As Joueur
         joueursCopy = joueurs.Clone
         For i As Integer = 0 To podium.Length - 1
-            temp = joueursCopy(0)
+            temp.meilleurTemps = 100000
+            temp.nom = "Personne"
             For j As Integer = 0 To joueursCopy.Length - 1
                 If joueursCopy(j).meilleurTemps < temp.meilleurTemps And joueursCopy(j).meilleurTemps <> 0 Then
                     temp = joueursCopy(j)
                 End If
             Next
             podium(i) = temp
-            supprimerJoueur(temp.nom)
+            supprimerJoueur(temp)
         Next
     End Sub
 
-    Public Sub supprimerJoueur(nomJoueur As String)
+    Public Sub supprimerJoueur(Joueurs As Joueur)
         For j As Integer = 0 To joueursCopy.Length - 1
-            If joueursCopy(j).nom = nomJoueur Then
+            If joueursCopy(j).nom = Joueurs.nom Then
                 joueursCopy(j).score = -1
                 joueursCopy(j).meilleurTemps = 100000
             End If

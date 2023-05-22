@@ -1,8 +1,8 @@
 ﻿Imports System.IO
 Module ModuleJoueur
     Private Const NBR_MAX_JOUEUR = 2
-    Private ancienNom As String = ""
     Private valider As Boolean = False
+    Private ancienNomTemp As String = ""
 
     Structure Joueur
         Dim nom As String
@@ -44,7 +44,13 @@ Module ModuleJoueur
 
         chargercbxNomJoueur()
     End Sub
+    Public Function getAncienNomTemp() As String
+        Return ancienNomTemp
+    End Function
 
+    Public Sub setAncienNomTemp(ancien As String)
+        ancienNomTemp = ancien
+    End Sub
     Public Sub changeJoueur1ToJoueur2()
         FormAccueil.cbxNomJoueur1.Text = JoueurActuel(1).nom
         FormAccueil.cbxNomJoueur2.Text = JoueurActuel(0).nom
@@ -66,9 +72,7 @@ Module ModuleJoueur
                 End If
             End If
         Next
-
     End Sub
-
     Function estVideJoueurHisto() As Boolean
         If JoueurHistorique(0).nom = Nothing And JoueurHistorique(1).nom = Nothing Then
             Return True
@@ -128,7 +132,6 @@ Module ModuleJoueur
     End Sub
 
     Public Sub chargerFichierDansHistorique()
-
         ' Vérifier si le fichier existe déjà sinon le crée
         If Not File.Exists(cheminFichier) Then
             Dim fichier As StreamWriter = File.CreateText(cheminFichier)
@@ -156,7 +159,6 @@ Module ModuleJoueur
     End Sub
 
     Public Sub ArchiverJoueurDansFichier()
-
         ' Vérifier si le fichier existe déjà sinon le crée
         If Not File.Exists(cheminFichier) Then
             Dim fichier As StreamWriter = File.CreateText(cheminFichier)

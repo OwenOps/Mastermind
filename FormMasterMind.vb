@@ -23,9 +23,17 @@
 
     Private Sub FormAccueil_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If ModuleGestionAppli.fermetureFormDialog Then
+            ArchiverJoueurDansFichier()
             Application.Exit()
         Else
             e.Cancel = True
         End If
     End Sub
 End Class
+
+'Dim ferm As DialogResult = MessageBox.Show("Voulez-vous vraiment quitter le jeu ?", "Fermer MasterMind", MessageBoxButtons.YesNo)
+'If ferm = DialogResult.Yes Then
+'ArchiverJoueurDansFichier()
+'Application.Exit()
+'End If
+'End Sub

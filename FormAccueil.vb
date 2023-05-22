@@ -18,6 +18,7 @@ Public Class FormAccueil
             resetFormAccueil()
             changeJoueur1ToJoueur2()
             Me.Hide()
+            FormCaractere.resetFormCaractere()
             FormCaractere.Show()
         End If
     End Sub
@@ -38,6 +39,7 @@ Public Class FormAccueil
             MsgBox("Aucune statistique n'est disponible, commencez d'abord à jouer! ", , "Erreur")
         Else
             Me.Hide()
+            FormStat.resetFormStats()
             FormStat.Show()
         End If
     End Sub

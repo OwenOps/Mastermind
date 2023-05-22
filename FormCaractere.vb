@@ -66,6 +66,7 @@
         For Each txt As TextBox In PnlCaractereJoue.Controls
             resetTxt(txt)
         Next
+        lblNom.Text = getDeuxiemeJoueur().nom
     End Sub
 
     Function demandeJouer() As Boolean

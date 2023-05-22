@@ -5,15 +5,16 @@ Imports MasterMind.ModuleJoueur
 
 Public Class FormStat
 
-    'Private Const NBR_JOUEUR_PODIUM = 2
-    'Private joueurs As Joueur()
-    'Private joueursCopy As Joueur()
-    'Private podium(NBR_JOUEUR_PODIUM) As Joueur
-
     Private joueurs As Joueur()
     Private statistiques As New List(Of String)
 
     Private Sub FormStat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        resetFormStats()
+
+        cbxNomJoueur.AutoCompleteMode = AutoCompleteMode.Append
+        cbxNomJoueur.AutoCompleteSource = AutoCompleteSource.ListItems
+    End Sub
+    Sub resetFormStats()
         joueurs = getJoueurs()
         joueurs = ModuleJoueur.getJoueurHistorique()
         For Each joueur As Joueur In joueurs
@@ -32,15 +33,11 @@ Public Class FormStat
         UpdateListBoxes()
         trierOrdreAlpha()
 
+        initialiserLabelPodium()
         remplirPodiumScore()
-        lblPodium1.Text = getPodium(0).nom & " : " & getPodium(0).score & " points !"
-        lblPodium2.Text = getPodium(1).nom & " : " & getPodium(1).score & " points !"
-        lblPodium3.Text = getPodium(2).nom & " : " & getPodium(2).score & " points !"
+        afficherPodiumScore()
 
-        cbxNomJoueur.AutoCompleteMode = AutoCompleteMode.Append
-        cbxNomJoueur.AutoCompleteSource = AutoCompleteSource.ListItems
     End Sub
-
     Private Sub lstAll_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBox1.SelectedIndexChanged, lstBox2.SelectedIndexChanged, lstBox3.SelectedIndexChanged, lstBox4.SelectedIndexChanged, lstBox5.SelectedIndexChanged, lstBox6.SelectedIndexChanged
         Dim index As Integer = sender.SelectedIndex
         For Each ListBox In pnlStats.Controls
@@ -53,18 +50,15 @@ Public Class FormStat
     End Sub
 
     Private Sub btnSortScore_Click(sender As Object, e As EventArgs) Handles btnSortScore.Click
+        initialiserLabelPodium()
         remplirPodiumScore()
-        lblPodium1.Text = getPodium(0).nom & " : " & getPodium(0).score & " points !"
-        lblPodium2.Text = getPodium(1).nom & " : " & getPodium(1).score & " points !"
-        lblPodium3.Text = getPodium(2).nom & " : " & getPodium(2).score & " points !"
-
+        afficherPodiumScore()
     End Sub
 
     Private Sub btnSortTemps_Click(sender As Object, e As EventArgs) Handles btnSortTemps.Click
+        initialiserLabelPodium()
         remplirPodiumTemps()
-        lblPodium1.Text = getPodium(0).nom & " : " & afficherTemps(getPodium(0).meilleurTemps)
-        lblPodium2.Text = getPodium(1).nom & " : " & afficherTemps(getPodium(1).meilleurTemps)
-        lblPodium3.Text = getPodium(2).nom & " : " & afficherTemps(getPodium(2).meilleurTemps)
+        afficherPodiumTemps()
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxNomJoueur.SelectedIndexChanged
@@ -87,7 +81,11 @@ Public Class FormStat
             Next
         End If
     End Sub
-
+    Private Sub initialiserLabelPodium()
+        lblPodium1.Text = Nothing
+        lblPodium2.Text = Nothing
+        lblPodium3.Text = Nothing
+    End Sub
     Private Sub UpdateListBoxes()
         Dim i As Integer
         i = 5
@@ -127,6 +125,32 @@ Public Class FormStat
         Return Nothing
     End Function
 
+    Private Function afficherPodiumTemps()
+        If (getPodium(0).meilleurTemps <> 100000) Then
+            lblPodium1.Text = getPodium(0).nom & " : " & afficherTemps(getPodium(0).meilleurTemps)
+        End If
+        If (getPodium(1).meilleurTemps <> 100000) Then
+            lblPodium2.Text = getPodium(1).nom & " : " & afficherTemps(getPodium(1).meilleurTemps)
+        End If
+        If (getPodium(2).meilleurTemps <> 100000) Then
+            lblPodium3.Text = getPodium(2).nom & " : " & afficherTemps(getPodium(2).meilleurTemps)
+        End If
+        Return Nothing
+    End Function
+
+    Private Function afficherPodiumScore()
+        If (getPodium(0).score <> -1) Then
+            lblPodium1.Text = getPodium(0).nom & " : " & getPodium(0).score & " points !"
+        End If
+        If (getPodium(1).score <> -1) Then
+            lblPodium2.Text = getPodium(1).nom & " : " & getPodium(1).score & " points !"
+        End If
+        If (getPodium(2).score <> -1) Then
+            lblPodium3.Text = getPodium(2).nom & " : " & getPodium(2).score & " points !"
+        End If
+        Return Nothing
+    End Function
+
     Private Sub btnRetour_Click(sender As Object, e As EventArgs) Handles btnRetour.Click
         Me.Hide()
         FormAccueil.Show()
@@ -140,6 +164,7 @@ Public Class FormStat
             e.Cancel = True
         End If
     End Sub
+
 End Class
 
 
