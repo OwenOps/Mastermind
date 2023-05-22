@@ -84,10 +84,6 @@ Module ModuleJoueur
     Public Sub ajouterStats(joueur As Joueur, temps As Integer)
         If (joueur.estPremierJoueur) Then
             JoueurActuel(0).score += 1
-            JoueurActuel(0).cumulTemps += temps
-            If JoueurActuel(0).meilleurTemps = 0 Or JoueurActuel(0).meilleurTemps > temps Then
-                JoueurActuel(0).meilleurTemps = temps
-            End If
             JoueurActuel(1).cumulTemps += temps
         Else
             JoueurActuel(1).score += 1
@@ -95,7 +91,6 @@ Module ModuleJoueur
             If JoueurActuel(1).meilleurTemps = 0 Or JoueurActuel(1).meilleurTemps > temps Then
                 JoueurActuel(1).meilleurTemps = temps
             End If
-            JoueurActuel(0).cumulTemps += temps
         End If
     End Sub
 
