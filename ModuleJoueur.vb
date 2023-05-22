@@ -1,8 +1,8 @@
 ﻿Imports System.IO
 Module ModuleJoueur
     Private Const NBR_MAX_JOUEUR = 2
+    Private ancienNom As String = ""
     Private valider As Boolean = False
-    Private ancienNomTemp As String = ""
 
     Structure Joueur
         Dim nom As String
@@ -45,14 +45,6 @@ Module ModuleJoueur
         chargercbxNomJoueur()
     End Sub
 
-    Public Function getAncienNomTemp() As String
-        Return ancienNomTemp
-    End Function
-
-    Public Sub setAncienNomTemp(ancien As String)
-        ancienNomTemp = ancien
-    End Sub
-
     Public Sub changeJoueur1ToJoueur2()
         FormAccueil.cbxNomJoueur1.Text = JoueurActuel(1).nom
         FormAccueil.cbxNomJoueur2.Text = JoueurActuel(0).nom
@@ -65,7 +57,7 @@ Module ModuleJoueur
     Public Sub ajouterJoueurDansHisto()
         For j As Integer = 0 To JoueurActuel.Length - 1
             If estContenuDansHistorique(JoueurActuel(j).nom) = False Then
-                If Not estPremiereFois Then
+                If Not estVideJoueurHisto() Then
                     ReDim Preserve JoueurHistorique(JoueurHistorique.Length)
                     JoueurHistorique(JoueurHistorique.Length - 1) = JoueurActuel(j)
                 Else
@@ -74,7 +66,16 @@ Module ModuleJoueur
                 End If
             End If
         Next
+
     End Sub
+
+    Function estVideJoueurHisto() As Boolean
+        If JoueurHistorique(0).nom = Nothing And JoueurHistorique(1).nom = Nothing Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
     Public Sub ajouterStats(joueur As Joueur, temps As Integer)
         If (joueur.estPremierJoueur) Then
