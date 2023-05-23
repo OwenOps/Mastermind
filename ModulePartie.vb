@@ -1,7 +1,18 @@
-﻿Module ModulePartie
+Module ModulePartie
     Private CaraATrouver(ModuleConfig.getNbrCaraMax) As String
     Private tempsPartie As Integer
     Private nombreCoupPossible = ModuleConfig.getNombreCoupChoisis
+    Private nomJoueur As String
+    Private modeEntrainement As Boolean = False
+
+    Public Sub setModeEntrainement(bool As Boolean, nom As String)
+        modeEntrainement = bool
+        nomJoueur = nom
+    End Sub
+
+    Public Function getModeEntrainement() As Boolean
+        Return modeEntrainement
+    End Function
 
     Public Sub setCaraATrouver(cara() As Char)
         For i As Integer = 0 To ModuleConfig.getNbrCaraMax - 1
@@ -92,6 +103,10 @@
             End If
         Next
         Return False
+    End Function
+
+    Public Function getNomJoueur() As String
+        Return nomJoueur
     End Function
 
     Public Sub AfficheLabelTimer(tempsMax As Integer, lblTimer As Label)

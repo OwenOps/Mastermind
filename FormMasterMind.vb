@@ -1,7 +1,7 @@
 ﻿Public Class FormMasterMind
     Private Sub FormMasterMind_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.AcceptButton = btnStart
         ModuleJoueur.chargerFichierDansHistorique()
+        Me.AcceptButton = btnStart
     End Sub
 
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
@@ -13,11 +13,12 @@
         FormulaireConfig.afficheBtnReset()
         FormulaireConfig.Show()
         Me.Hide()
+
     End Sub
 
     Private Sub btnRegles_Click(sender As Object, e As EventArgs) Handles btnRegles.Click
-        'Me.Hide()
-        'FormRegles.Show()
+        Me.Hide()
+        FormRegles.Show()
     End Sub
 
     Private Sub FormAccueil_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

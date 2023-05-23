@@ -10,7 +10,7 @@
     Private Sub FormCaractere_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
         If Me.Visible Then
             For Each txt As TextBox In PnlCaractereJoue.Controls
-                resetTxt(txt)
+                ModulePartie.resetTxt(txt)
             Next
 
             Me.AcceptButton = btnHide

@@ -6,6 +6,14 @@
         For i As Integer = 0 To ctrlList.Count - 1
             PnlCaractereJoue.Controls.SetChildIndex(ctrlList(i), i)
         Next
+
+        nombreCoup()
+
+        If (ModulePartie.getModeEntrainement()) Then
+            LblNomJoueur.Text = ModulePartie.getNomJoueur()
+        Else
+            LblNomJoueur.Text = ModuleJoueur.getDeuxiemeJoueur().nom
+        End If
     End Sub
 
     Private Sub FormJeu_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
@@ -16,9 +24,9 @@
                 txt.ForeColor = Color.Black
             Next
 
-            ModulePartie.setNombreCoup(ModuleConfig.getNombreCoupChoisis)
-            ModulePartie.afficheCaraJouable(CaraJouable)
+            ModuleConfig.setNombreCoup(ModuleConfig.getCoupDefaut)
             nombreCoup()
+            gestionTimer()
 
             LblBravoPerdu.Hide()
             LstCaraHisto.Clear()
@@ -159,8 +167,19 @@
     End Sub
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        If LblBravoPerdu.ForeColor = Color.Green Then
+            LblBravoPerdu.Left -= 12
+        ElseIf LblBravoPerdu.ForeColor = Color.Red Then
+            LblBravoPerdu.Left += 4
+        End If
         Me.Hide()
-        FormAccueil.Show()
+        If ModulePartie.getModeEntrainement() Then
+            ModulePartie.setModeEntrainement(False, "")
+            FormRegles.Show()
+        Else
+            FormAccueil.Show()
+        End If
+
     End Sub
 
     Private Sub nombreCoup()

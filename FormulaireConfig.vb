@@ -177,7 +177,7 @@ Public Class FormulaireConfig
 
                 ModuleJoueur.changementNomJoueur(ModuleJoueur.getAncienNomTemp, nom)
                 ModuleJoueur.setValider(False)
-                MessageBox.Show("Votre nouveau nom : " & nom & ", et ancien nom : " & ModuleJoueur.getJoueurSpecifique(nom).ancienNom)
+                MessageBox.Show("Votre nouveau ancien nom " & ModuleJoueur.getJoueurSpecifique(nom).ancienNom & " a été remplacé par : " & nom, "Changement réalisé avec succès")
                 ModuleJoueur.chargercbxNomJoueur()
                 cbxNomJoueurChange.Text = ""
                 LblNomActu.Text = LblNomActu.Tag
@@ -222,4 +222,6 @@ Public Class FormulaireConfig
             e.Cancel = True
         End If
     End Sub
+
+
 End Class
