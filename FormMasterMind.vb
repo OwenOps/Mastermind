@@ -21,9 +21,8 @@
         FormRegles.Show()
     End Sub
 
-    Private Sub FormAccueil_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub FormMasterMind_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If ModuleGestionAppli.fermetureFormDialog Then
-            ArchiverJoueurDansFichier()
             Application.Exit()
         Else
             e.Cancel = True

@@ -9,12 +9,15 @@ Module ModuleStats
     Function getJoueurs() As Joueur()
         Return joueurs
     End Function
+
     Public Function getJoueursCopy() As Joueur()
         Return joueursCopy
     End Function
+
     Public Function getPodium() As Joueur()
         Return podium
     End Function
+
     Public Sub remplirPodiumScore()
         joueurs = ModuleJoueur.getJoueurHistorique()
         Dim temp As Joueur
@@ -31,6 +34,7 @@ Module ModuleStats
             supprimerJoueur(temp)
         Next
     End Sub
+
     Public Sub remplirPodiumTemps()
         joueurs = ModuleJoueur.getJoueurHistorique()
         Dim temp As Joueur
@@ -56,6 +60,7 @@ Module ModuleStats
             End If
         Next
     End Sub
+
     Public Function afficherTemps(temps As Integer) As String
         Dim tempsAffichage As String
         Dim ts As Integer = 0, h = 0, m = 0, s = 0
@@ -73,5 +78,4 @@ Module ModuleStats
         End If
         Return tempsAffichage
     End Function
-
 End Module
