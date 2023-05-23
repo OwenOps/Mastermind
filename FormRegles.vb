@@ -21,17 +21,12 @@
 
             ModulePartie.setCaraAleatoire()
 
-
             Dim chaineATrouve As String = ""
-
             For Each txtBox As TextBox In FormCaractere.PnlCaractereJoue.Controls
                 chaineATrouve += txtBox.Text
             Next
 
             ModulePartie.setCaraATrouver(chaineATrouve.ToArray)
-            FormCaractere.resetFormCaractere()
-            FormJeu.resetFormJeu()
-
             ModulePartie.setModeEntrainement(True, nomJoueur)
 
             Me.Hide()

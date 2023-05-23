@@ -85,7 +85,7 @@ Partial Class FormulaireConfig
         Me.Label1.Location = New System.Drawing.Point(28, 190)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(241, 21)
+        Me.Label1.Size = New System.Drawing.Size(201, 19)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Modifier la durée du timer :"
         '
@@ -96,7 +96,7 @@ Partial Class FormulaireConfig
         Me.Label2.Location = New System.Drawing.Point(28, 252)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(338, 21)
+        Me.Label2.Size = New System.Drawing.Size(276, 19)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Changer le nombre de coups possible :"
         '
@@ -129,7 +129,7 @@ Partial Class FormulaireConfig
         Me.Label3.Location = New System.Drawing.Point(28, 319)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(287, 21)
+        Me.Label3.Size = New System.Drawing.Size(237, 19)
         Me.Label3.TabIndex = 40
         Me.Label3.Text = "Modifier les caractères jouables :"
         '
@@ -139,14 +139,14 @@ Partial Class FormulaireConfig
         Me.PanelTimer.Controls.Add(Me.RO1)
         Me.PanelTimer.Location = New System.Drawing.Point(5, 6)
         Me.PanelTimer.Name = "PanelTimer"
-        Me.PanelTimer.Size = New System.Drawing.Size(100, 24)
+        Me.PanelTimer.Size = New System.Drawing.Size(140, 24)
         Me.PanelTimer.TabIndex = 0
         '
         'RN1
         '
         Me.RN1.AutoSize = True
         Me.RN1.Location = New System.Drawing.Point(75, 2)
-        Me.RN1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RN1.Margin = New System.Windows.Forms.Padding(4)
         Me.RN1.Name = "RN1"
         Me.RN1.Size = New System.Drawing.Size(45, 17)
         Me.RN1.TabIndex = 0
@@ -157,7 +157,7 @@ Partial Class FormulaireConfig
         '
         Me.RO1.AutoSize = True
         Me.RO1.Location = New System.Drawing.Point(9, 2)
-        Me.RO1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RO1.Margin = New System.Windows.Forms.Padding(4)
         Me.RO1.Name = "RO1"
         Me.RO1.Size = New System.Drawing.Size(41, 17)
         Me.RO1.TabIndex = 1
@@ -167,20 +167,20 @@ Partial Class FormulaireConfig
         'TxtNbrCoup
         '
         Me.TxtNbrCoup.Location = New System.Drawing.Point(171, 9)
-        Me.TxtNbrCoup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtNbrCoup.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtNbrCoup.MaxLength = 6
         Me.TxtNbrCoup.Name = "TxtNbrCoup"
-        Me.TxtNbrCoup.Size = New System.Drawing.Size(196, 22)
+        Me.TxtNbrCoup.Size = New System.Drawing.Size(196, 20)
         Me.TxtNbrCoup.TabIndex = 42
         Me.TxtNbrCoup.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TxtCaraChange
         '
         Me.TxtCaraChange.Location = New System.Drawing.Point(220, 4)
-        Me.TxtCaraChange.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtCaraChange.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtCaraChange.MaxLength = 5
         Me.TxtCaraChange.Name = "TxtCaraChange"
-        Me.TxtCaraChange.Size = New System.Drawing.Size(147, 22)
+        Me.TxtCaraChange.Size = New System.Drawing.Size(147, 20)
         Me.TxtCaraChange.TabIndex = 43
         Me.TxtCaraChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -199,15 +199,15 @@ Partial Class FormulaireConfig
         Me.PanelCaractere.Controls.Add(Me.RN3)
         Me.PanelCaractere.Controls.Add(Me.RO3)
         Me.PanelCaractere.Location = New System.Drawing.Point(4, 139)
-        Me.PanelCaractere.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelCaractere.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelCaractere.Name = "PanelCaractere"
-        Me.PanelCaractere.Size = New System.Drawing.Size(102, 24)
+        Me.PanelCaractere.Size = New System.Drawing.Size(140, 24)
         Me.PanelCaractere.TabIndex = 42
         '
         'RN3
         '
         Me.RN3.AutoSize = True
-        Me.RN3.Location = New System.Drawing.Point(58, 4)
+        Me.RN3.Location = New System.Drawing.Point(76, 5)
         Me.RN3.Name = "RN3"
         Me.RN3.Size = New System.Drawing.Size(45, 17)
         Me.RN3.TabIndex = 1
@@ -229,7 +229,7 @@ Partial Class FormulaireConfig
         Me.PanelCoup.Controls.Add(Me.RN2)
         Me.PanelCoup.Controls.Add(Me.RO2)
         Me.PanelCoup.Location = New System.Drawing.Point(4, 70)
-        Me.PanelCoup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelCoup.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelCoup.Name = "PanelCoup"
         Me.PanelCoup.Size = New System.Drawing.Size(141, 34)
         Me.PanelCoup.TabIndex = 42
@@ -238,7 +238,7 @@ Partial Class FormulaireConfig
         '
         Me.RN2.AutoSize = True
         Me.RN2.Location = New System.Drawing.Point(77, 7)
-        Me.RN2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RN2.Margin = New System.Windows.Forms.Padding(4)
         Me.RN2.Name = "RN2"
         Me.RN2.Size = New System.Drawing.Size(45, 17)
         Me.RN2.TabIndex = 1
@@ -249,7 +249,7 @@ Partial Class FormulaireConfig
         '
         Me.RO2.AutoSize = True
         Me.RO2.Location = New System.Drawing.Point(12, 7)
-        Me.RO2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RO2.Margin = New System.Windows.Forms.Padding(4)
         Me.RO2.Name = "RO2"
         Me.RO2.Size = New System.Drawing.Size(41, 17)
         Me.RO2.TabIndex = 0
@@ -283,29 +283,29 @@ Partial Class FormulaireConfig
         Me.PnlTimerCache.Controls.Add(Me.BtnValidTimer)
         Me.PnlTimerCache.Controls.Add(Me.Label4)
         Me.PnlTimerCache.Location = New System.Drawing.Point(551, 180)
-        Me.PnlTimerCache.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PnlTimerCache.Margin = New System.Windows.Forms.Padding(4)
         Me.PnlTimerCache.Name = "PnlTimerCache"
-        Me.PnlTimerCache.Size = New System.Drawing.Size(353, 27)
+        Me.PnlTimerCache.Size = New System.Drawing.Size(465, 40)
         Me.PnlTimerCache.TabIndex = 48
         Me.PnlTimerCache.Visible = False
         '
         'TxtTempsSec
         '
         Me.TxtTempsSec.Location = New System.Drawing.Point(328, 5)
-        Me.TxtTempsSec.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtTempsSec.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtTempsSec.MaxLength = 10
         Me.TxtTempsSec.Name = "TxtTempsSec"
-        Me.TxtTempsSec.Size = New System.Drawing.Size(39, 22)
+        Me.TxtTempsSec.Size = New System.Drawing.Size(39, 20)
         Me.TxtTempsSec.TabIndex = 51
         Me.TxtTempsSec.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TxtTempsMin
         '
         Me.TxtTempsMin.Location = New System.Drawing.Point(280, 5)
-        Me.TxtTempsMin.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtTempsMin.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtTempsMin.MaxLength = 10
         Me.TxtTempsMin.Name = "TxtTempsMin"
-        Me.TxtTempsMin.Size = New System.Drawing.Size(39, 22)
+        Me.TxtTempsMin.Size = New System.Drawing.Size(39, 20)
         Me.TxtTempsMin.TabIndex = 50
         Me.TxtTempsMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -316,7 +316,7 @@ Partial Class FormulaireConfig
         Me.BtnValidTimer.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnValidTimer.ForeColor = System.Drawing.Color.White
         Me.BtnValidTimer.Location = New System.Drawing.Point(387, 2)
-        Me.BtnValidTimer.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnValidTimer.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnValidTimer.Name = "BtnValidTimer"
         Me.BtnValidTimer.Size = New System.Drawing.Size(72, 30)
         Me.BtnValidTimer.TabIndex = 48
@@ -329,7 +329,7 @@ Partial Class FormulaireConfig
         Me.PnlCoupCache.Controls.Add(Me.TxtNbrCoup)
         Me.PnlCoupCache.Controls.Add(Me.Label5)
         Me.PnlCoupCache.Location = New System.Drawing.Point(551, 242)
-        Me.PnlCoupCache.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PnlCoupCache.Margin = New System.Windows.Forms.Padding(4)
         Me.PnlCoupCache.Name = "PnlCoupCache"
         Me.PnlCoupCache.Size = New System.Drawing.Size(471, 37)
         Me.PnlCoupCache.TabIndex = 46
@@ -342,7 +342,7 @@ Partial Class FormulaireConfig
         Me.BtnValidCoup.Font = New System.Drawing.Font("Segoe UI", 7.8!)
         Me.BtnValidCoup.ForeColor = System.Drawing.Color.White
         Me.BtnValidCoup.Location = New System.Drawing.Point(387, 6)
-        Me.BtnValidCoup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnValidCoup.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnValidCoup.Name = "BtnValidCoup"
         Me.BtnValidCoup.Size = New System.Drawing.Size(72, 30)
         Me.BtnValidCoup.TabIndex = 49
@@ -355,7 +355,7 @@ Partial Class FormulaireConfig
         Me.PnlCaraCache.Controls.Add(Me.TxtCaraChange)
         Me.PnlCaraCache.Controls.Add(Me.Label6)
         Me.PnlCaraCache.Location = New System.Drawing.Point(551, 313)
-        Me.PnlCaraCache.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PnlCaraCache.Margin = New System.Windows.Forms.Padding(4)
         Me.PnlCaraCache.Name = "PnlCaraCache"
         Me.PnlCaraCache.Size = New System.Drawing.Size(471, 32)
         Me.PnlCaraCache.TabIndex = 49
@@ -368,7 +368,7 @@ Partial Class FormulaireConfig
         Me.BtnValidCara.Font = New System.Drawing.Font("Segoe UI", 7.8!)
         Me.BtnValidCara.ForeColor = System.Drawing.Color.White
         Me.BtnValidCara.Location = New System.Drawing.Point(387, 1)
-        Me.BtnValidCara.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnValidCara.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnValidCara.Name = "BtnValidCara"
         Me.BtnValidCara.Size = New System.Drawing.Size(72, 30)
         Me.BtnValidCara.TabIndex = 50
@@ -382,7 +382,7 @@ Partial Class FormulaireConfig
         Me.Label7.Location = New System.Drawing.Point(28, 382)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(274, 21)
+        Me.Label7.Size = New System.Drawing.Size(228, 19)
         Me.Label7.TabIndex = 50
         Me.Label7.Text = "Changer un nom déjà existant :" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
@@ -403,7 +403,7 @@ Partial Class FormulaireConfig
         Me.BtnValidNom.Font = New System.Drawing.Font("Segoe UI", 7.8!)
         Me.BtnValidNom.ForeColor = System.Drawing.Color.White
         Me.BtnValidNom.Location = New System.Drawing.Point(389, 4)
-        Me.BtnValidNom.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnValidNom.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnValidNom.Name = "BtnValidNom"
         Me.BtnValidNom.Size = New System.Drawing.Size(72, 30)
         Me.BtnValidNom.TabIndex = 51
@@ -416,7 +416,7 @@ Partial Class FormulaireConfig
         Me.PnlNomCache.Controls.Add(Me.LblNomActu)
         Me.PnlNomCache.Controls.Add(Me.BtnValidNom)
         Me.PnlNomCache.Location = New System.Drawing.Point(549, 377)
-        Me.PnlNomCache.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PnlNomCache.Margin = New System.Windows.Forms.Padding(4)
         Me.PnlNomCache.Name = "PnlNomCache"
         Me.PnlNomCache.Size = New System.Drawing.Size(473, 41)
         Me.PnlNomCache.TabIndex = 52
@@ -426,7 +426,7 @@ Partial Class FormulaireConfig
         '
         Me.cbxNomJoueurChange.FormattingEnabled = True
         Me.cbxNomJoueurChange.Location = New System.Drawing.Point(245, 6)
-        Me.cbxNomJoueurChange.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbxNomJoueurChange.Margin = New System.Windows.Forms.Padding(4)
         Me.cbxNomJoueurChange.Name = "cbxNomJoueurChange"
         Me.cbxNomJoueurChange.Size = New System.Drawing.Size(93, 21)
         Me.cbxNomJoueurChange.TabIndex = 53
@@ -436,16 +436,16 @@ Partial Class FormulaireConfig
         Me.PanelNom.Controls.Add(Me.RN4)
         Me.PanelNom.Controls.Add(Me.RO4)
         Me.PanelNom.Location = New System.Drawing.Point(4, 202)
-        Me.PanelNom.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelNom.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelNom.Name = "PanelNom"
-        Me.PanelNom.Size = New System.Drawing.Size(102, 24)
+        Me.PanelNom.Size = New System.Drawing.Size(136, 24)
         Me.PanelNom.TabIndex = 43
         '
         'RN4
         '
         Me.RN4.AutoSize = True
         Me.RN4.Location = New System.Drawing.Point(77, 4)
-        Me.RN4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RN4.Margin = New System.Windows.Forms.Padding(4)
         Me.RN4.Name = "RN4"
         Me.RN4.Size = New System.Drawing.Size(45, 17)
         Me.RN4.TabIndex = 1
@@ -456,7 +456,7 @@ Partial Class FormulaireConfig
         '
         Me.RO4.AutoSize = True
         Me.RO4.Location = New System.Drawing.Point(12, 4)
-        Me.RO4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RO4.Margin = New System.Windows.Forms.Padding(4)
         Me.RO4.Name = "RO4"
         Me.RO4.Size = New System.Drawing.Size(41, 17)
         Me.RO4.TabIndex = 0
@@ -471,7 +471,7 @@ Partial Class FormulaireConfig
         Me.Label8.ForeColor = System.Drawing.Color.Black
         Me.Label8.Location = New System.Drawing.Point(279, 121)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(454, 25)
+        Me.Label8.Size = New System.Drawing.Size(368, 20)
         Me.Label8.TabIndex = 54
         Me.Label8.Text = "Souhaitez-vous modifier quelques options du jeu ? "
         '
@@ -482,7 +482,7 @@ Partial Class FormulaireConfig
         Me.btnRetour.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnRetour.ForeColor = System.Drawing.Color.White
         Me.btnRetour.Location = New System.Drawing.Point(595, 499)
-        Me.btnRetour.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnRetour.Margin = New System.Windows.Forms.Padding(4)
         Me.btnRetour.Name = "btnRetour"
         Me.btnRetour.Size = New System.Drawing.Size(343, 42)
         Me.btnRetour.TabIndex = 55
@@ -496,7 +496,7 @@ Partial Class FormulaireConfig
         Me.BtnReset.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.BtnReset.ForeColor = System.Drawing.Color.White
         Me.BtnReset.Location = New System.Drawing.Point(91, 499)
-        Me.BtnReset.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BtnReset.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnReset.Name = "BtnReset"
         Me.BtnReset.Size = New System.Drawing.Size(345, 42)
         Me.BtnReset.TabIndex = 56
@@ -511,7 +511,7 @@ Partial Class FormulaireConfig
         Me.PnlRadioBtn.Controls.Add(Me.PanelCoup)
         Me.PnlRadioBtn.Controls.Add(Me.PanelTimer)
         Me.PnlRadioBtn.Location = New System.Drawing.Point(397, 176)
-        Me.PnlRadioBtn.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PnlRadioBtn.Margin = New System.Windows.Forms.Padding(4)
         Me.PnlRadioBtn.Name = "PnlRadioBtn"
         Me.PnlRadioBtn.Size = New System.Drawing.Size(148, 297)
         Me.PnlRadioBtn.TabIndex = 57
@@ -532,7 +532,7 @@ Partial Class FormulaireConfig
         Me.RadioButton1.Location = New System.Drawing.Point(77, 4)
         Me.RadioButton1.Margin = New System.Windows.Forms.Padding(4)
         Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(53, 20)
+        Me.RadioButton1.Size = New System.Drawing.Size(45, 17)
         Me.RadioButton1.TabIndex = 1
         Me.RadioButton1.Text = "Non"
         Me.RadioButton1.UseVisualStyleBackColor = True
@@ -543,7 +543,7 @@ Partial Class FormulaireConfig
         Me.RadioButton2.Location = New System.Drawing.Point(12, 4)
         Me.RadioButton2.Margin = New System.Windows.Forms.Padding(4)
         Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(48, 20)
+        Me.RadioButton2.Size = New System.Drawing.Size(41, 17)
         Me.RadioButton2.TabIndex = 0
         Me.RadioButton2.Text = "Oui"
         Me.RadioButton2.UseVisualStyleBackColor = True
@@ -555,7 +555,7 @@ Partial Class FormulaireConfig
         Me.Label9.Location = New System.Drawing.Point(28, 443)
         Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(343, 21)
+        Me.Label9.Size = New System.Drawing.Size(286, 19)
         Me.Label9.TabIndex = 58
         Me.Label9.Text = "Changer l'emplacement / nom d'un fic :"
         '
@@ -579,7 +579,7 @@ Partial Class FormulaireConfig
         Me.Controls.Add(Me.Titre)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximumSize = New System.Drawing.Size(1047, 620)
         Me.Name = "FormulaireConfig"
         Me.Text = "Configuration "

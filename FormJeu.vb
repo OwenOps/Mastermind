@@ -24,9 +24,9 @@
                 txt.ForeColor = Color.Black
             Next
 
-            ModuleConfig.setNombreCoup(ModuleConfig.getCoupDefaut)
+            ModulePartie.setNombreCoup(ModuleConfig.getNombreCoupChoisis)
+            ModulePartie.afficheCaraJouable(CaraJouable)
             nombreCoup()
-            gestionTimer()
 
             LblBravoPerdu.Hide()
             LstCaraHisto.Clear()
@@ -44,6 +44,7 @@
                 TimerJeu.Start()
                 gestionTimerLabel()
             Else
+                TimerJeu.Stop()
                 LblTimerReste.Text = "Timer Désactivé."
                 LblTimer.Hide()
                 ProgressBarJeu.Value = ProgressBarJeu.Minimum

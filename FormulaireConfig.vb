@@ -2,9 +2,9 @@
 Public Class FormulaireConfig
     Public Sub afficheBtnReset()
         If ModuleConfig.configChange Then
-            BtnReset.Show()
+            BtnReset.Enabled = True
         Else
-            BtnReset.Hide()
+            BtnReset.Enabled = False
         End If
     End Sub
 
@@ -71,6 +71,7 @@ Public Class FormulaireConfig
         Dim textActive = textBox.Name
 
         If e.KeyChar = vbBack Then Exit Sub
+
 
         If PnlCoupCache.Visible Or PnlTimerCache.Visible Then
             If textActive = TxtNbrCoup.Name And Not Char.IsDigit(e.KeyChar) Then
@@ -222,6 +223,4 @@ Public Class FormulaireConfig
             e.Cancel = True
         End If
     End Sub
-
-
 End Class

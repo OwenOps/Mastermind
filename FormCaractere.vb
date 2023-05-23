@@ -23,12 +23,13 @@
         Dim textBox As TextBox = CType(sender, TextBox)
 
         If Char.IsLetter(e.KeyChar) Then
-            Dim entree As String = e.KeyChar.ToString()
+            Dim entree As String = Char.ToUpper(e.KeyChar)
 
             If ModuleConfig.getCaraJouable.ToArray.Contains(entree) Then
                 If textBox.Text.Length > 0 Then
                     e.Handled = True
                 End If
+                textBox.Text = entree.ToString()
             Else
                 e.Handled = True
             End If
