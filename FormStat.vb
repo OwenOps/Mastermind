@@ -4,22 +4,22 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports MasterMind.ModuleJoueur
 
 Public Class FormStat
-
     Private joueurs As Joueur()
     Private statistiques As New List(Of String)
 
     Private Sub FormStat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        resetFormStats()
-
         cbxNomJoueur.AutoCompleteMode = AutoCompleteMode.Append
         cbxNomJoueur.AutoCompleteSource = AutoCompleteSource.ListItems
     End Sub
-    Sub resetFormStats()
+
+    Private Sub FormStat_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
         joueurs = getJoueurs()
         joueurs = ModuleJoueur.getJoueurHistorique()
+
         For Each joueur As Joueur In joueurs
             cbxNomJoueur.Items.Add(joueur.nom)
         Next
+
         statistiques.Clear()
         For Each lstbox As ListBox In pnlStats.Controls
             lstbox.Items.Clear()
@@ -36,8 +36,8 @@ Public Class FormStat
         initialiserLabelPodium()
         remplirPodiumScore()
         afficherPodiumScore()
-
     End Sub
+
     Private Sub lstAll_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBox1.SelectedIndexChanged, lstBox2.SelectedIndexChanged, lstBox3.SelectedIndexChanged, lstBox4.SelectedIndexChanged, lstBox5.SelectedIndexChanged, lstBox6.SelectedIndexChanged
         Dim index As Integer = sender.SelectedIndex
         For Each ListBox In pnlStats.Controls
@@ -81,11 +81,13 @@ Public Class FormStat
             Next
         End If
     End Sub
+
     Private Sub initialiserLabelPodium()
         lblPodium1.Text = Nothing
         lblPodium2.Text = Nothing
         lblPodium3.Text = Nothing
     End Sub
+
     Private Sub UpdateListBoxes()
         Dim i As Integer
         i = 5
@@ -154,7 +156,6 @@ Public Class FormStat
     Private Sub btnRetour_Click(sender As Object, e As EventArgs) Handles btnRetour.Click
         Me.Hide()
         FormAccueil.Show()
-
     End Sub
 
     Private Sub FormStat_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -164,7 +165,6 @@ Public Class FormStat
             e.Cancel = True
         End If
     End Sub
-
 End Class
 
 
