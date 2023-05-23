@@ -1,18 +1,22 @@
 ﻿Public Class FormCaractere
     Private Sub FormCaractere_Load() Handles MyBase.Load
+        'Pour trier le panel
         Dim ctrlList As List(Of Control) = PnlCaractereJoue.Controls.Cast(Of Control).OrderBy(Function(c) c.TabIndex).ToList()
-        Dim caraChaine As String = ""
-        lblNom.Text = getDeuxiemeJoueur().nom
-        Me.AcceptButton = btnHide
-
         For i As Integer = 0 To ctrlList.Count - 1
             PnlCaractereJoue.Controls.SetChildIndex(ctrlList(i), i)
         Next
+    End Sub
 
-        For Each cara In ModuleConfig.getCaraJouable.ToArray
-            caraChaine += "  " & cara & "  "
-        Next
-        lblCaraJouable.Text = caraChaine
+    Private Sub FormCaractere_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
+        If Me.Visible Then
+            For Each txt As TextBox In PnlCaractereJoue.Controls
+                resetTxt(txt)
+            Next
+
+            Me.AcceptButton = btnHide
+            lblNom.Text = getDeuxiemeJoueur().nom
+            afficheCaraJouable(lblCaraJouable)
+        End If
     End Sub
 
     Private Sub TextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtBox1.KeyPress, txtBox2.KeyPress, txtBox3.KeyPress, txtBox4.KeyPress, txtBox5.KeyPress
@@ -49,8 +53,6 @@
         If erreur = False Then
             If demandeJouer() Then
                 ModulePartie.setCaraATrouver(chaineATrouve.ToArray)
-                resetFormCaractere()
-                FormJeu.resetFormJeu()
             End If
 
         Else
@@ -60,13 +62,6 @@
 
     Private Sub btnAleatoire_Click(sender As Object, e As EventArgs) Handles btnAleatoire.Click
         ModulePartie.setCaraAleatoire()
-    End Sub
-
-    Sub resetFormCaractere()
-        For Each txt As TextBox In PnlCaractereJoue.Controls
-            resetTxt(txt)
-        Next
-        lblNom.Text = getDeuxiemeJoueur().nom
     End Sub
 
     Function demandeJouer() As Boolean

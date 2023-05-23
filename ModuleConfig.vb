@@ -1,18 +1,53 @@
 ﻿Module ModuleConfig
-    Private CaraJouable() As String = {"A", "B", "C", "D", "E"}
-    'Les coups au court de la partie
-    Private NombreDeCoupPossible As Integer = 15
-
-    'Les coups defauts choisis par l'utilisateur ou non
-    Private NbrCoupDefaut As Integer = 15
+    Private Const CARA_DEFAUT As String = "ABCDE"
     Private Const NBR_CARA As Integer = 5
+    Private Const NBR_COUP_DEFAUT As Integer = 15
+    Private Const TEMPS_DEFAUT As Integer = 90
 
+    Private CaraJouable() As String = {"A", "B", "C", "D", "E"}
+    Private NombreCoupChoisis As Integer = 15
     Private timerActive = True
-    Private tempsDefaut As Integer = 90
-    Private tempsMax As Integer = tempsDefaut
+    Private tempsMax As Integer = TEMPS_DEFAUT
 
-    Public Sub enleveNombreCoup()
-        NombreDeCoupPossible = NombreDeCoupPossible - 1
+    Public Function getNombreCoupChoisis() As Integer
+        Return NombreCoupChoisis
+    End Function
+
+    Public Function caraDifferent(newCara As String)
+        If String.Compare(newCara, CARA_DEFAUT) <> 0 Then
+
+            'Hashset c'est pour stocker des caracteres unique.
+            Dim caracteres As New HashSet(Of Char)()
+            For Each caractere As Char In newCara
+                If caracteres.Contains(caractere) Then
+                    Return False
+                End If
+                caracteres.Add(caractere)
+            Next
+        Else
+            Return False
+        End If
+        Return True
+    End Function
+
+    Public Sub setNombreCoupChoisis(nbr As Integer)
+        NombreCoupChoisis = nbr
+    End Sub
+
+    Public Function configChange() As Boolean
+        If NombreCoupChoisis <> NBR_COUP_DEFAUT Or timerActive = False Or tempsMax <> TEMPS_DEFAUT Or getCaraJouable() <> CARA_DEFAUT Then
+            Return True
+        End If
+        Return False
+    End Function
+
+    Public Sub resetConfigDefaut()
+        NombreCoupChoisis = NBR_COUP_DEFAUT
+        timerActive = True
+        tempsMax = TEMPS_DEFAUT
+        setCaraJouable(CARA_DEFAUT)
+        FormulaireConfig.afficheBtnReset()
+        FormulaireConfig.resetFormConfig()
     End Sub
 
     Public Sub setTempsMax(nbr As Integer)
@@ -35,15 +70,6 @@
         Return NBR_CARA
     End Function
 
-    Public Sub setNombreCoup(nbr As Integer)
-        NombreDeCoupPossible = nbr
-        NbrCoupDefaut = nbr
-    End Sub
-
-    Public Function getNombreCoup() As Integer
-        Return NombreDeCoupPossible
-    End Function
-
     Public Sub setCaraJouable(cara As String)
         If cara <> "" And cara.Length = NBR_CARA Then
             cara = cara.ToArray
@@ -59,13 +85,5 @@
             caractere += CaraJouable(i)
         Next
         Return caractere
-    End Function
-
-    Public Function getCoupDefaut() As Integer
-        Return NbrCoupDefaut
-    End Function
-
-    Public Function getTempsDefaut() As Integer
-        Return tempsDefaut
     End Function
 End Module

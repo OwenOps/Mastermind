@@ -1,5 +1,4 @@
 ﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
-
 Public Class FormAccueil
     Private Sub FormAccueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ModuleJoueur.chargercbxNomJoueur()
@@ -11,14 +10,17 @@ Public Class FormAccueil
         cbxNomJoueur2.AutoCompleteSource = AutoCompleteSource.ListItems
     End Sub
 
+    Private Sub FormAccueil_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
+        If Me.Visible Then
+            ModuleJoueur.changeJoueur1ToJoueur2()
+        End If
+    End Sub
+
     Private Sub btnJouer_Click(sender As Object, e As EventArgs) Handles btnJouer.Click
         If (verifJoueur()) Then
             'ArchiverJoueurDansFichier()
             enregistrerJoueur()
-            resetFormAccueil()
-            changeJoueur1ToJoueur2()
             Me.Hide()
-            FormCaractere.resetFormCaractere()
             FormCaractere.Show()
         End If
     End Sub

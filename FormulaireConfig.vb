@@ -1,41 +1,18 @@
 ﻿Imports System.Diagnostics.Eventing.Reader
-
 Public Class FormulaireConfig
-    Dim caraDefault As String = "A,B,C,D,E"
-
-    Private Sub Radio_CheckedChanged(sender As Object, e As EventArgs) Handles RO1.CheckedChanged, RO2.CheckedChanged, RO3.CheckedChanged, RO4.CheckedChanged, RN1.CheckedChanged, RN2.CheckedChanged, RN3.CheckedChanged, RN4.CheckedChanged
-        Dim radioBoutton As RadioButton = TryCast(sender, RadioButton)
-        Dim nomRadio = radioBoutton.Name
-
-        Select Case nomRadio
-            Case RO1.Name
-                PnlTimerCache.Visible = radioBoutton.Checked
-                ModuleConfig.setTimerActive(True)
-            Case RO2.Name
-                PnlCoupCache.Visible = radioBoutton.Checked
-            Case RO3.Name
-                PnlCaraCache.Visible = radioBoutton.Checked
-            Case RO4.Name
-                If ModuleJoueur.joueurHistoriqueEstVide() And RO4.Checked Then
-                    RO4.Checked = False
-                    MsgBox("Il n'y a pas encore de joueurs enregistrés", vbOKOnly, "Erreur")
-                Else
-                    ModuleJoueur.chargercbxNomJoueur()
-                    PnlNomCache.Visible = radioBoutton.Checked
-                End If
-            Case RN1.Name
-                PnlTimerCache.Visible = False
-                ModuleConfig.setTimerActive(False)
-            Case RN2.Name
-                PnlCoupCache.Visible = False
-            Case RN3.Name
-                PnlCaraCache.Visible = False
-            Case RN4.Name
-                PnlNomCache.Visible = False
-        End Select
+    Public Sub afficheBtnReset()
+        If ModuleConfig.configChange Then
+            BtnReset.Show()
+        Else
+            BtnReset.Hide()
+        End If
     End Sub
 
-    Sub resetFormConfig()
+    Private Sub FormulaireConfig_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
+        resetFormConfig()
+    End Sub
+
+    Public Sub resetFormConfig()
         resetTxt(TxtCaraChange)
         resetTxt(TxtNbrCoup)
         resetTxt(TxtTempsMin)
@@ -55,14 +32,50 @@ Public Class FormulaireConfig
         Next
     End Sub
 
-    Private Sub Txt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtNbrCoup.KeyPress, TxtCaraChange.KeyPress
+    Private Sub Radio_CheckedChanged(sender As Object, e As EventArgs) Handles RO1.CheckedChanged, RO2.CheckedChanged, RO3.CheckedChanged, RO4.CheckedChanged, RN1.CheckedChanged, RN2.CheckedChanged, RN3.CheckedChanged, RN4.CheckedChanged
+        Dim radioBoutton As RadioButton = TryCast(sender, RadioButton)
+        Dim nomRadio = radioBoutton.Name
+
+        Select Case nomRadio
+            Case RO1.Name
+                PnlTimerCache.Visible = radioBoutton.Checked
+                ModuleConfig.setTimerActive(True)
+                afficheBtnReset()
+            Case RO2.Name
+                PnlCoupCache.Visible = radioBoutton.Checked
+            Case RO3.Name
+                PnlCaraCache.Visible = radioBoutton.Checked
+            Case RO4.Name
+                If ModuleJoueur.joueurHistoriqueEstVide() And RO4.Checked Then
+                    RO4.Checked = False
+                    MsgBox("Il n'y a pas encore de joueurs enregistrés", vbOKOnly, "Erreur")
+                Else
+                    ModuleJoueur.chargercbxNomJoueur()
+                    PnlNomCache.Visible = radioBoutton.Checked
+                End If
+            Case RN1.Name
+                PnlTimerCache.Visible = False
+                ModuleConfig.setTimerActive(False)
+                afficheBtnReset()
+            Case RN2.Name
+                PnlCoupCache.Visible = False
+            Case RN3.Name
+                PnlCaraCache.Visible = False
+            Case RN4.Name
+                PnlNomCache.Visible = False
+        End Select
+    End Sub
+
+    Private Sub Txt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtNbrCoup.KeyPress, TxtCaraChange.KeyPress, TxtTempsMin.KeyPress, TxtTempsSec.KeyPress
         Dim textBox As TextBoxBase = TryCast(sender, TextBox)
         Dim textActive = textBox.Name
 
         If e.KeyChar = vbBack Then Exit Sub
 
-        If PnlCoupCache.Visible Then
+        If PnlCoupCache.Visible Or PnlTimerCache.Visible Then
             If textActive = TxtNbrCoup.Name And Not Char.IsDigit(e.KeyChar) Then
+                e.Handled = True
+            ElseIf (textActive = TxtTempsMin.Name Or textActive = TxtTempsSec.Name) And Not Char.IsDigit(e.KeyChar) Then
                 e.Handled = True
             End If
         ElseIf PnlCaraCache.Visible Then
@@ -84,7 +97,7 @@ Public Class FormulaireConfig
 
             Dim nbrCoup As Integer = 0
             If TxtNbrCoup.Text <> "" And Integer.TryParse(TxtNbrCoup.Text, nbrCoup) AndAlso nbrCoup > 0 Then
-                ModuleConfig.setNombreCoup(TxtNbrCoup.Text)
+                ModuleConfig.setNombreCoupChoisis(TxtNbrCoup.Text)
                 ModulePartie.resetTxt(TxtNbrCoup)
             Else
                 MessageBox.Show("Le nombre de coup doit etre supérieur a 0.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -92,9 +105,10 @@ Public Class FormulaireConfig
 
         ElseIf btnActive = BtnValidCara.Name Then
 
-            If TxtCaraChange.Text.Length = ModuleConfig.getNbrCaraMax Then
-                If caraDifferent() Then
-                    ModuleConfig.setCaraJouable(TxtCaraChange.Text)
+            Dim nouveauCara = TxtCaraChange.Text
+            If nouveauCara.Length = ModuleConfig.getNbrCaraMax Then
+                If ModuleConfig.caraDifferent(nouveauCara) Then
+                    ModuleConfig.setCaraJouable(nouveauCara)
                 Else
                     MessageBox.Show("Les caractères doivent être différent.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
@@ -108,14 +122,8 @@ Public Class FormulaireConfig
         ElseIf btnActive = BtnValidTimer.Name Then
             temps()
         End If
+        afficheBtnReset()
     End Sub
-
-    Private Function caraDifferent()
-        If String.Compare(TxtCaraChange.Text, ModuleConfig.getCaraJouable) = 0 Then
-            Return False
-        End If
-        Return True
-    End Function
 
     Private Sub temps()
         Dim min As Integer
@@ -153,7 +161,6 @@ Public Class FormulaireConfig
         ModulePartie.resetTxt(TxtTempsSec)
         ModulePartie.resetTxt(TxtTempsMin)
     End Sub
-
 
     Private Sub BtnValidNom_Click(sender As Object, e As EventArgs) Handles BtnValidNom.Click
         If cbxNomJoueurChange.Text = "" Then
@@ -196,25 +203,16 @@ Public Class FormulaireConfig
         'FormAccueil.Show()
     End Sub
 
-    Private Sub TxtTemps_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtTempsMin.KeyPress, TxtTempsSec.KeyPress
-        If e.KeyChar = vbBack Then Exit Sub
-        Dim textBox As TextBox = CType(sender, TextBox)
-        If Not Char.IsDigit(e.KeyChar) Then
-            e.Handled = True
-        End If
-    End Sub
-
     Private Sub btnRetour_Click(sender As Object, e As EventArgs) Handles btnRetour.Click
         Me.Hide()
         FormMasterMind.Show()
     End Sub
 
     Private Sub BtnReset_Click(sender As Object, e As EventArgs) Handles BtnReset.Click
-        ModuleConfig.setNombreCoup(ModuleConfig.getCoupDefaut)
-        ModuleConfig.setTimerActive(True)
-        ModuleConfig.setTempsMax(ModuleConfig.getTempsDefaut)
-        ModuleConfig.setCaraJouable(caraDefault)
-        MsgBox("Configuration remis par default.", "Erreur")
+        If ModuleConfig.configChange Then
+            ModuleConfig.resetConfigDefaut()
+        End If
+        MessageBox.Show("Configuration remis par default.", "Erreur")
     End Sub
 
     Private Sub FormConfig_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

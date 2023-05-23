@@ -1,51 +1,45 @@
 ﻿Public Class FormJeu
     Private Sub FormJeu_Load() Handles MyBase.Load
-        gestionTimer()
-
-        Dim caraChaine As String = ""
-        For Each cara In ModuleConfig.getCaraJouable.ToArray
-            caraChaine += "  " & cara & "  "
-        Next
-        CaraJouable.Text = caraChaine
-
         'Pour trie dans ordre la liste des txtBox, sans ca probleme
         Dim ctrlList As List(Of Control) = PnlCaractereJoue.Controls.Cast(Of Control).OrderBy(Function(c) c.TabIndex).ToList()
 
         For i As Integer = 0 To ctrlList.Count - 1
             PnlCaractereJoue.Controls.SetChildIndex(ctrlList(i), i)
         Next
-
-        nombreCoup()
-        LblNomJoueur.Text = getDeuxiemeJoueur().nom
     End Sub
 
-    Public Sub resetFormJeu()
-        For Each txt As TextBox In PnlCaractereJoue.Controls
-            resetTxt(txt)
-            txt.BackColor = Color.White
-            txt.ForeColor = Color.Black
-        Next
+    Private Sub FormJeu_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
+        If Me.Visible Then
+            For Each txt As TextBox In PnlCaractereJoue.Controls
+                resetTxt(txt)
+                txt.BackColor = Color.White
+                txt.ForeColor = Color.Black
+            Next
 
-        ModuleConfig.setNombreCoup(ModuleConfig.getCoupDefaut)
-        nombreCoup()
-        gestionTimer()
+            ModulePartie.setNombreCoup(ModuleConfig.getNombreCoupChoisis)
+            ModulePartie.afficheCaraJouable(CaraJouable)
+            nombreCoup()
 
-        LblBravoPerdu.Hide()
-        LstCaraHisto.Clear()
-        TimerJeu.Start()
-        BtnGuess.Show()
-        btnExit.Hide()
-    End Sub
+            LblBravoPerdu.Hide()
+            LstCaraHisto.Clear()
+            BtnGuess.Show()
+            btnExit.Hide()
+            LblNomJoueur.Text = getDeuxiemeJoueur().nom
 
-    Sub gestionTimer()
-        If ModuleConfig.timerEstActive Then
-            initTimerEtProgressBar()
-            LblTimer.Show()
-            LblTimerReste.Text = "Il te reste : "
-        Else
-            LblTimerReste.Text = "Timer Désactivé."
-            LblTimer.Hide()
-            ProgressBarJeu.Value = ProgressBarJeu.Minimum
+            If LblBravoPerdu.ForeColor = Color.Green Then
+                LblBravoPerdu.Left -= 12
+            ElseIf LblBravoPerdu.ForeColor = Color.Red Then
+                LblBravoPerdu.Left += 4
+            End If
+
+            If ModuleConfig.timerEstActive Then
+                TimerJeu.Start()
+                gestionTimerLabel()
+            Else
+                LblTimerReste.Text = "Timer Désactivé."
+                LblTimer.Hide()
+                ProgressBarJeu.Value = ProgressBarJeu.Minimum
+            End If
         End If
     End Sub
 
@@ -54,7 +48,7 @@
 
         If ToutValide() Then
             BravoPerdu = True
-        ElseIf getNombreCoup() > 0 Then
+        ElseIf ModulePartie.getNombreCoup() > 0 Then
             Exit Sub
         End If
 
@@ -90,7 +84,7 @@
                 ModulePartie.resetTxt(txt)
             Next
 
-            ModuleConfig.enleveNombreCoup()
+            ModulePartie.enleveNombreCoup()
             nombreCoup()
             LblBravoPerdu_Click()
         End If
@@ -138,10 +132,10 @@
         End If
     End Sub
 
-    Private Sub gagnePerdu(bravoPerdu As Boolean)
+    Private Sub gagnePerdu(gagne As Boolean)
         Dim temps = ModuleConfig.getTempsMax - ModulePartie.getTempsPartie()
 
-        If bravoPerdu Then
+        If gagne Then
             LblBravoPerdu.Text = "Bravo, tu remportes cette manche !!!"
             LblBravoPerdu.Left += 12
             LblBravoPerdu.ForeColor = Color.Green
@@ -165,42 +159,34 @@
     End Sub
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        If LblBravoPerdu.ForeColor = Color.Green Then
-            LblBravoPerdu.Left -= 12
-        ElseIf LblBravoPerdu.ForeColor = Color.Red Then
-            LblBravoPerdu.Left += 4
-        End If
-
         Me.Hide()
         FormAccueil.Show()
     End Sub
 
     Private Sub nombreCoup()
-        Me.Text = "Il vous reste " & ModuleConfig.getNombreCoup.ToString & " coup(s)..."
+        Me.Text = "Il vous reste " & ModulePartie.getNombreCoup.ToString & " coup(s)..."
     End Sub
 
-    Private Sub initTimerEtProgressBar()
-        If Not ModuleConfig.timerEstActive Then
-            Exit Sub
-        End If
+    Sub gestionTimerLabel()
+        initTimerEtProgressBar()
+        LblTimer.Show()
+        LblTimerReste.Text = "Il te reste : "
+    End Sub
 
-        'On initialise le timer et la progressbar
+    'On initialise le timer et la progressbar
+    Private Sub initTimerEtProgressBar()
         Dim tempsMax As Integer = ModuleConfig.getTempsMax
         ModulePartie.setTempsPartie(tempsMax)
-        AfficheLabelTimer(tempsMax)
+        ModulePartie.AfficheLabelTimer(tempsMax, LblTimer)
         ProgressBarJeu.Maximum = tempsMax
         ProgressBarJeu.Value = tempsMax
     End Sub
 
     Private Sub TimerJeu_Tick(sender As Object, e As EventArgs) Handles TimerJeu.Tick
-        If Not ModuleConfig.timerEstActive Then
-            Exit Sub
-        End If
-
         Dim tempsMax = ModulePartie.getTempsPartie()
         tempsMax -= 1
         ProgressBarJeu.Value = tempsMax
-        AfficheLabelTimer(tempsMax)
+        ModulePartie.AfficheLabelTimer(tempsMax, LblTimer)
 
         ModulePartie.setTempsPartie(tempsMax)
         If ModulePartie.timerFinis() Then
@@ -215,22 +201,6 @@
             Application.Exit()
         Else
             e.Cancel = True
-        End If
-    End Sub
-
-    Private Sub AfficheLabelTimer(tempsMax As Integer)
-        Dim ts As Integer = 0, h = 0, m = 0, s = 0
-        ts = tempsMax
-        h = ts / 3600
-        m = Math.Floor((ts / 60) - 60 * h)
-        s = ts - 3600 * h - 60 * m
-
-        If tempsMax >= 3600 Then
-            LblTimer.Text = h & " h : " & m & " min : " & s & " sec"
-        ElseIf tempsMax >= 60 Then
-            LblTimer.Text = m & " min : " & s & " sec"
-        Else
-            LblTimer.Text = s & " sec"
         End If
     End Sub
 End Class

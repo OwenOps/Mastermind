@@ -51,6 +51,7 @@ Module ModuleJoueur
     Public Sub setAncienNomTemp(ancien As String)
         ancienNomTemp = ancien
     End Sub
+
     Public Sub changeJoueur1ToJoueur2()
         FormAccueil.cbxNomJoueur1.Text = JoueurActuel(1).nom
         FormAccueil.cbxNomJoueur2.Text = JoueurActuel(0).nom
@@ -73,6 +74,7 @@ Module ModuleJoueur
             End If
         Next
     End Sub
+
     Function estVideJoueurHisto() As Boolean
         If JoueurHistorique(0).nom = Nothing And JoueurHistorique(1).nom = Nothing Then
             Return True
@@ -84,10 +86,6 @@ Module ModuleJoueur
     Public Sub ajouterStats(joueur As Joueur, temps As Integer)
         If (joueur.estPremierJoueur) Then
             JoueurActuel(0).score += 1
-            JoueurActuel(0).cumulTemps += temps
-            If JoueurActuel(0).meilleurTemps = 0 Or JoueurActuel(0).meilleurTemps > temps Then
-                JoueurActuel(0).meilleurTemps = temps
-            End If
             JoueurActuel(1).cumulTemps += temps
         Else
             JoueurActuel(1).score += 1
@@ -95,7 +93,6 @@ Module ModuleJoueur
             If JoueurActuel(1).meilleurTemps = 0 Or JoueurActuel(1).meilleurTemps > temps Then
                 JoueurActuel(1).meilleurTemps = temps
             End If
-            JoueurActuel(0).cumulTemps += temps
         End If
     End Sub
 
@@ -179,11 +176,6 @@ Module ModuleJoueur
         FileClose(num)
     End Sub
 
-    Public Sub resetFormAccueil()
-        FormAccueil.cbxNomJoueur1.Text = ""
-        FormAccueil.cbxNomJoueur2.Text = ""
-    End Sub
-
     Public Function verifJoueur() As Boolean
         If FormAccueil.cbxNomJoueur1.Text = "" Or FormAccueil.cbxNomJoueur2.Text = "" Then
             MsgBox("Veuillez entrer un nom pour chaque joueur", vbOKOnly, "Erreur")
@@ -236,14 +228,6 @@ Module ModuleJoueur
             End If
         Next
     End Sub
-
-    Public Function getAncienNomJoueur(nomActu As String) As String
-        For i As Integer = 0 To JoueurHistorique.Length - 1
-            If JoueurHistorique(i).nom = nomActu Then
-                Return JoueurHistorique(i).ancienNom
-            End If
-        Next
-    End Function
 
     Public Sub setAncienNomJoueur(nomActu As String)
         For i As Integer = 0 To JoueurHistorique.Length - 1
