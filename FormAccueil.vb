@@ -13,6 +13,7 @@ Public Class FormAccueil
     Private Sub FormAccueil_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
         If Me.Visible Then
             ModuleJoueur.changeJoueur1ToJoueur2()
+            ModuleConfig.afficheDifficulte(LblDifficulte)
         End If
     End Sub
 

@@ -5,13 +5,6 @@
         FormMasterMind.Show()
         Me.AcceptButton = btnEntrainement
     End Sub
-    Private Sub FormRegles_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If ModuleGestionAppli.fermetureFormDialog Then
-            Application.Exit()
-        Else
-            e.Cancel = True
-        End If
-    End Sub
 
     Private Sub btnEntrainement_Click(sender As Object, e As EventArgs) Handles btnEntrainement.Click
         Dim nomJoueur = InputBox("Quel est ton nom ?", "Nom d'entrainement")
@@ -31,6 +24,14 @@
 
             Me.Hide()
             FormJeu.Show()
+        End If
+    End Sub
+
+    Private Sub FormRegles_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If ModuleGestionAppli.fermetureFormDialog Then
+            Application.Exit()
+        Else
+            e.Cancel = True
         End If
     End Sub
 End Class

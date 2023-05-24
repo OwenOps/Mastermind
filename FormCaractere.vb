@@ -16,6 +16,7 @@
             Me.AcceptButton = btnHide
             lblNom.Text = getDeuxiemeJoueur().nom
             afficheCaraJouable(lblCaraJouable)
+            ModuleConfig.afficheDifficulte(LblDifficulte)
         End If
     End Sub
 
@@ -50,18 +51,14 @@
             End If
         Next
 
-        If erreur = False Then
-            If demandeJouer() Then
-                ModulePartie.setCaraATrouver(chaineATrouve.ToArray)
-            End If
-
-        Else
+        If erreur = True Then
             MessageBox.Show("Veuillez remplir toutes les cases pour commencer à jouer !", "Erreur")
+            Exit Sub
         End If
-    End Sub
 
-    Private Sub btnAleatoire_Click(sender As Object, e As EventArgs) Handles btnAleatoire.Click
-        ModulePartie.setCaraAleatoire()
+        If demandeJouer() Then
+            ModulePartie.setCaraATrouver(chaineATrouve.ToArray)
+        End If
     End Sub
 
     Function demandeJouer() As Boolean
@@ -73,6 +70,10 @@
         End If
         Return False
     End Function
+
+    Private Sub btnAleatoire_Click(sender As Object, e As EventArgs) Handles btnAleatoire.Click
+        ModulePartie.setCaraAleatoire()
+    End Sub
 
     Sub caraDansTxtBox(cara() As Char)
         Dim cpt As Integer = 0

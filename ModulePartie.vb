@@ -4,11 +4,40 @@ Module ModulePartie
     Private nombreCoupPossible = ModuleConfig.getNombreCoupChoisis
     Private nomJoueur As String
     Private modeEntrainement As Boolean = False
+    Private difficulte As String
+    Private Const COUP_HARD = 5
+    Private Const COUP_FACILE = 20
 
     Public Sub setModeEntrainement(bool As Boolean, nom As String)
         modeEntrainement = bool
         nomJoueur = nom
     End Sub
+
+    Public Sub setPartie()
+        If estHard() Then
+            nombreCoupPossible = COUP_HARD
+        ElseIf estFacile Then
+            nombreCoupPossible = COUP_FACILE
+        Else
+            nombreCoupPossible = ModuleConfig.getNombreCoupChoisis
+        End If
+    End Sub
+
+    Public Function estFacile() As Boolean
+        Return difficulte = ModuleConfig.getFacile
+    End Function
+
+    Public Function estHard() As Boolean
+        Return difficulte = ModuleConfig.getHard
+    End Function
+
+    Public Sub setDifficultePartie(diff As String)
+        difficulte = diff
+    End Sub
+
+    Public Function getDifficultePartie() As String
+        Return difficulte
+    End Function
 
     Public Function getModeEntrainement() As Boolean
         Return modeEntrainement

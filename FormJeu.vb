@@ -7,8 +7,6 @@
             PnlCaractereJoue.Controls.SetChildIndex(ctrlList(i), i)
         Next
 
-        nombreCoup()
-
         If (ModulePartie.getModeEntrainement()) Then
             LblNomJoueur.Text = ModulePartie.getNomJoueur()
         Else
@@ -24,8 +22,14 @@
                 txt.ForeColor = Color.Black
             Next
 
-            ModulePartie.setNombreCoup(ModuleConfig.getNombreCoupChoisis)
-            ModulePartie.afficheCaraJouable(CaraJouable)
+            If LblBravoPerdu.ForeColor = Color.Green Then
+                LblBravoPerdu.Left -= 12
+            ElseIf LblBravoPerdu.ForeColor = Color.Red Then
+                LblBravoPerdu.Left += 4
+            End If
+
+            ModulePartie.setPartie()
+            afficheCaraJouable(LblCaraJouable)
             nombreCoup()
 
             LblBravoPerdu.Hide()
@@ -34,13 +38,7 @@
             btnExit.Hide()
             LblNomJoueur.Text = getDeuxiemeJoueur().nom
 
-            If LblBravoPerdu.ForeColor = Color.Green Then
-                LblBravoPerdu.Left -= 12
-            ElseIf LblBravoPerdu.ForeColor = Color.Red Then
-                LblBravoPerdu.Left += 4
-            End If
-
-            If ModuleConfig.timerEstActive Then
+            If ModuleConfig.timerEstActive Or ModulePartie.estFacile Or ModulePartie.estHard Then
                 TimerJeu.Start()
                 gestionTimerLabel()
             Else
@@ -49,6 +47,8 @@
                 LblTimer.Hide()
                 ProgressBarJeu.Value = ProgressBarJeu.Minimum
             End If
+
+            ModuleConfig.afficheDifficulte(LblDifficulte)
         End If
     End Sub
 
@@ -120,6 +120,7 @@
                 chaineAtrouver = chaineAtrouver.Remove(i, 1)
             End If
         Next
+
         Return chaineAtrouver.Contains(car)
     End Function
 
@@ -142,7 +143,12 @@
     End Sub
 
     Private Sub gagnePerdu(gagne As Boolean)
-        Dim temps = ModuleConfig.getTempsMax - ModulePartie.getTempsPartie()
+        Dim temps As Integer
+        If ModuleConfig.timerEstActive Then
+            temps = ModuleConfig.getTempsMax - ModulePartie.getTempsPartie()
+        Else
+            temps = 0
+        End If
 
         If gagne Then
             LblBravoPerdu.Text = "Bravo, tu remportes cette manche !!!"
@@ -168,11 +174,6 @@
     End Sub
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        If LblBravoPerdu.ForeColor = Color.Green Then
-            LblBravoPerdu.Left -= 12
-        ElseIf LblBravoPerdu.ForeColor = Color.Red Then
-            LblBravoPerdu.Left += 4
-        End If
         Me.Hide()
         If ModulePartie.getModeEntrainement() Then
             ModulePartie.setModeEntrainement(False, "")
@@ -180,7 +181,6 @@
         Else
             FormAccueil.Show()
         End If
-
     End Sub
 
     Private Sub nombreCoup()

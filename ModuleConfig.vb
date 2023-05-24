@@ -3,15 +3,65 @@
     Private Const NBR_CARA As Integer = 5
     Private Const NBR_COUP_DEFAUT As Integer = 15
     Private Const TEMPS_DEFAUT As Integer = 90
+    Private Const DIFFICULTE_DEFAUT As String = "Normal"
+    Private Const HARD As String = "Hard"
+    Private Const FACILE As String = "Facile"
+    Private Const TEMPS_HARD As Integer = 10
 
     Private CaraJouable() As String = {"A", "B", "C", "D", "E"}
     Private NombreCoupChoisis As Integer = 15
     Private timerActive = True
     Private tempsMax As Integer = TEMPS_DEFAUT
+    Private difficultePartie As String = DIFFICULTE_DEFAUT
 
     Public Function getNombreCoupChoisis() As Integer
         Return NombreCoupChoisis
     End Function
+
+    Public Sub afficheDifficulte(lbl As Label)
+        If estHard() Then
+            lbl.Visible = True
+            lbl.Text = HARD
+            lbl.ForeColor = Color.Red
+        ElseIf estFacile Then
+            lbl.Visible = True
+            lbl.Text = FACILE
+            lbl.ForeColor = Color.Green
+        Else
+            lbl.Visible = False
+        End If
+    End Sub
+
+    Private Function estHard() As Boolean
+        Return difficultePartie = HARD
+    End Function
+
+    Private Function estFacile() As Boolean
+        Return difficultePartie = FACILE
+    End Function
+
+    Public Function getHard() As String
+        Return HARD
+    End Function
+
+    Public Function getFacile() As String
+        Return FACILE
+    End Function
+
+    Public Function getNormal() As String
+        Return DIFFICULTE_DEFAUT
+    End Function
+
+    Public Sub setDifficulte(difficulte As String)
+        difficultePartie = difficulte
+        ModulePartie.setDifficultePartie(difficulte)
+
+        If estHard() Then
+            tempsMax = TEMPS_HARD
+        Else
+            tempsMax = TEMPS_DEFAUT
+        End If
+    End Sub
 
     Public Function caraDifferent(newCara As String)
         If String.Compare(newCara, CARA_DEFAUT) <> 0 Then
@@ -35,7 +85,7 @@
     End Sub
 
     Public Function configChange() As Boolean
-        If NombreCoupChoisis <> NBR_COUP_DEFAUT Or timerActive = False Or tempsMax <> TEMPS_DEFAUT Or getCaraJouable() <> CARA_DEFAUT Then
+        If NombreCoupChoisis <> NBR_COUP_DEFAUT Or timerActive = False Or tempsMax <> TEMPS_DEFAUT Or getCaraJouable() <> CARA_DEFAUT Or difficultePartie <> DIFFICULTE_DEFAUT Then
             Return True
         End If
         Return False
@@ -43,11 +93,18 @@
 
     Public Sub resetConfigDefaut()
         NombreCoupChoisis = NBR_COUP_DEFAUT
-        timerActive = True
         tempsMax = TEMPS_DEFAUT
+        difficultePartie = DIFFICULTE_DEFAUT
         setCaraJouable(CARA_DEFAUT)
+        ModulePartie.setDifficultePartie(DIFFICULTE_DEFAUT)
+
+        timerActive = True
         FormulaireConfig.afficheBtnReset()
         FormulaireConfig.resetFormConfig()
+
+        For Each txt As Button In FormulaireConfig.PnlDifficulte.Controls
+            txt.Enabled = True
+        Next
     End Sub
 
     Public Sub setTempsMax(nbr As Integer)
