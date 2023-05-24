@@ -1,9 +1,4 @@
-﻿Imports System.Drawing.Text
-Imports System.Windows.Forms
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-Imports MasterMind.ModuleJoueur
-
-Public Class FormStat
+﻿Public Class FormStat
     Private joueurs As Joueur()
     Private statistiques As New List(Of String)
 
@@ -47,15 +42,20 @@ Public Class FormStat
 
     Private Sub btnSortAlpha_Click(sender As Object, e As EventArgs) Handles btnSortAlpha.Click
         trierOrdreAlpha()
+        UpdateListBoxes()
     End Sub
 
     Private Sub btnSortScore_Click(sender As Object, e As EventArgs) Handles btnSortScore.Click
+        statistiques = statistiques.OrderBy(Function(stat) Integer.Parse(stat.Split(vbTab)(1))).Reverse().ToList()
+        UpdateListBoxes()
         initialiserLabelPodium()
         remplirPodiumScore()
         afficherPodiumScore()
     End Sub
 
     Private Sub btnSortTemps_Click(sender As Object, e As EventArgs) Handles btnSortTemps.Click
+        UpdateListBoxes()
+        remplirListBoxTemps()
         initialiserLabelPodium()
         remplirPodiumTemps()
         afficherPodiumTemps()
@@ -105,42 +105,24 @@ Public Class FormStat
         Next
     End Sub
 
-    Private Function trierOrdreAlpha()
-        lstBox1.Sorted = True
-        lstBox2.Items.Clear()
-        lstBox3.Items.Clear()
-        lstBox4.Items.Clear()
-        lstBox5.Items.Clear()
-        lstBox6.Items.Clear()
+    Private Sub trierOrdreAlpha()
+        Dim sortedStatistiques = statistiques.OrderBy(Function(stat) stat.Split(vbTab)(0))
+        statistiques = New List(Of String)(sortedStatistiques)
+    End Sub
 
-        For Each nom In lstBox1.Items
-            For Each joueur As Joueur In joueurs
-                If nom = joueur.nom Then
-                    lstBox2.Items.Add(joueur.score)
-                    lstBox3.Items.Add(afficherTemps(joueur.meilleurTemps))
-                    lstBox4.Items.Add(joueur.nbrPartiesPremierJoueur)
-                    lstBox5.Items.Add(joueur.nbrPartiesSecondJoueur)
-                    lstBox6.Items.Add(afficherTemps(joueur.cumulTemps))
-                End If
-            Next
-        Next
-        Return Nothing
-    End Function
-
-    Private Function afficherPodiumTemps()
-        If (getPodium(0).meilleurTemps <> 100000) Then
+    Private Sub afficherPodiumTemps()
+        If (getPodium(0).meilleurTemps <> ModuleStat.getMaxTemps) Then
             lblPodium1.Text = getPodium(0).nom & " : " & afficherTemps(getPodium(0).meilleurTemps)
         End If
-        If (getPodium(1).meilleurTemps <> 100000) Then
+        If (getPodium(1).meilleurTemps <> ModuleStat.getMaxTemps) Then
             lblPodium2.Text = getPodium(1).nom & " : " & afficherTemps(getPodium(1).meilleurTemps)
         End If
-        If (getPodium(2).meilleurTemps <> 100000) Then
+        If (getPodium(2).meilleurTemps <> ModuleStat.getMaxTemps) Then
             lblPodium3.Text = getPodium(2).nom & " : " & afficherTemps(getPodium(2).meilleurTemps)
         End If
-        Return Nothing
-    End Function
+    End Sub
 
-    Private Function afficherPodiumScore()
+    Private Sub afficherPodiumScore()
         If (getPodium(0).score <> -1) Then
             lblPodium1.Text = getPodium(0).nom & " : " & getPodium(0).score & " points !"
         End If
@@ -150,12 +132,47 @@ Public Class FormStat
         If (getPodium(2).score <> -1) Then
             lblPodium3.Text = getPodium(2).nom & " : " & getPodium(2).score & " points !"
         End If
-        Return Nothing
-    End Function
+    End Sub
 
     Private Sub btnRetour_Click(sender As Object, e As EventArgs) Handles btnRetour.Click
         Me.Hide()
         FormAccueil.Show()
+    End Sub
+
+    Private Sub remplirListBoxTemps()
+        Dim joueurs As Joueur() = getJoueurHistorique()
+        Dim joueursCopy As Joueur() = joueurs.Clone()
+
+        Array.Sort(joueursCopy, Function(x, y)
+                                    If x.meilleurTemps = 0 AndAlso y.meilleurTemps = 0 Then
+                                        Return 0
+                                    ElseIf x.meilleurTemps = 0 Then
+                                        Return 1
+                                    ElseIf y.meilleurTemps = 0 Then
+                                        Return -1
+                                    Else
+                                        Return x.meilleurTemps.CompareTo(y.meilleurTemps)
+                                    End If
+                                End Function)
+        videLstBox()
+
+        For Each joueur As Joueur In joueursCopy
+            lstBox1.Items.Add(joueur.nom)
+            lstBox2.Items.Add(joueur.score)
+            lstBox3.Items.Add(If(joueur.meilleurTemps <> 0, afficherTemps(joueur.meilleurTemps), "Pas encore joué"))
+            lstBox4.Items.Add(joueur.nbrPartiesPremierJoueur)
+            lstBox5.Items.Add(joueur.nbrPartiesSecondJoueur)
+            lstBox6.Items.Add(If(joueur.cumulTemps <> 0, afficherTemps(joueur.cumulTemps), "Pas encore joué"))
+        Next
+    End Sub
+
+    Private Sub videLstBox()
+        lstBox1.Items.Clear()
+        lstBox2.Items.Clear()
+        lstBox3.Items.Clear()
+        lstBox4.Items.Clear()
+        lstBox5.Items.Clear()
+        lstBox6.Items.Clear()
     End Sub
 
     Private Sub FormStat_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -166,7 +183,3 @@ Public Class FormStat
         End If
     End Sub
 End Class
-
-
-
-

@@ -6,41 +6,20 @@
         For i As Integer = 0 To ctrlList.Count - 1
             PnlCaractereJoue.Controls.SetChildIndex(ctrlList(i), i)
         Next
-
-        nombreCoup()
-
-        If (ModulePartie.getModeEntrainement()) Then
-            LblNomJoueur.Text = ModulePartie.getNomJoueur()
-        Else
-            LblNomJoueur.Text = ModuleJoueur.getDeuxiemeJoueur().nom
-        End If
     End Sub
 
     Private Sub FormJeu_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
         If Me.Visible Then
-            For Each txt As TextBox In PnlCaractereJoue.Controls
-                resetTxt(txt)
-                txt.BackColor = Color.White
-                txt.ForeColor = Color.Black
-            Next
+            ModulePartie.setPartie()
+            resetDesign()
 
-            ModulePartie.setNombreCoup(ModuleConfig.getNombreCoupChoisis)
-            ModulePartie.afficheCaraJouable(CaraJouable)
-            nombreCoup()
-
-            LblBravoPerdu.Hide()
-            LstCaraHisto.Clear()
-            BtnGuess.Show()
-            btnExit.Hide()
-            LblNomJoueur.Text = getDeuxiemeJoueur().nom
-
-            If LblBravoPerdu.ForeColor = Color.Green Then
-                LblBravoPerdu.Left -= 12
-            ElseIf LblBravoPerdu.ForeColor = Color.Red Then
-                LblBravoPerdu.Left += 4
+            If (ModulePartie.getModeEntrainement()) Then
+                LblNomJoueur.Text = ModulePartie.getNomJoueur()
+            Else
+                LblNomJoueur.Text = ModuleJoueur.getDeuxiemeJoueur().nom
             End If
 
-            If ModuleConfig.timerEstActive Then
+            If ModuleConfig.timerEstActive Or ModulePartie.estFacile Or ModulePartie.estHard Then
                 TimerJeu.Start()
                 gestionTimerLabel()
             Else
@@ -49,7 +28,32 @@
                 LblTimer.Hide()
                 ProgressBarJeu.Value = ProgressBarJeu.Minimum
             End If
+
+            PnlCaractereJoue.Enabled = True
         End If
+    End Sub
+
+    Private Sub resetDesign()
+        If LblBravoPerdu.ForeColor = Color.Green Then
+            LblBravoPerdu.Left -= 12
+        ElseIf LblBravoPerdu.ForeColor = Color.Red Then
+            LblBravoPerdu.Left += 4
+        End If
+
+        LblBravoPerdu.Hide()
+        LstCaraHisto.Clear()
+        BtnGuess.Show()
+        btnExit.Hide()
+
+        ModuleConfig.afficheDifficulte(LblDifficulte, PnlDiff)
+        afficheCaraJouable(LblCaraJouable)
+        nombreCoup()
+
+        For Each txt As TextBox In PnlCaractereJoue.Controls
+            resetTxt(txt)
+            txt.BackColor = Color.White
+            txt.ForeColor = Color.Black
+        Next
     End Sub
 
     Private Sub LblBravoPerdu_Click()
@@ -90,7 +94,9 @@
 
             LstCaraHisto.AppendText(vbCrLf)
             For Each txt As TextBox In PnlCaractereJoue.Controls
-                ModulePartie.resetTxt(txt)
+                If txt.BackColor <> Color.Green Then
+                    ModulePartie.resetTxt(txt)
+                End If
             Next
 
             ModulePartie.enleveNombreCoup()
@@ -120,6 +126,7 @@
                 chaineAtrouver = chaineAtrouver.Remove(i, 1)
             End If
         Next
+
         Return chaineAtrouver.Contains(car)
     End Function
 
@@ -142,7 +149,12 @@
     End Sub
 
     Private Sub gagnePerdu(gagne As Boolean)
-        Dim temps = ModuleConfig.getTempsMax - ModulePartie.getTempsPartie()
+        Dim temps As Integer
+        If ModuleConfig.timerEstActive Then
+            temps = ModuleConfig.getTempsMax - ModulePartie.getTempsPartie()
+        Else
+            temps = 0
+        End If
 
         If gagne Then
             LblBravoPerdu.Text = "Bravo, tu remportes cette manche !!!"
@@ -161,6 +173,7 @@
     End Sub
 
     Private Sub partieFinis()
+        PnlCaractereJoue.Enabled = False
         TimerJeu.Stop()
         BtnGuess.Hide()
         LblBravoPerdu.Show()
@@ -168,11 +181,6 @@
     End Sub
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        If LblBravoPerdu.ForeColor = Color.Green Then
-            LblBravoPerdu.Left -= 12
-        ElseIf LblBravoPerdu.ForeColor = Color.Red Then
-            LblBravoPerdu.Left += 4
-        End If
         Me.Hide()
         If ModulePartie.getModeEntrainement() Then
             ModulePartie.setModeEntrainement(False, "")
@@ -180,7 +188,6 @@
         Else
             FormAccueil.Show()
         End If
-
     End Sub
 
     Private Sub nombreCoup()

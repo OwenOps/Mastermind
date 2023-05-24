@@ -45,19 +45,22 @@ Partial Class FormJeu
         Me.LblTimer = New System.Windows.Forms.Label()
         Me.ProgressBarJeu = New System.Windows.Forms.ProgressBar()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.CaraJouable = New System.Windows.Forms.Label()
+        Me.LblCaraJouable = New System.Windows.Forms.Label()
         Me.LstCaraHisto = New System.Windows.Forms.RichTextBox()
         Me.TimerJeu = New System.Windows.Forms.Timer(Me.components)
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.PnlDiff = New System.Windows.Forms.Panel()
+        Me.LblDifficulte = New System.Windows.Forms.Label()
         Me.PnlCaractereJoue.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PnlDiff.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.Label2.Location = New System.Drawing.Point(233, 343)
+        Me.Label2.Location = New System.Drawing.Point(233, 368)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(94, 17)
         Me.Label2.TabIndex = 1
@@ -68,7 +71,7 @@ Partial Class FormJeu
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!)
         Me.Label3.ForeColor = System.Drawing.Color.Red
-        Me.Label3.Location = New System.Drawing.Point(255, 373)
+        Me.Label3.Location = New System.Drawing.Point(255, 398)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(50, 16)
         Me.Label3.TabIndex = 2
@@ -80,7 +83,7 @@ Partial Class FormJeu
         Me.Label4.BackColor = System.Drawing.SystemColors.Control
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!)
         Me.Label4.ForeColor = System.Drawing.Color.Blue
-        Me.Label4.Location = New System.Drawing.Point(255, 403)
+        Me.Label4.Location = New System.Drawing.Point(255, 428)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(54, 16)
         Me.Label4.TabIndex = 3
@@ -91,7 +94,7 @@ Partial Class FormJeu
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!)
         Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label5.Location = New System.Drawing.Point(214, 432)
+        Me.Label5.Location = New System.Drawing.Point(214, 457)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(136, 16)
         Me.Label5.TabIndex = 4
@@ -101,7 +104,7 @@ Partial Class FormJeu
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.Label6.Location = New System.Drawing.Point(46, 343)
+        Me.Label6.Location = New System.Drawing.Point(46, 368)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(134, 17)
         Me.Label6.TabIndex = 5
@@ -113,7 +116,7 @@ Partial Class FormJeu
         Me.BtnGuess.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnGuess.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.BtnGuess.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.BtnGuess.Location = New System.Drawing.Point(112, 249)
+        Me.BtnGuess.Location = New System.Drawing.Point(112, 274)
         Me.BtnGuess.Name = "BtnGuess"
         Me.BtnGuess.Size = New System.Drawing.Size(148, 32)
         Me.BtnGuess.TabIndex = 11
@@ -170,7 +173,7 @@ Partial Class FormJeu
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!)
-        Me.Label1.Location = New System.Drawing.Point(394, 170)
+        Me.Label1.Location = New System.Drawing.Point(394, 195)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(156, 18)
         Me.Label1.TabIndex = 21
@@ -185,7 +188,7 @@ Partial Class FormJeu
         Me.PnlCaractereJoue.Controls.Add(Me.Txt4)
         Me.PnlCaractereJoue.Controls.Add(Me.Txt2)
         Me.PnlCaractereJoue.Controls.Add(Me.Txt3)
-        Me.PnlCaractereJoue.Location = New System.Drawing.Point(30, 170)
+        Me.PnlCaractereJoue.Location = New System.Drawing.Point(30, 195)
         Me.PnlCaractereJoue.Name = "PnlCaractereJoue"
         Me.PnlCaractereJoue.Size = New System.Drawing.Size(320, 62)
         Me.PnlCaractereJoue.TabIndex = 6
@@ -194,7 +197,7 @@ Partial Class FormJeu
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.5!)
-        Me.Label8.Location = New System.Drawing.Point(92, 98)
+        Me.Label8.Location = New System.Drawing.Point(92, 123)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(112, 20)
         Me.Label8.TabIndex = 26
@@ -205,7 +208,7 @@ Partial Class FormJeu
         Me.LblNomJoueur.AutoSize = True
         Me.LblNomJoueur.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.5!)
         Me.LblNomJoueur.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.LblNomJoueur.Location = New System.Drawing.Point(206, 98)
+        Me.LblNomJoueur.Location = New System.Drawing.Point(206, 123)
         Me.LblNomJoueur.Name = "LblNomJoueur"
         Me.LblNomJoueur.Size = New System.Drawing.Size(112, 20)
         Me.LblNomJoueur.TabIndex = 27
@@ -215,7 +218,7 @@ Partial Class FormJeu
         '
         Me.LblBravoPerdu.AutoSize = True
         Me.LblBravoPerdu.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblBravoPerdu.Location = New System.Drawing.Point(33, 134)
+        Me.LblBravoPerdu.Location = New System.Drawing.Point(33, 159)
         Me.LblBravoPerdu.Name = "LblBravoPerdu"
         Me.LblBravoPerdu.Size = New System.Drawing.Size(155, 18)
         Me.LblBravoPerdu.TabIndex = 28
@@ -226,7 +229,7 @@ Partial Class FormJeu
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(105, 306)
+        Me.Label9.Location = New System.Drawing.Point(105, 331)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(171, 18)
         Me.Label9.TabIndex = 29
@@ -238,7 +241,7 @@ Partial Class FormJeu
         Me.btnExit.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnExit.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.btnExit.Location = New System.Drawing.Point(112, 250)
+        Me.btnExit.Location = New System.Drawing.Point(112, 275)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(148, 31)
         Me.btnExit.TabIndex = 30
@@ -250,7 +253,7 @@ Partial Class FormJeu
         '
         Me.LblTimerReste.AutoSize = True
         Me.LblTimerReste.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
-        Me.LblTimerReste.Location = New System.Drawing.Point(385, 101)
+        Me.LblTimerReste.Location = New System.Drawing.Point(385, 126)
         Me.LblTimerReste.Name = "LblTimerReste"
         Me.LblTimerReste.Size = New System.Drawing.Size(79, 18)
         Me.LblTimerReste.TabIndex = 31
@@ -261,7 +264,7 @@ Partial Class FormJeu
         Me.LblTimer.AutoSize = True
         Me.LblTimer.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
         Me.LblTimer.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.LblTimer.Location = New System.Drawing.Point(456, 101)
+        Me.LblTimer.Location = New System.Drawing.Point(456, 126)
         Me.LblTimer.Name = "LblTimer"
         Me.LblTimer.Size = New System.Drawing.Size(46, 18)
         Me.LblTimer.TabIndex = 32
@@ -269,7 +272,7 @@ Partial Class FormJeu
         '
         'ProgressBarJeu
         '
-        Me.ProgressBarJeu.Location = New System.Drawing.Point(385, 131)
+        Me.ProgressBarJeu.Location = New System.Drawing.Point(385, 156)
         Me.ProgressBarJeu.Name = "ProgressBarJeu"
         Me.ProgressBarJeu.Size = New System.Drawing.Size(167, 17)
         Me.ProgressBarJeu.TabIndex = 33
@@ -284,19 +287,19 @@ Partial Class FormJeu
         Me.PictureBox1.TabIndex = 34
         Me.PictureBox1.TabStop = False
         '
-        'CaraJouable
+        'LblCaraJouable
         '
-        Me.CaraJouable.AutoSize = True
-        Me.CaraJouable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CaraJouable.Location = New System.Drawing.Point(46, 391)
-        Me.CaraJouable.Name = "CaraJouable"
-        Me.CaraJouable.Size = New System.Drawing.Size(97, 16)
-        Me.CaraJouable.TabIndex = 36
-        Me.CaraJouable.Text = "CaraJouable"
+        Me.LblCaraJouable.AutoSize = True
+        Me.LblCaraJouable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblCaraJouable.Location = New System.Drawing.Point(46, 416)
+        Me.LblCaraJouable.Name = "LblCaraJouable"
+        Me.LblCaraJouable.Size = New System.Drawing.Size(97, 16)
+        Me.LblCaraJouable.TabIndex = 36
+        Me.LblCaraJouable.Text = "CaraJouable"
         '
         'LstCaraHisto
         '
-        Me.LstCaraHisto.Location = New System.Drawing.Point(400, 206)
+        Me.LstCaraHisto.Location = New System.Drawing.Point(400, 231)
         Me.LstCaraHisto.MaxLength = 100000000
         Me.LstCaraHisto.Name = "LstCaraHisto"
         Me.LstCaraHisto.ReadOnly = True
@@ -322,13 +325,38 @@ Partial Class FormJeu
         Me.Label11.TabIndex = 35
         Me.Label11.Text = "MasterMind"
         '
+        'PnlDiff
+        '
+        Me.PnlDiff.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.PnlDiff.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.PnlDiff.Controls.Add(Me.LblDifficulte)
+        Me.PnlDiff.ForeColor = System.Drawing.Color.Black
+        Me.PnlDiff.Location = New System.Drawing.Point(9, 83)
+        Me.PnlDiff.Name = "PnlDiff"
+        Me.PnlDiff.Size = New System.Drawing.Size(56, 31)
+        Me.PnlDiff.TabIndex = 54
+        '
+        'LblDifficulte
+        '
+        Me.LblDifficulte.AutoSize = True
+        Me.LblDifficulte.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDifficulte.ForeColor = System.Drawing.Color.Gray
+        Me.LblDifficulte.Location = New System.Drawing.Point(3, 4)
+        Me.LblDifficulte.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.LblDifficulte.Name = "LblDifficulte"
+        Me.LblDifficulte.Size = New System.Drawing.Size(28, 19)
+        Me.LblDifficulte.TabIndex = 53
+        Me.LblDifficulte.Text = "Dif"
+        Me.LblDifficulte.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'FormJeu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(577, 465)
+        Me.ClientSize = New System.Drawing.Size(560, 497)
+        Me.Controls.Add(Me.PnlDiff)
         Me.Controls.Add(Me.LstCaraHisto)
-        Me.Controls.Add(Me.CaraJouable)
+        Me.Controls.Add(Me.LblCaraJouable)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ProgressBarJeu)
@@ -348,13 +376,15 @@ Partial Class FormJeu
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.MaximumSize = New System.Drawing.Size(594, 510)
+        Me.MaximumSize = New System.Drawing.Size(576, 536)
         Me.Name = "FormJeu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Partie"
         Me.PnlCaractereJoue.ResumeLayout(False)
         Me.PnlCaractereJoue.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PnlDiff.ResumeLayout(False)
+        Me.PnlDiff.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -381,8 +411,10 @@ Partial Class FormJeu
     Friend WithEvents LblTimer As Label
     Friend WithEvents ProgressBarJeu As ProgressBar
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents CaraJouable As Label
+    Friend WithEvents LblCaraJouable As Label
     Friend WithEvents LstCaraHisto As RichTextBox
     Friend WithEvents TimerJeu As Timer
     Friend WithEvents Label11 As Label
+    Friend WithEvents PnlDiff As Panel
+    Friend WithEvents LblDifficulte As Label
 End Class

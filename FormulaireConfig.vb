@@ -9,7 +9,9 @@ Public Class FormulaireConfig
     End Sub
 
     Private Sub FormulaireConfig_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
-        resetFormConfig()
+        If Me.Visible Then
+            resetFormConfig()
+        End If
     End Sub
 
     Public Sub resetFormConfig()
@@ -214,6 +216,29 @@ Public Class FormulaireConfig
             ModuleConfig.resetConfigDefaut()
         End If
         MessageBox.Show("Configuration remis par default.", "Erreur")
+    End Sub
+
+    Private Sub BtnDifficulte_Click(sender As Object, e As EventArgs) Handles BtnFacile.Click, BtnNormal.Click, BtnHard.Click
+        Dim btn As Button = TryCast(sender, Button)
+        Dim nomBtn = btn.Name
+
+        Select Case nomBtn
+            Case BtnFacile.Name
+                ModuleConfig.setDifficulte(ModuleConfig.getFacile)
+            Case BtnNormal.Name
+                ModuleConfig.setDifficulte(ModuleConfig.getNormal)
+            Case BtnHard.Name
+                ModuleConfig.setDifficulte(ModuleConfig.getHard)
+        End Select
+
+        For Each btnA As Button In PnlDifficulte.Controls
+            If btnA.Name = nomBtn Then
+                btn.Enabled = False
+            Else
+                btnA.Enabled = True
+            End If
+        Next
+        afficheBtnReset()
     End Sub
 
     Private Sub FormConfig_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
