@@ -94,7 +94,12 @@
 
             LstCaraHisto.AppendText(vbCrLf)
             For Each txt As TextBox In PnlCaractereJoue.Controls
-                If txt.BackColor <> Color.Green Then
+
+                If ModulePartie.estFacile Then
+                    If txt.BackColor <> Color.Green Then
+                        ModulePartie.resetTxt(txt)
+                    End If
+                Else
                     ModulePartie.resetTxt(txt)
                 End If
             Next
