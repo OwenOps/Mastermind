@@ -7,23 +7,29 @@
     End Sub
 
     Private Sub btnEntrainement_Click(sender As Object, e As EventArgs) Handles btnEntrainement.Click
-        Dim nomJoueur = InputBox("Quel est ton nom ?", "Nom d'entrainement")
+
 
         Dim demande As DialogResult = MsgBox("Voulez-vous lancer l'entrainement", vbYesNo, "Entrainement")
         If demande = DialogResult.Yes Then
 
-            ModulePartie.setCaraAleatoire()
+            Dim nomJoueur = InputBox("Quel est ton nom ?", "Nom d'entrainement")
+            If nomJoueur = "" Then
+                Exit Sub
+            Else
+                ModulePartie.setCaraAleatoire()
 
-            Dim chaineATrouve As String = ""
-            For Each txtBox As TextBox In FormCaractere.PnlCaractereJoue.Controls
-                chaineATrouve += txtBox.Text
-            Next
+                Dim chaineATrouve As String = ""
+                For Each txtBox As TextBox In FormCaractere.PnlCaractereJoue.Controls
+                    chaineATrouve += txtBox.Text
+                Next
 
-            ModulePartie.setCaraATrouver(chaineATrouve.ToArray)
-            ModulePartie.setModeEntrainement(True, nomJoueur)
+                ModulePartie.setCaraATrouver(chaineATrouve.ToArray)
+                ModulePartie.setModeEntrainement(True, nomJoueur)
 
-            Me.Hide()
-            FormJeu.Show()
+                Me.Hide()
+                FormJeu.Show()
+            End If
+
         End If
     End Sub
 

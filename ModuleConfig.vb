@@ -18,16 +18,23 @@
         Return NombreCoupChoisis
     End Function
 
-    Public Sub afficheDifficulte(lbl As Label)
+    Public Function getNbrCoupDefaut() As Integer
+        Return NBR_COUP_DEFAUT
+    End Function
+
+    Public Sub afficheDifficulte(lbl As Label, pnl As Panel)
         If estHard() Then
             lbl.Visible = True
             lbl.Text = HARD
             lbl.ForeColor = Color.Red
-        ElseIf estFacile Then
+            pnl.Show()
+        ElseIf estFacile() Then
             lbl.Visible = True
             lbl.Text = FACILE
             lbl.ForeColor = Color.Green
+            pnl.Show()
         Else
+            pnl.Hide()
             lbl.Visible = False
         End If
     End Sub

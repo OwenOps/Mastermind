@@ -6,37 +6,18 @@
         For i As Integer = 0 To ctrlList.Count - 1
             PnlCaractereJoue.Controls.SetChildIndex(ctrlList(i), i)
         Next
-
-        If (ModulePartie.getModeEntrainement()) Then
-            LblNomJoueur.Text = ModulePartie.getNomJoueur()
-        Else
-            LblNomJoueur.Text = ModuleJoueur.getDeuxiemeJoueur().nom
-        End If
     End Sub
 
     Private Sub FormJeu_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
         If Me.Visible Then
-            For Each txt As TextBox In PnlCaractereJoue.Controls
-                resetTxt(txt)
-                txt.BackColor = Color.White
-                txt.ForeColor = Color.Black
-            Next
-
-            If LblBravoPerdu.ForeColor = Color.Green Then
-                LblBravoPerdu.Left -= 12
-            ElseIf LblBravoPerdu.ForeColor = Color.Red Then
-                LblBravoPerdu.Left += 4
-            End If
-
             ModulePartie.setPartie()
-            afficheCaraJouable(LblCaraJouable)
-            nombreCoup()
+            resetDesign()
 
-            LblBravoPerdu.Hide()
-            LstCaraHisto.Clear()
-            BtnGuess.Show()
-            btnExit.Hide()
-            LblNomJoueur.Text = getDeuxiemeJoueur().nom
+            If (ModulePartie.getModeEntrainement()) Then
+                LblNomJoueur.Text = ModulePartie.getNomJoueur()
+            Else
+                LblNomJoueur.Text = ModuleJoueur.getDeuxiemeJoueur().nom
+            End If
 
             If ModuleConfig.timerEstActive Or ModulePartie.estFacile Or ModulePartie.estHard Then
                 TimerJeu.Start()
@@ -48,8 +29,31 @@
                 ProgressBarJeu.Value = ProgressBarJeu.Minimum
             End If
 
-            ModuleConfig.afficheDifficulte(LblDifficulte)
+            PnlCaractereJoue.Enabled = True
         End If
+    End Sub
+
+    Private Sub resetDesign()
+        If LblBravoPerdu.ForeColor = Color.Green Then
+            LblBravoPerdu.Left -= 12
+        ElseIf LblBravoPerdu.ForeColor = Color.Red Then
+            LblBravoPerdu.Left += 4
+        End If
+
+        LblBravoPerdu.Hide()
+        LstCaraHisto.Clear()
+        BtnGuess.Show()
+        btnExit.Hide()
+
+        ModuleConfig.afficheDifficulte(LblDifficulte, PnlDiff)
+        afficheCaraJouable(LblCaraJouable)
+        nombreCoup()
+
+        For Each txt As TextBox In PnlCaractereJoue.Controls
+            resetTxt(txt)
+            txt.BackColor = Color.White
+            txt.ForeColor = Color.Black
+        Next
     End Sub
 
     Private Sub LblBravoPerdu_Click()
@@ -90,7 +94,9 @@
 
             LstCaraHisto.AppendText(vbCrLf)
             For Each txt As TextBox In PnlCaractereJoue.Controls
-                ModulePartie.resetTxt(txt)
+                If txt.BackColor <> Color.Green Then
+                    ModulePartie.resetTxt(txt)
+                End If
             Next
 
             ModulePartie.enleveNombreCoup()
@@ -167,6 +173,7 @@
     End Sub
 
     Private Sub partieFinis()
+        PnlCaractereJoue.Enabled = False
         TimerJeu.Stop()
         BtnGuess.Hide()
         LblBravoPerdu.Show()

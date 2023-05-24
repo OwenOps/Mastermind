@@ -13,7 +13,7 @@ Public Class FormAccueil
     Private Sub FormAccueil_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
         If Me.Visible Then
             ModuleJoueur.changeJoueur1ToJoueur2()
-            ModuleConfig.afficheDifficulte(LblDifficulte)
+            ModuleConfig.afficheDifficulte(LblDifficulte, PnlDiff)
         End If
     End Sub
 
@@ -57,5 +57,9 @@ Public Class FormAccueil
         Else
             e.Cancel = True
         End If
+    End Sub
+
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles LblDifficulte.Click
+
     End Sub
 End Class

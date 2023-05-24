@@ -174,7 +174,7 @@ Partial Class FormulaireConfig
         '
         Me.TxtNbrCoup.Location = New System.Drawing.Point(171, 9)
         Me.TxtNbrCoup.Margin = New System.Windows.Forms.Padding(4)
-        Me.TxtNbrCoup.MaxLength = 6
+        Me.TxtNbrCoup.MaxLength = 3
         Me.TxtNbrCoup.Name = "TxtNbrCoup"
         Me.TxtNbrCoup.Size = New System.Drawing.Size(196, 20)
         Me.TxtNbrCoup.TabIndex = 42
@@ -299,7 +299,7 @@ Partial Class FormulaireConfig
         '
         Me.TxtTempsSec.Location = New System.Drawing.Point(328, 5)
         Me.TxtTempsSec.Margin = New System.Windows.Forms.Padding(4)
-        Me.TxtTempsSec.MaxLength = 10
+        Me.TxtTempsSec.MaxLength = 2
         Me.TxtTempsSec.Name = "TxtTempsSec"
         Me.TxtTempsSec.Size = New System.Drawing.Size(39, 20)
         Me.TxtTempsSec.TabIndex = 51
@@ -309,7 +309,7 @@ Partial Class FormulaireConfig
         '
         Me.TxtTempsMin.Location = New System.Drawing.Point(280, 5)
         Me.TxtTempsMin.Margin = New System.Windows.Forms.Padding(4)
-        Me.TxtTempsMin.MaxLength = 10
+        Me.TxtTempsMin.MaxLength = 2
         Me.TxtTempsMin.Name = "TxtTempsMin"
         Me.TxtTempsMin.Size = New System.Drawing.Size(39, 20)
         Me.TxtTempsMin.TabIndex = 50

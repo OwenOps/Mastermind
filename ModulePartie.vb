@@ -19,7 +19,7 @@ Module ModulePartie
         ElseIf estFacile Then
             nombreCoupPossible = COUP_FACILE
         Else
-            nombreCoupPossible = ModuleConfig.getNombreCoupChoisis
+            nombreCoupPossible = ModuleConfig.getNbrCoupDefaut
         End If
     End Sub
 
