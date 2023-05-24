@@ -142,6 +142,9 @@
     <EmbeddedResource Include="FormRegles.resx">
       <DependentUpon>FormRegles.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormStat.resx">
+      <DependentUpon>FormStat.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormulaireConfig.resx">
       <DependentUpon>FormulaireConfig.vb</DependentUpon>
     </EmbeddedResource>

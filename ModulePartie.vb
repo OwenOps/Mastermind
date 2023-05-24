@@ -16,10 +16,10 @@ Module ModulePartie
     Public Sub setPartie()
         If estHard() Then
             nombreCoupPossible = COUP_HARD
-        ElseIf estFacile Then
+        ElseIf estFacile() Then
             nombreCoupPossible = COUP_FACILE
         Else
-            nombreCoupPossible = ModuleConfig.getNbrCoupDefaut
+            nombreCoupPossible = ModuleConfig.getNombreCoupChoisis
         End If
     End Sub
 

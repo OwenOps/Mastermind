@@ -59,7 +59,4 @@ Public Class FormAccueil
         End If
     End Sub
 
-    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles LblDifficulte.Click
-
-    End Sub
 End Class

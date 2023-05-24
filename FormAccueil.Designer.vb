@@ -35,6 +35,7 @@ Partial Class FormAccueil
         Me.btnRetour = New System.Windows.Forms.Button()
         Me.PnlDiff = New System.Windows.Forms.Panel()
         Me.LblDifficulte = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PnlDiff.SuspendLayout()
         Me.SuspendLayout()
@@ -43,7 +44,7 @@ Partial Class FormAccueil
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 11.5!)
-        Me.Label2.Location = New System.Drawing.Point(122, 170)
+        Me.Label2.Location = New System.Drawing.Point(122, 176)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(70, 21)
@@ -57,8 +58,8 @@ Partial Class FormAccueil
         Me.btnQuitter.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnQuitter.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnQuitter.ForeColor = System.Drawing.Color.White
-        Me.btnQuitter.Location = New System.Drawing.Point(355, 330)
-        Me.btnQuitter.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnQuitter.Location = New System.Drawing.Point(355, 336)
+        Me.btnQuitter.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnQuitter.Name = "btnQuitter"
         Me.btnQuitter.Size = New System.Drawing.Size(130, 37)
         Me.btnQuitter.TabIndex = 12
@@ -71,8 +72,8 @@ Partial Class FormAccueil
         Me.btnJouer.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnJouer.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnJouer.ForeColor = System.Drawing.Color.White
-        Me.btnJouer.Location = New System.Drawing.Point(96, 269)
-        Me.btnJouer.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnJouer.Location = New System.Drawing.Point(96, 275)
+        Me.btnJouer.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnJouer.Name = "btnJouer"
         Me.btnJouer.Size = New System.Drawing.Size(323, 37)
         Me.btnJouer.TabIndex = 11
@@ -88,8 +89,8 @@ Partial Class FormAccueil
         Me.btnStats.FlatAppearance.BorderSize = 0
         Me.btnStats.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnStats.ForeColor = System.Drawing.Color.White
-        Me.btnStats.Location = New System.Drawing.Point(177, 330)
-        Me.btnStats.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnStats.Location = New System.Drawing.Point(177, 336)
+        Me.btnStats.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnStats.Name = "btnStats"
         Me.btnStats.Size = New System.Drawing.Size(157, 37)
         Me.btnStats.TabIndex = 13
@@ -99,8 +100,8 @@ Partial Class FormAccueil
         'cbxNomJoueur2
         '
         Me.cbxNomJoueur2.FormattingEnabled = True
-        Me.cbxNomJoueur2.Location = New System.Drawing.Point(211, 222)
-        Me.cbxNomJoueur2.Margin = New System.Windows.Forms.Padding(2)
+        Me.cbxNomJoueur2.Location = New System.Drawing.Point(211, 228)
+        Me.cbxNomJoueur2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cbxNomJoueur2.Name = "cbxNomJoueur2"
         Me.cbxNomJoueur2.Size = New System.Drawing.Size(178, 21)
         Me.cbxNomJoueur2.TabIndex = 10
@@ -108,8 +109,8 @@ Partial Class FormAccueil
         'cbxNomJoueur1
         '
         Me.cbxNomJoueur1.FormattingEnabled = True
-        Me.cbxNomJoueur1.Location = New System.Drawing.Point(211, 172)
-        Me.cbxNomJoueur1.Margin = New System.Windows.Forms.Padding(2)
+        Me.cbxNomJoueur1.Location = New System.Drawing.Point(211, 179)
+        Me.cbxNomJoueur1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cbxNomJoueur1.Name = "cbxNomJoueur1"
         Me.cbxNomJoueur1.Size = New System.Drawing.Size(178, 21)
         Me.cbxNomJoueur1.TabIndex = 9
@@ -118,7 +119,7 @@ Partial Class FormAccueil
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Italic)
-        Me.Label4.Location = New System.Drawing.Point(47, 128)
+        Me.Label4.Location = New System.Drawing.Point(41, 134)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(432, 20)
@@ -134,7 +135,7 @@ Partial Class FormAccueil
         Me.Label1.Location = New System.Drawing.Point(148, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(228, 52)
+        Me.Label1.Size = New System.Drawing.Size(227, 52)
         Me.Label1.TabIndex = 18
         Me.Label1.Text = "MasterMind"
         '
@@ -142,7 +143,7 @@ Partial Class FormAccueil
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Maroon
         Me.PictureBox1.Location = New System.Drawing.Point(1, -4)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(515, 77)
         Me.PictureBox1.TabIndex = 17
@@ -152,7 +153,7 @@ Partial Class FormAccueil
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 11.5!)
-        Me.Label3.Location = New System.Drawing.Point(122, 218)
+        Me.Label3.Location = New System.Drawing.Point(122, 224)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(70, 21)
@@ -166,8 +167,8 @@ Partial Class FormAccueil
         Me.btnRetour.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnRetour.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnRetour.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.btnRetour.Location = New System.Drawing.Point(26, 330)
-        Me.btnRetour.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnRetour.Location = New System.Drawing.Point(26, 336)
+        Me.btnRetour.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnRetour.Name = "btnRetour"
         Me.btnRetour.Size = New System.Drawing.Size(130, 37)
         Me.btnRetour.TabIndex = 41
@@ -180,29 +181,41 @@ Partial Class FormAccueil
         Me.PnlDiff.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.PnlDiff.Controls.Add(Me.LblDifficulte)
         Me.PnlDiff.ForeColor = System.Drawing.Color.Black
-        Me.PnlDiff.Location = New System.Drawing.Point(10, 83)
+        Me.PnlDiff.Location = New System.Drawing.Point(188, 91)
         Me.PnlDiff.Name = "PnlDiff"
-        Me.PnlDiff.Size = New System.Drawing.Size(56, 31)
+        Me.PnlDiff.Size = New System.Drawing.Size(109, 21)
         Me.PnlDiff.TabIndex = 53
         '
         'LblDifficulte
         '
         Me.LblDifficulte.AutoSize = True
-        Me.LblDifficulte.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDifficulte.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblDifficulte.ForeColor = System.Drawing.Color.Gray
-        Me.LblDifficulte.Location = New System.Drawing.Point(3, 4)
+        Me.LblDifficulte.Location = New System.Drawing.Point(18, -1)
         Me.LblDifficulte.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LblDifficulte.Name = "LblDifficulte"
-        Me.LblDifficulte.Size = New System.Drawing.Size(28, 19)
+        Me.LblDifficulte.Size = New System.Drawing.Size(77, 19)
         Me.LblDifficulte.TabIndex = 53
-        Me.LblDifficulte.Text = "Dif"
+        Me.LblDifficulte.Text = "Difficulté"
         Me.LblDifficulte.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(32, 91)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(150, 20)
+        Me.Label5.TabIndex = 54
+        Me.Label5.Text = "Niveau de difficulté :"
         '
         'FormAccueil
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(513, 388)
+        Me.ClientSize = New System.Drawing.Size(512, 392)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.PnlDiff)
         Me.Controls.Add(Me.btnRetour)
         Me.Controls.Add(Me.Label3)
@@ -215,8 +228,8 @@ Partial Class FormAccueil
         Me.Controls.Add(Me.btnStats)
         Me.Controls.Add(Me.cbxNomJoueur2)
         Me.Controls.Add(Me.cbxNomJoueur1)
-        Me.Margin = New System.Windows.Forms.Padding(2)
-        Me.MaximumSize = New System.Drawing.Size(529, 427)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MaximumSize = New System.Drawing.Size(528, 431)
         Me.Name = "FormAccueil"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Accueil"
@@ -240,4 +253,5 @@ Partial Class FormAccueil
     Friend WithEvents btnRetour As Button
     Friend WithEvents PnlDiff As Panel
     Friend WithEvents LblDifficulte As Label
+    Friend WithEvents Label5 As Label
 End Class

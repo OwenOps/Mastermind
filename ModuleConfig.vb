@@ -24,18 +24,14 @@
 
     Public Sub afficheDifficulte(lbl As Label, pnl As Panel)
         If estHard() Then
-            lbl.Visible = True
             lbl.Text = HARD
             lbl.ForeColor = Color.Red
-            pnl.Show()
         ElseIf estFacile() Then
-            lbl.Visible = True
             lbl.Text = FACILE
             lbl.ForeColor = Color.Green
-            pnl.Show()
         Else
-            pnl.Hide()
-            lbl.Visible = False
+            lbl.Text = DIFFICULTE_DEFAUT
+            lbl.ForeColor = Color.Gray
         End If
     End Sub
 

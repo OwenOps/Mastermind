@@ -19,6 +19,7 @@ Public Class FormulaireConfig
         resetTxt(TxtNbrCoup)
         resetTxt(TxtTempsMin)
         resetTxt(TxtTempsSec)
+        Me.AcceptButton = btnRetour
 
         PnlCoupCache.Visible = False
         PnlCaraCache.Visible = False
@@ -50,7 +51,7 @@ Public Class FormulaireConfig
             Case RO4.Name
                 If ModuleJoueur.joueurHistoriqueEstVide() And RO4.Checked Then
                     RO4.Checked = False
-                    MsgBox("Il n'y a pas encore de joueurs enregistrés", vbOKOnly, "Erreur")
+                    MsgBox("Il n'y a pas encore de joueurs enregistré", vbOKOnly, "Erreur")
                 Else
                     ModuleJoueur.chargercbxNomJoueur()
                     PnlNomCache.Visible = radioBoutton.Checked
@@ -103,7 +104,7 @@ Public Class FormulaireConfig
                 ModuleConfig.setNombreCoupChoisis(TxtNbrCoup.Text)
                 ModulePartie.resetTxt(TxtNbrCoup)
             Else
-                MessageBox.Show("Le nombre de coup doit etre supérieur a 0.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Le nombre de coup doit être supérieur a 0", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
 
         ElseIf btnActive = BtnValidCara.Name Then
@@ -113,13 +114,13 @@ Public Class FormulaireConfig
                 If ModuleConfig.caraDifferent(nouveauCara) Then
                     ModuleConfig.setCaraJouable(nouveauCara)
                 Else
-                    MessageBox.Show("Les caractères doivent être différent.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Les caractères doivent être différent", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
 
                 ModulePartie.resetTxt(TxtCaraChange)
             Else
-                MessageBox.Show("Le nombre de caractère minimum est de 5.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Le nombre de caractère minimum est de 5", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
 
         ElseIf btnActive = BtnValidTimer.Name Then
@@ -175,7 +176,7 @@ Public Class FormulaireConfig
         If ModuleJoueur.getValider = True Then
 
             If String.Compare(nom, ModuleJoueur.getAncienNomTemp) = 0 Then
-                MessageBox.Show("Vous avez rentré le meme nom.", "Erreur")
+                MessageBox.Show("Vous avez rentré le même nom.", "Erreur")
             Else
 
                 ModuleJoueur.changementNomJoueur(ModuleJoueur.getAncienNomTemp, nom)
@@ -201,7 +202,7 @@ Public Class FormulaireConfig
             ModuleJoueur.setAncienNomJoueur(nom)
             ModuleJoueur.setAncienNomTemp(nom)
         Else
-            MessageBox.Show("La personne n'existe pas.", "Erreur")
+            MessageBox.Show("La personne n'existe pas", "Erreur")
         End If
         'FormAccueil.Show()
     End Sub
@@ -215,7 +216,7 @@ Public Class FormulaireConfig
         If ModuleConfig.configChange Then
             ModuleConfig.resetConfigDefaut()
         End If
-        MessageBox.Show("Configuration remis par default.", "Erreur")
+        MessageBox.Show("Configuration remise par défaut", "Informations")
     End Sub
 
     Private Sub BtnDifficulte_Click(sender As Object, e As EventArgs) Handles BtnFacile.Click, BtnNormal.Click, BtnHard.Click
@@ -247,5 +248,9 @@ Public Class FormulaireConfig
         Else
             e.Cancel = True
         End If
+    End Sub
+
+    Private Sub FormulaireConfig_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

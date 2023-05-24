@@ -8,6 +8,8 @@
     End Sub
 
     Private Sub FormStat_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
+        cbxNomJoueur.Items.Clear()
+
         joueurs = getJoueurs()
         joueurs = ModuleJoueur.getJoueurHistorique()
 
@@ -16,9 +18,7 @@
         Next
 
         statistiques.Clear()
-        For Each lstbox As ListBox In pnlStats.Controls
-            lstbox.Items.Clear()
-        Next
+        videLstBox()
 
         For Each joueur As Joueur In joueurs
             Dim statiquesJoueur As String = joueur.nom & vbTab & joueur.score & vbTab & afficherTemps(joueur.meilleurTemps) & vbTab & joueur.nbrPartiesPremierJoueur & vbTab & joueur.nbrPartiesSecondJoueur & vbTab & afficherTemps(joueur.cumulTemps)
@@ -167,12 +167,9 @@
     End Sub
 
     Private Sub videLstBox()
-        lstBox1.Items.Clear()
-        lstBox2.Items.Clear()
-        lstBox3.Items.Clear()
-        lstBox4.Items.Clear()
-        lstBox5.Items.Clear()
-        lstBox6.Items.Clear()
+        For Each lstbox As ListBox In pnlStats.Controls
+            lstbox.Items.Clear()
+        Next
     End Sub
 
     Private Sub FormStat_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

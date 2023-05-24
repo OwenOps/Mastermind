@@ -55,19 +55,20 @@ Partial Class FormRegles
         Me.Label7.BackColor = System.Drawing.Color.Maroon
         Me.Label7.Font = New System.Drawing.Font("Sylfaen", 30.0!)
         Me.Label7.ForeColor = System.Drawing.Color.Transparent
-        Me.Label7.Location = New System.Drawing.Point(269, 11)
+        Me.Label7.Location = New System.Drawing.Point(202, 9)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(285, 66)
+        Me.Label7.Size = New System.Drawing.Size(227, 52)
         Me.Label7.TabIndex = 39
         Me.Label7.Text = "MasterMind"
         '
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Maroon
-        Me.PictureBox1.Location = New System.Drawing.Point(-40, -10)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PictureBox1.Location = New System.Drawing.Point(-30, -8)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(939, 95)
+        Me.PictureBox1.Size = New System.Drawing.Size(704, 77)
         Me.PictureBox1.TabIndex = 38
         Me.PictureBox1.TabStop = False
         '
@@ -77,10 +78,10 @@ Partial Class FormRegles
         Me.btnRetour.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnRetour.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnRetour.ForeColor = System.Drawing.Color.White
-        Me.btnRetour.Location = New System.Drawing.Point(72, 571)
-        Me.btnRetour.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnRetour.Location = New System.Drawing.Point(54, 464)
+        Me.btnRetour.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnRetour.Name = "btnRetour"
-        Me.btnRetour.Size = New System.Drawing.Size(173, 46)
+        Me.btnRetour.Size = New System.Drawing.Size(130, 37)
         Me.btnRetour.TabIndex = 42
         Me.btnRetour.Text = "Retour"
         Me.btnRetour.UseVisualStyleBackColor = False
@@ -90,9 +91,10 @@ Partial Class FormRegles
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Maroon
-        Me.Label4.Location = New System.Drawing.Point(165, 118)
+        Me.Label4.Location = New System.Drawing.Point(124, 96)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(491, 25)
+        Me.Label4.Size = New System.Drawing.Size(396, 20)
         Me.Label4.TabIndex = 43
         Me.Label4.Text = "Célèbre jeu des années 1970, ses règles sont simples !"
         '
@@ -100,9 +102,10 @@ Partial Class FormRegles
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
-        Me.Label1.Location = New System.Drawing.Point(43, 166)
+        Me.Label1.Location = New System.Drawing.Point(32, 135)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(563, 22)
+        Me.Label1.Size = New System.Drawing.Size(461, 18)
         Me.Label1.TabIndex = 44
         Me.Label1.Text = "A chaque manche, 2 joueurs vont s'affonter la victoire à tour de rôle : "
         '
@@ -111,9 +114,10 @@ Partial Class FormRegles
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
         Me.Label2.ForeColor = System.Drawing.Color.OrangeRed
-        Me.Label2.Location = New System.Drawing.Point(43, 210)
+        Me.Label2.Location = New System.Drawing.Point(32, 171)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(433, 22)
+        Me.Label2.Size = New System.Drawing.Size(354, 18)
         Me.Label2.TabIndex = 45
         Me.Label2.Text = "- Le premier joueur arrivera sur le formulaire Pattern. "
         '
@@ -122,9 +126,10 @@ Partial Class FormRegles
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(43, 245)
+        Me.Label5.Location = New System.Drawing.Point(32, 199)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(728, 22)
+        Me.Label5.Size = New System.Drawing.Size(606, 18)
         Me.Label5.TabIndex = 47
         Me.Label5.Text = "Son but : trouver une combinaison secrète assez complexe parmi les caractères aut" &
     "orisés "
@@ -134,9 +139,10 @@ Partial Class FormRegles
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
         Me.Label6.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label6.Location = New System.Drawing.Point(43, 406)
+        Me.Label6.Location = New System.Drawing.Point(32, 330)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(397, 22)
+        Me.Label6.Size = New System.Drawing.Size(326, 18)
         Me.Label6.TabIndex = 48
         Me.Label6.Text = "- Le second joueur arrivera sur le formulaire Jeu."
         '
@@ -145,9 +151,10 @@ Partial Class FormRegles
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
         Me.Label8.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label8.Location = New System.Drawing.Point(44, 279)
+        Me.Label8.Location = New System.Drawing.Point(33, 227)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(89, 22)
+        Me.Label8.Size = New System.Drawing.Size(73, 18)
         Me.Label8.TabIndex = 49
         Me.Label8.Text = "Exemple :"
         '
@@ -156,9 +163,10 @@ Partial Class FormRegles
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(43, 441)
+        Me.Label3.Location = New System.Drawing.Point(32, 358)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(692, 22)
+        Me.Label3.Size = New System.Drawing.Size(572, 18)
         Me.Label3.TabIndex = 50
         Me.Label3.Text = "Son but : déchiffrer cette combinaison sans dépasser le temps imparti et le nombr" &
     "e de"
@@ -168,9 +176,10 @@ Partial Class FormRegles
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
         Me.Label9.ForeColor = System.Drawing.Color.Black
-        Me.Label9.Location = New System.Drawing.Point(43, 474)
+        Me.Label9.Location = New System.Drawing.Point(32, 385)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(143, 22)
+        Me.Label9.Size = New System.Drawing.Size(122, 18)
         Me.Label9.TabIndex = 51
         Me.Label9.Text = "coups maximum."
         '
@@ -178,9 +187,10 @@ Partial Class FormRegles
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
-        Me.Label11.Location = New System.Drawing.Point(135, 522)
+        Me.Label11.Location = New System.Drawing.Point(101, 424)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(537, 22)
+        Me.Label11.Size = New System.Drawing.Size(440, 18)
         Me.Label11.TabIndex = 53
         Me.Label11.Text = "S'il réussit, il remporte le point. Sinon, le premier joueur l'emporte !"
         '
@@ -188,12 +198,12 @@ Partial Class FormRegles
         '
         Me.btnAleatoire.BackColor = System.Drawing.Color.DarkCyan
         Me.btnAleatoire.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.btnAleatoire.Enabled = False
         Me.btnAleatoire.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnAleatoire.ForeColor = System.Drawing.Color.White
-        Me.btnAleatoire.Location = New System.Drawing.Point(99, 334)
-        Me.btnAleatoire.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAleatoire.Location = New System.Drawing.Point(74, 271)
         Me.btnAleatoire.Name = "btnAleatoire"
-        Me.btnAleatoire.Size = New System.Drawing.Size(101, 38)
+        Me.btnAleatoire.Size = New System.Drawing.Size(76, 31)
         Me.btnAleatoire.TabIndex = 57
         Me.btnAleatoire.Text = "Aléatoire"
         Me.btnAleatoire.UseVisualStyleBackColor = False
@@ -207,21 +217,20 @@ Partial Class FormRegles
         Me.PnlCaractereJoue.Controls.Add(Me.txtBox4)
         Me.PnlCaractereJoue.Controls.Add(Me.txtBox2)
         Me.PnlCaractereJoue.Controls.Add(Me.txtBox3)
+        Me.PnlCaractereJoue.Enabled = False
         Me.PnlCaractereJoue.ForeColor = System.Drawing.Color.Black
-        Me.PnlCaractereJoue.Location = New System.Drawing.Point(223, 334)
-        Me.PnlCaractereJoue.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PnlCaractereJoue.Location = New System.Drawing.Point(167, 271)
         Me.PnlCaractereJoue.Name = "PnlCaractereJoue"
-        Me.PnlCaractereJoue.Size = New System.Drawing.Size(423, 37)
+        Me.PnlCaractereJoue.Size = New System.Drawing.Size(318, 31)
         Me.PnlCaractereJoue.TabIndex = 55
         '
         'txtBox5
         '
         Me.txtBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBox5.Location = New System.Drawing.Point(349, 7)
-        Me.txtBox5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtBox5.Location = New System.Drawing.Point(262, 6)
         Me.txtBox5.MaxLength = 1
         Me.txtBox5.Name = "txtBox5"
-        Me.txtBox5.Size = New System.Drawing.Size(49, 22)
+        Me.txtBox5.Size = New System.Drawing.Size(38, 19)
         Me.txtBox5.TabIndex = 5
         Me.txtBox5.Tag = ""
         Me.txtBox5.Text = "B"
@@ -230,11 +239,10 @@ Partial Class FormRegles
         'txtBox1
         '
         Me.txtBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBox1.Location = New System.Drawing.Point(16, 7)
-        Me.txtBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtBox1.Location = New System.Drawing.Point(12, 6)
         Me.txtBox1.MaxLength = 1
         Me.txtBox1.Name = "txtBox1"
-        Me.txtBox1.Size = New System.Drawing.Size(49, 22)
+        Me.txtBox1.Size = New System.Drawing.Size(38, 19)
         Me.txtBox1.TabIndex = 1
         Me.txtBox1.Text = "D"
         Me.txtBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -242,11 +250,10 @@ Partial Class FormRegles
         'txtBox4
         '
         Me.txtBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBox4.Location = New System.Drawing.Point(267, 7)
-        Me.txtBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtBox4.Location = New System.Drawing.Point(200, 6)
         Me.txtBox4.MaxLength = 1
         Me.txtBox4.Name = "txtBox4"
-        Me.txtBox4.Size = New System.Drawing.Size(49, 22)
+        Me.txtBox4.Size = New System.Drawing.Size(38, 19)
         Me.txtBox4.TabIndex = 4
         Me.txtBox4.Text = "C"
         Me.txtBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -254,11 +261,10 @@ Partial Class FormRegles
         'txtBox2
         '
         Me.txtBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBox2.Location = New System.Drawing.Point(96, 7)
-        Me.txtBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtBox2.Location = New System.Drawing.Point(72, 6)
         Me.txtBox2.MaxLength = 1
         Me.txtBox2.Name = "txtBox2"
-        Me.txtBox2.Size = New System.Drawing.Size(49, 22)
+        Me.txtBox2.Size = New System.Drawing.Size(38, 19)
         Me.txtBox2.TabIndex = 2
         Me.txtBox2.Text = "A"
         Me.txtBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -266,11 +272,10 @@ Partial Class FormRegles
         'txtBox3
         '
         Me.txtBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBox3.Location = New System.Drawing.Point(180, 7)
-        Me.txtBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtBox3.Location = New System.Drawing.Point(135, 6)
         Me.txtBox3.MaxLength = 1
         Me.txtBox3.Name = "txtBox3"
-        Me.txtBox3.Size = New System.Drawing.Size(49, 22)
+        Me.txtBox3.Size = New System.Drawing.Size(38, 19)
         Me.txtBox3.TabIndex = 3
         Me.txtBox3.Text = "E"
         Me.txtBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -279,12 +284,12 @@ Partial Class FormRegles
         '
         Me.btnHide.BackColor = System.Drawing.Color.ForestGreen
         Me.btnHide.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.btnHide.Enabled = False
         Me.btnHide.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnHide.ForeColor = System.Drawing.Color.White
-        Me.btnHide.Location = New System.Drawing.Point(668, 334)
-        Me.btnHide.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnHide.Location = New System.Drawing.Point(501, 271)
         Me.btnHide.Name = "btnHide"
-        Me.btnHide.Size = New System.Drawing.Size(95, 38)
+        Me.btnHide.Size = New System.Drawing.Size(71, 31)
         Me.btnHide.TabIndex = 54
         Me.btnHide.Text = "Hide"
         Me.btnHide.UseVisualStyleBackColor = False
@@ -293,9 +298,10 @@ Partial Class FormRegles
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!)
-        Me.Label12.Location = New System.Drawing.Point(280, 290)
+        Me.Label12.Location = New System.Drawing.Point(210, 236)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(180, 22)
+        Me.Label12.Size = New System.Drawing.Size(148, 18)
         Me.Label12.TabIndex = 58
         Me.Label12.Text = "Caractères jouables :"
         '
@@ -303,9 +309,10 @@ Partial Class FormRegles
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Segoe UI Black", 10.8!, System.Drawing.FontStyle.Bold)
-        Me.Label13.Location = New System.Drawing.Point(467, 290)
+        Me.Label13.Location = New System.Drawing.Point(350, 236)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(118, 25)
+        Me.Label13.Size = New System.Drawing.Size(94, 20)
         Me.Label13.TabIndex = 59
         Me.Label13.Text = "A  B  C  D  E "
         '
@@ -315,19 +322,19 @@ Partial Class FormRegles
         Me.btnEntrainement.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnEntrainement.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnEntrainement.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.btnEntrainement.Location = New System.Drawing.Point(280, 571)
-        Me.btnEntrainement.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnEntrainement.Location = New System.Drawing.Point(210, 464)
+        Me.btnEntrainement.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnEntrainement.Name = "btnEntrainement"
-        Me.btnEntrainement.Size = New System.Drawing.Size(507, 46)
+        Me.btnEntrainement.Size = New System.Drawing.Size(380, 37)
         Me.btnEntrainement.TabIndex = 60
         Me.btnEntrainement.Text = "Vous souhaitez vous entraîner ? Alors, cliquez ici !"
         Me.btnEntrainement.UseVisualStyleBackColor = False
         '
         'FormRegles
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(864, 641)
+        Me.ClientSize = New System.Drawing.Size(644, 528)
         Me.Controls.Add(Me.btnEntrainement)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label12)
@@ -346,8 +353,10 @@ Partial Class FormRegles
         Me.Controls.Add(Me.btnRetour)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MaximumSize = New System.Drawing.Size(660, 567)
         Me.Name = "FormRegles"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FormRegles"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PnlCaractereJoue.ResumeLayout(False)

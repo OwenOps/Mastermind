@@ -38,6 +38,7 @@ Partial Class FormCaractere
         Me.lblNom = New System.Windows.Forms.Label()
         Me.PnlDiff = New System.Windows.Forms.Panel()
         Me.LblDifficulte = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PnlCaractereJoue.SuspendLayout()
         Me.PnlDiff.SuspendLayout()
@@ -49,7 +50,7 @@ Partial Class FormCaractere
         Me.btnHide.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnHide.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnHide.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnHide.Location = New System.Drawing.Point(474, 174)
+        Me.btnHide.Location = New System.Drawing.Point(478, 185)
         Me.btnHide.Name = "btnHide"
         Me.btnHide.Size = New System.Drawing.Size(83, 40)
         Me.btnHide.TabIndex = 0
@@ -65,7 +66,7 @@ Partial Class FormCaractere
         Me.Label7.Location = New System.Drawing.Point(184, 18)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(228, 52)
+        Me.Label7.Size = New System.Drawing.Size(227, 52)
         Me.Label7.TabIndex = 37
         Me.Label7.Text = "MasterMind"
         '
@@ -89,7 +90,7 @@ Partial Class FormCaractere
         Me.PnlCaractereJoue.Controls.Add(Me.txtBox2)
         Me.PnlCaractereJoue.Controls.Add(Me.txtBox3)
         Me.PnlCaractereJoue.ForeColor = System.Drawing.Color.Black
-        Me.PnlCaractereJoue.Location = New System.Drawing.Point(138, 165)
+        Me.PnlCaractereJoue.Location = New System.Drawing.Point(142, 176)
         Me.PnlCaractereJoue.Name = "PnlCaractereJoue"
         Me.PnlCaractereJoue.Size = New System.Drawing.Size(322, 62)
         Me.PnlCaractereJoue.TabIndex = 43
@@ -149,7 +150,7 @@ Partial Class FormCaractere
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(89, 133)
+        Me.Label1.Location = New System.Drawing.Point(94, 145)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(371, 20)
         Me.Label1.TabIndex = 44
@@ -159,7 +160,7 @@ Partial Class FormCaractere
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(35, 247)
+        Me.Label6.Location = New System.Drawing.Point(40, 258)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(532, 18)
         Me.Label6.TabIndex = 46
@@ -170,7 +171,7 @@ Partial Class FormCaractere
         '
         Me.lblCaraJouable.AutoSize = True
         Me.lblCaraJouable.Font = New System.Drawing.Font("Segoe UI Black", 10.8!, System.Drawing.FontStyle.Bold)
-        Me.lblCaraJouable.Location = New System.Drawing.Point(227, 280)
+        Me.lblCaraJouable.Location = New System.Drawing.Point(232, 292)
         Me.lblCaraJouable.Name = "lblCaraJouable"
         Me.lblCaraJouable.Size = New System.Drawing.Size(99, 20)
         Me.lblCaraJouable.TabIndex = 47
@@ -182,7 +183,7 @@ Partial Class FormCaractere
         Me.btnAleatoire.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAleatoire.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnAleatoire.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.btnAleatoire.Location = New System.Drawing.Point(36, 174)
+        Me.btnAleatoire.Location = New System.Drawing.Point(40, 185)
         Me.btnAleatoire.Name = "btnAleatoire"
         Me.btnAleatoire.Size = New System.Drawing.Size(83, 40)
         Me.btnAleatoire.TabIndex = 48
@@ -194,7 +195,7 @@ Partial Class FormCaractere
         Me.lblNom.AutoSize = True
         Me.lblNom.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNom.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.lblNom.Location = New System.Drawing.Point(465, 133)
+        Me.lblNom.Location = New System.Drawing.Point(470, 145)
         Me.lblNom.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblNom.Name = "lblNom"
         Me.lblNom.Size = New System.Drawing.Size(57, 20)
@@ -207,29 +208,41 @@ Partial Class FormCaractere
         Me.PnlDiff.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.PnlDiff.Controls.Add(Me.LblDifficulte)
         Me.PnlDiff.ForeColor = System.Drawing.Color.Black
-        Me.PnlDiff.Location = New System.Drawing.Point(8, 92)
+        Me.PnlDiff.Location = New System.Drawing.Point(180, 100)
         Me.PnlDiff.Name = "PnlDiff"
-        Me.PnlDiff.Size = New System.Drawing.Size(56, 31)
+        Me.PnlDiff.Size = New System.Drawing.Size(109, 21)
         Me.PnlDiff.TabIndex = 54
         '
         'LblDifficulte
         '
         Me.LblDifficulte.AutoSize = True
-        Me.LblDifficulte.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDifficulte.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Bold)
         Me.LblDifficulte.ForeColor = System.Drawing.Color.Gray
-        Me.LblDifficulte.Location = New System.Drawing.Point(3, 4)
+        Me.LblDifficulte.Location = New System.Drawing.Point(18, -2)
         Me.LblDifficulte.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LblDifficulte.Name = "LblDifficulte"
-        Me.LblDifficulte.Size = New System.Drawing.Size(28, 19)
+        Me.LblDifficulte.Size = New System.Drawing.Size(77, 19)
         Me.LblDifficulte.TabIndex = 53
-        Me.LblDifficulte.Text = "Dif"
+        Me.LblDifficulte.Text = "Difficulté"
         Me.LblDifficulte.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(23, 100)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(150, 20)
+        Me.Label5.TabIndex = 56
+        Me.Label5.Text = "Niveau de difficulté :"
         '
         'FormCaractere
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(601, 321)
+        Me.ClientSize = New System.Drawing.Size(599, 332)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.PnlDiff)
         Me.Controls.Add(Me.lblNom)
         Me.Controls.Add(Me.btnAleatoire)
@@ -240,7 +253,7 @@ Partial Class FormCaractere
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnHide)
-        Me.MaximumSize = New System.Drawing.Size(617, 360)
+        Me.MaximumSize = New System.Drawing.Size(615, 371)
         Me.Name = "FormCaractere"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pattern à deviner"
@@ -270,4 +283,5 @@ Partial Class FormCaractere
     Friend WithEvents lblNom As Label
     Friend WithEvents PnlDiff As Panel
     Friend WithEvents LblDifficulte As Label
+    Friend WithEvents Label5 As Label
 End Class
