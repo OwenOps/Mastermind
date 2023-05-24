@@ -67,19 +67,18 @@
     End Sub
 
     Public Function caraDifferent(newCara As String)
-        If String.Compare(newCara, CARA_DEFAUT) <> 0 Then
-
-            'Hashset c'est pour stocker des caracteres unique.
-            Dim caracteres As New HashSet(Of Char)()
-            For Each caractere As Char In newCara
-                If caracteres.Contains(caractere) Then
-                    Return False
-                End If
-                caracteres.Add(caractere)
-            Next
-        Else
+        If String.Compare(newCara, getCaraJouable) = 0 Then
             Return False
         End If
+
+        'Hashset c'est pour stocker des caracteres unique.
+        Dim caracteres As New HashSet(Of Char)()
+        For Each caractere As Char In newCara
+            If caracteres.Contains(caractere) Then
+                Return False
+            End If
+            caracteres.Add(caractere)
+        Next
         Return True
     End Function
 

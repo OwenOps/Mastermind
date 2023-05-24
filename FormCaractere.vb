@@ -91,12 +91,4 @@
             e.Cancel = True
         End If
     End Sub
-
-    Private Sub LblDifficulte_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub FormCaractere_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

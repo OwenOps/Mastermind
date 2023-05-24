@@ -7,8 +7,6 @@
     End Sub
 
     Private Sub btnEntrainement_Click(sender As Object, e As EventArgs) Handles btnEntrainement.Click
-
-
         Dim demande As DialogResult = MsgBox("Voulez-vous lancer l'entrainement", vbYesNo, "Entrainement")
         If demande = DialogResult.Yes Then
 
@@ -29,7 +27,6 @@
                 Me.Hide()
                 FormJeu.Show()
             End If
-
         End If
     End Sub
 

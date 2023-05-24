@@ -29,10 +29,3 @@
         End If
     End Sub
 End Class
-
-'Dim ferm As DialogResult = MessageBox.Show("Voulez-vous vraiment quitter le jeu ?", "Fermer MasterMind", MessageBoxButtons.YesNo)
-'If ferm = DialogResult.Yes Then
-'ArchiverJoueurDansFichier()
-'Application.Exit()
-'End If
-'End Sub
