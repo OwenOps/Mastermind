@@ -18,10 +18,6 @@
         Return NombreCoupChoisis
     End Function
 
-    Public Function getNbrCoupDefaut() As Integer
-        Return NBR_COUP_DEFAUT
-    End Function
-
     Public Sub afficheDifficulte(lbl As Label, pnl As Panel)
         If estHard() Then
             lbl.Text = HARD

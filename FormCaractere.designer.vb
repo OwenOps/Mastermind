@@ -66,7 +66,7 @@ Partial Class FormCaractere
         Me.Label7.Location = New System.Drawing.Point(184, 18)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(227, 52)
+        Me.Label7.Size = New System.Drawing.Size(228, 52)
         Me.Label7.TabIndex = 37
         Me.Label7.Text = "MasterMind"
         '

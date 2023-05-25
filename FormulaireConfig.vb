@@ -204,7 +204,6 @@ Public Class FormulaireConfig
         Else
             MessageBox.Show("La personne n'existe pas", "Erreur")
         End If
-        'FormAccueil.Show()
     End Sub
 
     Private Sub btnRetour_Click(sender As Object, e As EventArgs) Handles btnRetour.Click

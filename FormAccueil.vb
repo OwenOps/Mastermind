@@ -19,7 +19,6 @@ Public Class FormAccueil
 
     Private Sub btnJouer_Click(sender As Object, e As EventArgs) Handles btnJouer.Click
         If (verifJoueur()) Then
-            'ArchiverJoueurDansFichier()
             enregistrerJoueur()
             Me.Hide()
             FormCaractere.Show()

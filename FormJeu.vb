@@ -11,6 +11,8 @@
     Private Sub FormJeu_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
         If Me.Visible Then
             ModulePartie.setPartie()
+            LstCaraHisto.TabStop = False
+            Me.AcceptButton = BtnGuess
             resetDesign()
 
             If (ModulePartie.getModeEntrainement()) Then
@@ -164,22 +166,21 @@
         End If
 
         If gagne Then
-            lblBonneChance.Hide()
-            LblNomJoueur.Hide()
             LblBravoPerdu.Text = "Bravo, tu remportes cette manche !!!"
             LblBravoPerdu.Left += 12
             LblBravoPerdu.ForeColor = Color.Green
 
             ModuleJoueur.ajouterStats(getDeuxiemeJoueur, temps)
         Else
-            lblBonneChance.Hide()
-            LblNomJoueur.Hide()
             LblBravoPerdu.Text = "Perdu, tu feras mieux la prochaine fois !"
             LblBravoPerdu.Left -= 4
             LblBravoPerdu.ForeColor = Color.Red
 
             ModuleJoueur.ajouterStats(getPremierJoueur, temps)
         End If
+        lblBonneChance.Hide()
+        LblNomJoueur.Hide()
+
         sauvegarderDansHisto()
     End Sub
 

@@ -13,10 +13,6 @@
         Return MAX_TEMPS
     End Function
 
-    Public Function getJoueursCopy() As Joueur()
-        Return joueursCopy
-    End Function
-
     Public Function getPodium() As Joueur()
         Return podium
     End Function

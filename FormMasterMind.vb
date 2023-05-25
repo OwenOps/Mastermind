@@ -13,7 +13,6 @@
         FormulaireConfig.afficheBtnReset()
         FormulaireConfig.Show()
         Me.Hide()
-
     End Sub
 
     Private Sub btnRegles_Click(sender As Object, e As EventArgs) Handles btnRegles.Click

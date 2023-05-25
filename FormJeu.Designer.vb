@@ -74,7 +74,7 @@ Partial Class FormJeu
         Me.Label3.ForeColor = System.Drawing.Color.Red
         Me.Label3.Location = New System.Drawing.Point(254, 396)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(49, 16)
+        Me.Label3.Size = New System.Drawing.Size(50, 16)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Absent"
         '
@@ -86,7 +86,7 @@ Partial Class FormJeu
         Me.Label4.ForeColor = System.Drawing.Color.Blue
         Me.Label4.Location = New System.Drawing.Point(254, 422)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(53, 16)
+        Me.Label4.Size = New System.Drawing.Size(54, 16)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Présent"
         '
@@ -97,7 +97,7 @@ Partial Class FormJeu
         Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Label5.Location = New System.Drawing.Point(214, 450)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(135, 16)
+        Me.Label5.Size = New System.Drawing.Size(136, 16)
         Me.Label5.TabIndex = 4
         Me.Label5.Text = "Présent et Bien Placé"
         '
@@ -130,7 +130,7 @@ Partial Class FormJeu
         Me.Txt1.MaxLength = 1
         Me.Txt1.Name = "Txt1"
         Me.Txt1.Size = New System.Drawing.Size(38, 20)
-        Me.Txt1.TabIndex = 1
+        Me.Txt1.TabIndex = 2
         Me.Txt1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt2
@@ -139,7 +139,7 @@ Partial Class FormJeu
         Me.Txt2.MaxLength = 1
         Me.Txt2.Name = "Txt2"
         Me.Txt2.Size = New System.Drawing.Size(38, 20)
-        Me.Txt2.TabIndex = 2
+        Me.Txt2.TabIndex = 3
         Me.Txt2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt3
@@ -148,7 +148,7 @@ Partial Class FormJeu
         Me.Txt3.MaxLength = 1
         Me.Txt3.Name = "Txt3"
         Me.Txt3.Size = New System.Drawing.Size(38, 20)
-        Me.Txt3.TabIndex = 3
+        Me.Txt3.TabIndex = 4
         Me.Txt3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt4
@@ -157,7 +157,7 @@ Partial Class FormJeu
         Me.Txt4.MaxLength = 1
         Me.Txt4.Name = "Txt4"
         Me.Txt4.Size = New System.Drawing.Size(38, 20)
-        Me.Txt4.TabIndex = 4
+        Me.Txt4.TabIndex = 5
         Me.Txt4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Txt5
@@ -166,7 +166,7 @@ Partial Class FormJeu
         Me.Txt5.MaxLength = 1
         Me.Txt5.Name = "Txt5"
         Me.Txt5.Size = New System.Drawing.Size(38, 20)
-        Me.Txt5.TabIndex = 5
+        Me.Txt5.TabIndex = 6
         Me.Txt5.Tag = "1"
         Me.Txt5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -192,7 +192,7 @@ Partial Class FormJeu
         Me.PnlCaractereJoue.Location = New System.Drawing.Point(29, 204)
         Me.PnlCaractereJoue.Name = "PnlCaractereJoue"
         Me.PnlCaractereJoue.Size = New System.Drawing.Size(320, 62)
-        Me.PnlCaractereJoue.TabIndex = 6
+        Me.PnlCaractereJoue.TabIndex = 1
         '
         'lblBonneChance
         '
@@ -245,7 +245,7 @@ Partial Class FormJeu
         Me.btnExit.Location = New System.Drawing.Point(111, 284)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(148, 31)
-        Me.btnExit.TabIndex = 30
+        Me.btnExit.TabIndex = 7
         Me.btnExit.Text = "Exit"
         Me.btnExit.UseVisualStyleBackColor = False
         Me.btnExit.Visible = False
@@ -294,7 +294,7 @@ Partial Class FormJeu
         Me.LblCaraJouable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblCaraJouable.Location = New System.Drawing.Point(45, 422)
         Me.LblCaraJouable.Name = "LblCaraJouable"
-        Me.LblCaraJouable.Size = New System.Drawing.Size(96, 16)
+        Me.LblCaraJouable.Size = New System.Drawing.Size(97, 16)
         Me.LblCaraJouable.TabIndex = 36
         Me.LblCaraJouable.Text = "CaraJouable"
         '
@@ -322,7 +322,7 @@ Partial Class FormJeu
         Me.Label11.Location = New System.Drawing.Point(182, 9)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(227, 52)
+        Me.Label11.Size = New System.Drawing.Size(228, 52)
         Me.Label11.TabIndex = 35
         Me.Label11.Text = "MasterMind"
         '

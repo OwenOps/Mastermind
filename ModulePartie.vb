@@ -35,10 +35,6 @@ Module ModulePartie
         difficulte = diff
     End Sub
 
-    Public Function getDifficultePartie() As String
-        Return difficulte
-    End Function
-
     Public Function getModeEntrainement() As Boolean
         Return modeEntrainement
     End Function
@@ -75,10 +71,6 @@ Module ModulePartie
     Public Function getTempsPartie() As Integer
         Return tempsPartie
     End Function
-
-    Public Sub setNombreCoup(nbr As Integer)
-        nombreCoupPossible = nbr
-    End Sub
 
     Public Function getNombreCoup() As Integer
         Return nombreCoupPossible

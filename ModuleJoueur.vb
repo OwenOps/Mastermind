@@ -213,14 +213,6 @@ Module ModuleJoueur
         Return JoueurActuel(1)
     End Function
 
-    Public Function getNombreJoueur() As Integer
-        Return NBR_MAX_JOUEUR
-    End Function
-
-    Public Function getNomDesJoueurs() As String
-        Return getPremierJoueur().nom + ", " + getDeuxiemeJoueur().nom
-    End Function
-
     Public Sub changementNomJoueur(nomActu As String, nouveauNom As String)
         For i As Integer = 0 To JoueurHistorique.Length - 1
             If JoueurHistorique(i).nom = nomActu Then

@@ -163,7 +163,7 @@ Partial Class FormStat
         Me.pnlStats.Controls.Add(Me.lstBox2)
         Me.pnlStats.Controls.Add(Me.lstBox1)
         Me.pnlStats.Location = New System.Drawing.Point(-34, 235)
-        Me.pnlStats.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.pnlStats.Margin = New System.Windows.Forms.Padding(2)
         Me.pnlStats.Name = "pnlStats"
         Me.pnlStats.Size = New System.Drawing.Size(784, 268)
         Me.pnlStats.TabIndex = 18
@@ -256,7 +256,7 @@ Partial Class FormStat
         Me.Label7.Location = New System.Drawing.Point(256, 7)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(227, 52)
+        Me.Label7.Size = New System.Drawing.Size(228, 52)
         Me.Label7.TabIndex = 38
         Me.Label7.Text = "MasterMind"
         '
@@ -277,7 +277,7 @@ Partial Class FormStat
         Me.btnRetour.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnRetour.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.btnRetour.Location = New System.Drawing.Point(30, 91)
-        Me.btnRetour.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnRetour.Margin = New System.Windows.Forms.Padding(2)
         Me.btnRetour.Name = "btnRetour"
         Me.btnRetour.Size = New System.Drawing.Size(93, 29)
         Me.btnRetour.TabIndex = 40

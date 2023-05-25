@@ -3,9 +3,8 @@
 ################################################################################
 
 /.vs
-/bin/Debug
-/My Project
 /obj
+/My Project
 /App.config
-/SAE.vbproj
 /SAE.vbproj.user
+/bin/Debug
