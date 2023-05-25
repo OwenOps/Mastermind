@@ -13,6 +13,7 @@
             ModulePartie.setPartie()
             LstCaraHisto.TabStop = False
             Me.AcceptButton = BtnGuess
+            BtnAbandonner.Enabled = True
             resetDesign()
 
             If (ModulePartie.getModeEntrainement()) Then
@@ -229,9 +230,19 @@
 
         ModulePartie.setTempsPartie(tempsMax)
         If ModulePartie.timerFinis() Then
+            BtnAbandonner.Enabled = False
             TimerJeu.Stop()
             gagnePerdu(False)
             partieFinis()
+        End If
+    End Sub
+
+    Private Sub BtnAbandonner_Click(sender As Object, e As EventArgs) Handles BtnAbandonner.Click
+        Dim demande As DialogResult = MessageBox.Show("Etes vous sur de vouloir abandonner ?", "Attention", MessageBoxButtons.YesNo)
+        If demande = DialogResult.Yes Then
+            gagnePerdu(False)
+            partieFinis()
+            BtnAbandonner.Enabled = False
         End If
     End Sub
 

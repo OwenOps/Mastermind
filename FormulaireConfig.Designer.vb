@@ -66,6 +66,8 @@ Partial Class FormulaireConfig
         Me.BtnFacile = New System.Windows.Forms.Button()
         Me.BtnNormal = New System.Windows.Forms.Button()
         Me.BtnHard = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.BtnFichier = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelTimer.SuspendLayout()
         Me.PanelCaractere.SuspendLayout()
@@ -425,7 +427,7 @@ Partial Class FormulaireConfig
         Me.PnlNomCache.Location = New System.Drawing.Point(479, 314)
         Me.PnlNomCache.Margin = New System.Windows.Forms.Padding(4)
         Me.PnlNomCache.Name = "PnlNomCache"
-        Me.PnlNomCache.Size = New System.Drawing.Size(408, 36)
+        Me.PnlNomCache.Size = New System.Drawing.Size(408, 26)
         Me.PnlNomCache.TabIndex = 52
         Me.PnlNomCache.Visible = False
         '
@@ -490,7 +492,7 @@ Partial Class FormulaireConfig
         Me.btnRetour.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnRetour.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnRetour.ForeColor = System.Drawing.Color.White
-        Me.btnRetour.Location = New System.Drawing.Point(558, 444)
+        Me.btnRetour.Location = New System.Drawing.Point(556, 493)
         Me.btnRetour.Margin = New System.Windows.Forms.Padding(4)
         Me.btnRetour.Name = "btnRetour"
         Me.btnRetour.Size = New System.Drawing.Size(263, 42)
@@ -504,7 +506,7 @@ Partial Class FormulaireConfig
         Me.BtnReset.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnReset.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.BtnReset.ForeColor = System.Drawing.Color.White
-        Me.BtnReset.Location = New System.Drawing.Point(76, 444)
+        Me.BtnReset.Location = New System.Drawing.Point(74, 493)
         Me.BtnReset.Margin = New System.Windows.Forms.Padding(4)
         Me.BtnReset.Name = "BtnReset"
         Me.BtnReset.Size = New System.Drawing.Size(263, 42)
@@ -521,14 +523,14 @@ Partial Class FormulaireConfig
         Me.PnlRadioBtn.Location = New System.Drawing.Point(323, 159)
         Me.PnlRadioBtn.Margin = New System.Windows.Forms.Padding(4)
         Me.PnlRadioBtn.Name = "PnlRadioBtn"
-        Me.PnlRadioBtn.Size = New System.Drawing.Size(148, 201)
+        Me.PnlRadioBtn.Size = New System.Drawing.Size(148, 181)
         Me.PnlRadioBtn.TabIndex = 57
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Bookman Old Style", 10.0!)
-        Me.Label10.Location = New System.Drawing.Point(192, 386)
+        Me.Label10.Location = New System.Drawing.Point(190, 435)
         Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(147, 19)
@@ -540,7 +542,7 @@ Partial Class FormulaireConfig
         Me.PnlDifficulte.Controls.Add(Me.BtnFacile)
         Me.PnlDifficulte.Controls.Add(Me.BtnNormal)
         Me.PnlDifficulte.Controls.Add(Me.BtnHard)
-        Me.PnlDifficulte.Location = New System.Drawing.Point(362, 376)
+        Me.PnlDifficulte.Location = New System.Drawing.Point(360, 425)
         Me.PnlDifficulte.Name = "PnlDifficulte"
         Me.PnlDifficulte.Size = New System.Drawing.Size(324, 35)
         Me.PnlDifficulte.TabIndex = 60
@@ -587,11 +589,38 @@ Partial Class FormulaireConfig
         Me.BtnHard.Text = "Hard"
         Me.BtnHard.UseVisualStyleBackColor = False
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Bookman Old Style", 10.0!)
+        Me.Label9.Location = New System.Drawing.Point(28, 372)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(317, 19)
+        Me.Label9.TabIndex = 62
+        Me.Label9.Text = "Ajouter une sauvegarde à un emplacement :"
+        '
+        'BtnFichier
+        '
+        Me.BtnFichier.BackColor = System.Drawing.Color.Gray
+        Me.BtnFichier.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnFichier.Font = New System.Drawing.Font("Segoe UI", 7.8!)
+        Me.BtnFichier.ForeColor = System.Drawing.Color.White
+        Me.BtnFichier.Location = New System.Drawing.Point(420, 372)
+        Me.BtnFichier.Margin = New System.Windows.Forms.Padding(4)
+        Me.BtnFichier.Name = "BtnFichier"
+        Me.BtnFichier.Size = New System.Drawing.Size(182, 30)
+        Me.BtnFichier.TabIndex = 58
+        Me.BtnFichier.Text = "Changement emplacement fichier"
+        Me.BtnFichier.UseVisualStyleBackColor = False
+        '
         'FormulaireConfig
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(907, 510)
+        Me.ClientSize = New System.Drawing.Size(907, 558)
+        Me.Controls.Add(Me.BtnFichier)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.PnlDifficulte)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.PnlRadioBtn)
@@ -609,7 +638,7 @@ Partial Class FormulaireConfig
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label1)
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.MaximumSize = New System.Drawing.Size(923, 549)
+        Me.MaximumSize = New System.Drawing.Size(923, 597)
         Me.Name = "FormulaireConfig"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Configuration "
@@ -681,4 +710,6 @@ Partial Class FormulaireConfig
     Friend WithEvents BtnFacile As Button
     Friend WithEvents BtnNormal As Button
     Friend WithEvents BtnHard As Button
+    Friend WithEvents Label9 As Label
+    Friend WithEvents BtnFichier As Button
 End Class

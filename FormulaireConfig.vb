@@ -1,4 +1,5 @@
 ﻿Imports System.Diagnostics.Eventing.Reader
+Imports System.IO
 Public Class FormulaireConfig
     Public Sub afficheBtnReset()
         If ModuleConfig.configChange Then
@@ -101,8 +102,13 @@ Public Class FormulaireConfig
 
             Dim nbrCoup As Integer = 0
             If TxtNbrCoup.Text <> "" And Integer.TryParse(TxtNbrCoup.Text, nbrCoup) AndAlso nbrCoup > 0 Then
-                ModuleConfig.setNombreCoupChoisis(TxtNbrCoup.Text)
-                ModulePartie.resetTxt(TxtNbrCoup)
+                If Not estFacile() And Not estHard() Then
+                    ModuleConfig.setNombreCoupChoisis(TxtNbrCoup.Text)
+                    ModulePartie.resetTxt(TxtNbrCoup)
+                    afficheMiseAJour()
+                Else
+                    afficheModeActive()
+                End If
             Else
                 MessageBox.Show("Le nombre de coup doit être supérieur a 0", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -113,6 +119,7 @@ Public Class FormulaireConfig
             If nouveauCara.Length = ModuleConfig.getNbrCaraMax Then
                 If ModuleConfig.caraDifferent(nouveauCara) Then
                     ModuleConfig.setCaraJouable(nouveauCara)
+                    afficheMiseAJour()
                 Else
                     MessageBox.Show("Les caractères doivent être différent", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
@@ -127,6 +134,14 @@ Public Class FormulaireConfig
             temps()
         End If
         afficheBtnReset()
+    End Sub
+
+    Public Sub afficheMiseAJour()
+        MessageBox.Show("Configuration mise à jour.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Public Sub afficheModeActive()
+        MessageBox.Show("Vous devez être en mode " & ModuleConfig.getNormal & " pour pouvoir changer cette option.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
     Private Sub temps()
@@ -161,9 +176,14 @@ Public Class FormulaireConfig
             Exit Sub
         End If
 
-        ModuleConfig.setTempsMax(tempsMax)
-        ModulePartie.resetTxt(TxtTempsSec)
-        ModulePartie.resetTxt(TxtTempsMin)
+        If Not estFacile() And Not estHard() Then
+            afficheMiseAJour()
+            ModuleConfig.setTempsMax(tempsMax)
+            ModulePartie.resetTxt(TxtTempsSec)
+            ModulePartie.resetTxt(TxtTempsMin)
+        Else
+            afficheModeActive()
+        End If
     End Sub
 
     Private Sub BtnValidNom_Click(sender As Object, e As EventArgs) Handles BtnValidNom.Click
@@ -239,6 +259,18 @@ Public Class FormulaireConfig
             End If
         Next
         afficheBtnReset()
+    End Sub
+
+    Private Sub BtnFichier_Click(sender As Object, e As EventArgs) Handles BtnFichier.Click
+        Dim folderBrowserDialog As New FolderBrowserDialog()
+
+        If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
+            Dim nouveauChemin As String = folderBrowserDialog.SelectedPath
+
+            ModuleJoueur.setCheminFichier(nouveauChemin)
+
+            MessageBox.Show("Un fichier de sauvegarde sera présent ici : " & nouveauChemin & MessageBoxIcon.Information)
+        End If
     End Sub
 
     Private Sub FormConfig_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

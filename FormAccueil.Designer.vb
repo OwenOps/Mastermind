@@ -183,7 +183,7 @@ Partial Class FormAccueil
         Me.PnlDiff.ForeColor = System.Drawing.Color.Black
         Me.PnlDiff.Location = New System.Drawing.Point(188, 91)
         Me.PnlDiff.Name = "PnlDiff"
-        Me.PnlDiff.Size = New System.Drawing.Size(109, 21)
+        Me.PnlDiff.Size = New System.Drawing.Size(79, 21)
         Me.PnlDiff.TabIndex = 53
         '
         'LblDifficulte
@@ -191,7 +191,7 @@ Partial Class FormAccueil
         Me.LblDifficulte.AutoSize = True
         Me.LblDifficulte.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblDifficulte.ForeColor = System.Drawing.Color.Gray
-        Me.LblDifficulte.Location = New System.Drawing.Point(18, -1)
+        Me.LblDifficulte.Location = New System.Drawing.Point(2, -1)
         Me.LblDifficulte.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LblDifficulte.Name = "LblDifficulte"
         Me.LblDifficulte.Size = New System.Drawing.Size(77, 19)

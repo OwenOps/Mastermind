@@ -84,6 +84,11 @@
         Next
     End Sub
 
+    Private Sub btnRetour_Click(sender As Object, e As EventArgs) Handles btnRetour.Click
+        Me.Hide()
+        FormAccueil.Show()
+    End Sub
+
     Private Sub FormCaractere_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If ModuleGestionAppli.fermetureFormDialog Then
             Application.Exit()

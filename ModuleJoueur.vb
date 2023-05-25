@@ -1,6 +1,8 @@
 ﻿Imports System.IO
+Imports System.Text
 Module ModuleJoueur
     Private Const NBR_MAX_JOUEUR = 2
+    Private Const CHEMIN_DEFAUT = "../../InfosJoueur.txt"
     Private valider As Boolean = False
     Private ancienNomTemp As String = ""
 
@@ -44,6 +46,11 @@ Module ModuleJoueur
 
         chargercbxNomJoueur()
     End Sub
+
+    Public Sub setCheminFichier(chemin As String)
+        cheminFichier = chemin
+    End Sub
+
     Public Function getAncienNomTemp() As String
         Return ancienNomTemp
     End Function
@@ -102,11 +109,12 @@ Module ModuleJoueur
                 If JoueurHistorique(i).nom = JoueurActuel(j).nom Then
                     JoueurHistorique(i).score += JoueurActuel(j).score
                     JoueurHistorique(i).cumulTemps += JoueurActuel(j).cumulTemps
-                    If JoueurActuel(j).meilleurTemps < JoueurHistorique(i).meilleurTemps Then
+                    If JoueurActuel(j).meilleurTemps < JoueurHistorique(i).meilleurTemps And ModuleConfig.timerEstActive Then
                         JoueurHistorique(i).meilleurTemps = JoueurActuel(j).meilleurTemps
                     End If
                     JoueurHistorique(i).nbrPartiesPremierJoueur += JoueurActuel(j).nbrPartiesPremierJoueur
                     JoueurHistorique(i).nbrPartiesSecondJoueur += JoueurActuel(j).nbrPartiesSecondJoueur
+                    Exit Sub
                 End If
             Next
         Next
@@ -155,8 +163,29 @@ Module ModuleJoueur
         End If
     End Sub
 
+    Public Sub fichierChoisis()
+        Dim sb As New StringBuilder()
+
+        For i As Integer = 0 To JoueurHistorique.Length - 1
+            sb.AppendLine(JoueurHistorique(i).nom)
+            sb.AppendLine(JoueurHistorique(i).score)
+            sb.AppendLine(JoueurHistorique(i).meilleurTemps)
+            sb.AppendLine(JoueurHistorique(i).nbrPartiesPremierJoueur)
+            sb.AppendLine(JoueurHistorique(i).nbrPartiesPremierJoueur)
+            sb.AppendLine(JoueurHistorique(i).nbrPartiesSecondJoueur)
+            sb.AppendLine(JoueurHistorique(i).cumulTemps)
+        Next
+        Dim cheminFichiers As String = Path.Combine(cheminFichier, "InfosJoueur.txt")
+        File.WriteAllText(cheminFichiers, sb.ToString())
+
+        cheminFichier = CHEMIN_DEFAUT
+    End Sub
+
     Public Sub ArchiverJoueurDansFichier()
-        ' Vérifier si le fichier existe déjà sinon le crée
+        If cheminFichier <> CHEMIN_DEFAUT Then
+            fichierChoisis()
+        End If
+
         If Not File.Exists(cheminFichier) Then
             Dim fichier As StreamWriter = File.CreateText(cheminFichier)
             fichier.Close()

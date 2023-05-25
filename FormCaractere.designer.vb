@@ -39,6 +39,7 @@ Partial Class FormCaractere
         Me.PnlDiff = New System.Windows.Forms.Panel()
         Me.LblDifficulte = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.btnRetour = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PnlCaractereJoue.SuspendLayout()
         Me.PnlDiff.SuspendLayout()
@@ -210,7 +211,7 @@ Partial Class FormCaractere
         Me.PnlDiff.ForeColor = System.Drawing.Color.Black
         Me.PnlDiff.Location = New System.Drawing.Point(180, 100)
         Me.PnlDiff.Name = "PnlDiff"
-        Me.PnlDiff.Size = New System.Drawing.Size(109, 21)
+        Me.PnlDiff.Size = New System.Drawing.Size(77, 19)
         Me.PnlDiff.TabIndex = 54
         '
         'LblDifficulte
@@ -218,7 +219,7 @@ Partial Class FormCaractere
         Me.LblDifficulte.AutoSize = True
         Me.LblDifficulte.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Bold)
         Me.LblDifficulte.ForeColor = System.Drawing.Color.Gray
-        Me.LblDifficulte.Location = New System.Drawing.Point(18, -2)
+        Me.LblDifficulte.Location = New System.Drawing.Point(-1, -2)
         Me.LblDifficulte.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LblDifficulte.Name = "LblDifficulte"
         Me.LblDifficulte.Size = New System.Drawing.Size(77, 19)
@@ -237,11 +238,26 @@ Partial Class FormCaractere
         Me.Label5.TabIndex = 56
         Me.Label5.Text = "Niveau de difficulté :"
         '
+        'btnRetour
+        '
+        Me.btnRetour.BackColor = System.Drawing.Color.Gray
+        Me.btnRetour.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnRetour.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.btnRetour.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.btnRetour.Location = New System.Drawing.Point(40, 307)
+        Me.btnRetour.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnRetour.Name = "btnRetour"
+        Me.btnRetour.Size = New System.Drawing.Size(83, 37)
+        Me.btnRetour.TabIndex = 57
+        Me.btnRetour.Text = "Retour"
+        Me.btnRetour.UseVisualStyleBackColor = False
+        '
         'FormCaractere
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(599, 332)
+        Me.ClientSize = New System.Drawing.Size(599, 355)
+        Me.Controls.Add(Me.btnRetour)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.PnlDiff)
         Me.Controls.Add(Me.lblNom)
@@ -253,7 +269,7 @@ Partial Class FormCaractere
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnHide)
-        Me.MaximumSize = New System.Drawing.Size(615, 371)
+        Me.MaximumSize = New System.Drawing.Size(615, 394)
         Me.Name = "FormCaractere"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pattern à deviner"
@@ -284,4 +300,5 @@ Partial Class FormCaractere
     Friend WithEvents PnlDiff As Panel
     Friend WithEvents LblDifficulte As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents btnRetour As Button
 End Class

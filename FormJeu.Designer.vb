@@ -52,6 +52,7 @@ Partial Class FormJeu
         Me.PnlDiff = New System.Windows.Forms.Panel()
         Me.LblDifficulte = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.BtnAbandonner = New System.Windows.Forms.Button()
         Me.PnlCaractereJoue.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PnlDiff.SuspendLayout()
@@ -117,7 +118,7 @@ Partial Class FormJeu
         Me.BtnGuess.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnGuess.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.BtnGuess.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.BtnGuess.Location = New System.Drawing.Point(111, 283)
+        Me.BtnGuess.Location = New System.Drawing.Point(29, 283)
         Me.BtnGuess.Name = "BtnGuess"
         Me.BtnGuess.Size = New System.Drawing.Size(148, 32)
         Me.BtnGuess.TabIndex = 11
@@ -242,7 +243,7 @@ Partial Class FormJeu
         Me.btnExit.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnExit.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.btnExit.Location = New System.Drawing.Point(111, 284)
+        Me.btnExit.Location = New System.Drawing.Point(29, 283)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(148, 31)
         Me.btnExit.TabIndex = 7
@@ -335,7 +336,7 @@ Partial Class FormJeu
         Me.PnlDiff.ForeColor = System.Drawing.Color.Black
         Me.PnlDiff.Location = New System.Drawing.Point(185, 98)
         Me.PnlDiff.Name = "PnlDiff"
-        Me.PnlDiff.Size = New System.Drawing.Size(109, 22)
+        Me.PnlDiff.Size = New System.Drawing.Size(77, 19)
         Me.PnlDiff.TabIndex = 54
         '
         'LblDifficulte
@@ -343,7 +344,7 @@ Partial Class FormJeu
         Me.LblDifficulte.AutoSize = True
         Me.LblDifficulte.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Bold)
         Me.LblDifficulte.ForeColor = System.Drawing.Color.Gray
-        Me.LblDifficulte.Location = New System.Drawing.Point(17, 0)
+        Me.LblDifficulte.Location = New System.Drawing.Point(-3, -3)
         Me.LblDifficulte.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LblDifficulte.Name = "LblDifficulte"
         Me.LblDifficulte.Size = New System.Drawing.Size(77, 19)
@@ -362,11 +363,25 @@ Partial Class FormJeu
         Me.Label7.TabIndex = 58
         Me.Label7.Text = "Niveau de difficulté :"
         '
+        'BtnAbandonner
+        '
+        Me.BtnAbandonner.BackColor = System.Drawing.Color.Brown
+        Me.BtnAbandonner.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnAbandonner.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.BtnAbandonner.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.BtnAbandonner.Location = New System.Drawing.Point(201, 284)
+        Me.BtnAbandonner.Name = "BtnAbandonner"
+        Me.BtnAbandonner.Size = New System.Drawing.Size(148, 31)
+        Me.BtnAbandonner.TabIndex = 59
+        Me.BtnAbandonner.Text = "Abandonner"
+        Me.BtnAbandonner.UseVisualStyleBackColor = False
+        '
         'FormJeu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(558, 489)
+        Me.Controls.Add(Me.BtnAbandonner)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PnlDiff)
         Me.Controls.Add(Me.LstCaraHisto)
@@ -432,4 +447,5 @@ Partial Class FormJeu
     Friend WithEvents PnlDiff As Panel
     Friend WithEvents LblDifficulte As Label
     Friend WithEvents Label7 As Label
+    Friend WithEvents BtnAbandonner As Button
 End Class
