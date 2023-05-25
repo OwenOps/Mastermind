@@ -39,7 +39,7 @@ Partial Class FormMasterMind
         Me.btnRegles.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnRegles.ForeColor = System.Drawing.Color.White
         Me.btnRegles.Location = New System.Drawing.Point(234, 238)
-        Me.btnRegles.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnRegles.Margin = New System.Windows.Forms.Padding(2)
         Me.btnRegles.Name = "btnRegles"
         Me.btnRegles.Size = New System.Drawing.Size(147, 41)
         Me.btnRegles.TabIndex = 10
@@ -53,7 +53,7 @@ Partial Class FormMasterMind
         Me.btnStart.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnStart.ForeColor = System.Drawing.Color.White
         Me.btnStart.Location = New System.Drawing.Point(62, 178)
-        Me.btnStart.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnStart.Margin = New System.Windows.Forms.Padding(2)
         Me.btnStart.Name = "btnStart"
         Me.btnStart.Size = New System.Drawing.Size(320, 41)
         Me.btnStart.TabIndex = 11
@@ -80,7 +80,7 @@ Partial Class FormMasterMind
         Me.Label7.Location = New System.Drawing.Point(111, 9)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(227, 52)
+        Me.Label7.Size = New System.Drawing.Size(228, 52)
         Me.Label7.TabIndex = 37
         Me.Label7.Text = "MasterMind"
         '
@@ -88,7 +88,7 @@ Partial Class FormMasterMind
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Maroon
         Me.PictureBox1.Location = New System.Drawing.Point(-1, -4)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(704, 77)
         Me.PictureBox1.TabIndex = 36
@@ -101,7 +101,7 @@ Partial Class FormMasterMind
         Me.btnConfig.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnConfig.ForeColor = System.Drawing.Color.White
         Me.btnConfig.Location = New System.Drawing.Point(62, 238)
-        Me.btnConfig.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnConfig.Margin = New System.Windows.Forms.Padding(2)
         Me.btnConfig.Name = "btnConfig"
         Me.btnConfig.Size = New System.Drawing.Size(148, 41)
         Me.btnConfig.TabIndex = 39
@@ -111,12 +111,12 @@ Partial Class FormMasterMind
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Frank Ruhl Hofshi", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.MidnightBlue
         Me.Label1.Location = New System.Drawing.Point(141, 129)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(167, 27)
+        Me.Label1.Size = New System.Drawing.Size(189, 25)
         Me.Label1.TabIndex = 40
         Me.Label1.Text = "H u r r i c a n e s"
         '
@@ -124,7 +124,7 @@ Partial Class FormMasterMind
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(452, 312)
+        Me.ClientSize = New System.Drawing.Size(452, 306)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnConfig)
         Me.Controls.Add(Me.Label7)
@@ -133,8 +133,8 @@ Partial Class FormMasterMind
         Me.Controls.Add(Me.btnStart)
         Me.Controls.Add(Me.btnRegles)
         Me.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.MaximumSize = New System.Drawing.Size(468, 370)
+        Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.MaximumSize = New System.Drawing.Size(468, 345)
         Me.Name = "FormMasterMind"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MasterMind"
