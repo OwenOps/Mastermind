@@ -70,12 +70,12 @@
                               vbCrLf & vbCrLf & vbCrLf &
                               " Score : " & joueur.score &
                               vbCrLf & vbCrLf &
-                              " Meilleur temps : " & joueur.meilleurTemps &
+                              " Meilleur temps : " & afficherTemps(joueur.meilleurTemps) &
                               vbCrLf & vbCrLf &
                               " Nombres de partie en tant que premier joueur : " & joueur.nbrPartiesPremierJoueur &
                               vbCrLf & vbCrLf &
                               " Nombres de partie en tant que second joueur :  " & joueur.nbrPartiesSecondJoueur &
-                              vbCrLf & vbCrLf & " Temps cumulé à chercher les bonnes combinaisons : " & joueur.cumulTemps, "Données statistiques du joueur " & joueur.nom)
+                              vbCrLf & vbCrLf & " Temps cumulé à chercher les bonnes combinaisons : " & afficherTemps(joueur.cumulTemps), "Données statistiques du joueur " & joueur.nom)
                     Exit For
                 End If
             Next
