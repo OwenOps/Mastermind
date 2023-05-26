@@ -113,12 +113,12 @@ Partial Class FormMasterMind
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.Label1.Location = New System.Drawing.Point(141, 129)
+        Me.Label1.Location = New System.Drawing.Point(100, 134)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(189, 25)
+        Me.Label1.Size = New System.Drawing.Size(267, 25)
         Me.Label1.TabIndex = 40
-        Me.Label1.Text = "H u r r i c a n e s"
+        Me.Label1.Text = "Los Pollos Hermanos/as"
         '
         'FormMasterMind
         '
