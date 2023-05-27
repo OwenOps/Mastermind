@@ -66,7 +66,7 @@ Partial Class FormRegles
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Maroon
         Me.PictureBox1.Location = New System.Drawing.Point(-30, -8)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(704, 77)
         Me.PictureBox1.TabIndex = 38
@@ -79,7 +79,7 @@ Partial Class FormRegles
         Me.btnRetour.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnRetour.ForeColor = System.Drawing.Color.White
         Me.btnRetour.Location = New System.Drawing.Point(54, 464)
-        Me.btnRetour.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnRetour.Margin = New System.Windows.Forms.Padding(2)
         Me.btnRetour.Name = "btnRetour"
         Me.btnRetour.Size = New System.Drawing.Size(130, 37)
         Me.btnRetour.TabIndex = 42
@@ -323,7 +323,7 @@ Partial Class FormRegles
         Me.btnEntrainement.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnEntrainement.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.btnEntrainement.Location = New System.Drawing.Point(210, 464)
-        Me.btnEntrainement.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnEntrainement.Margin = New System.Windows.Forms.Padding(2)
         Me.btnEntrainement.Name = "btnEntrainement"
         Me.btnEntrainement.Size = New System.Drawing.Size(380, 37)
         Me.btnEntrainement.TabIndex = 60
@@ -353,11 +353,11 @@ Partial Class FormRegles
         Me.Controls.Add(Me.btnRetour)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximumSize = New System.Drawing.Size(660, 567)
         Me.Name = "FormRegles"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "FormRegles"
+        Me.Text = "Regles"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PnlCaractereJoue.ResumeLayout(False)
         Me.PnlCaractereJoue.PerformLayout()
