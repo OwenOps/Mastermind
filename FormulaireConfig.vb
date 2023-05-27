@@ -281,8 +281,4 @@ Public Class FormulaireConfig
             e.Cancel = True
         End If
     End Sub
-
-    Private Sub FormulaireConfig_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class
