@@ -34,6 +34,7 @@ Public Class FormulaireConfig
                 rd.Checked = False
             Next
         Next
+        BtnNormal.Enabled = False
     End Sub
 
     Private Sub Radio_CheckedChanged(sender As Object, e As EventArgs) Handles RO1.CheckedChanged, RO2.CheckedChanged, RO3.CheckedChanged, RO4.CheckedChanged, RN1.CheckedChanged, RN2.CheckedChanged, RN3.CheckedChanged, RN4.CheckedChanged
@@ -279,5 +280,9 @@ Public Class FormulaireConfig
         Else
             e.Cancel = True
         End If
+    End Sub
+
+    Private Sub FormulaireConfig_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class
