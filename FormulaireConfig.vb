@@ -71,7 +71,7 @@ Public Class FormulaireConfig
         End Select
     End Sub
 
-    Private Sub Txt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtNbrCoup.KeyPress, TxtCaraChange.KeyPress, TxtTempsMin.KeyPress, TxtTempsSec.KeyPress
+    Private Sub Txt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtNbrCoup.KeyPress, TxtTempsMin.KeyPress, TxtTempsSec.KeyPress
         Dim textBox As TextBoxBase = TryCast(sender, TextBox)
         Dim textActive = textBox.Name
 
@@ -82,10 +82,6 @@ Public Class FormulaireConfig
             If textActive = TxtNbrCoup.Name And Not Char.IsDigit(e.KeyChar) Then
                 e.Handled = True
             ElseIf (textActive = TxtTempsMin.Name Or textActive = TxtTempsSec.Name) And Not Char.IsDigit(e.KeyChar) Then
-                e.Handled = True
-            End If
-        ElseIf PnlCaraCache.Visible Then
-            If textActive = TxtCaraChange.Name And Not Char.IsLetter(e.KeyChar) Then
                 e.Handled = True
             End If
         Else
@@ -280,5 +276,9 @@ Public Class FormulaireConfig
         Else
             e.Cancel = True
         End If
+    End Sub
+
+    Private Sub FormulaireConfig_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class
