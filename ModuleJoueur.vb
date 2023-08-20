@@ -109,12 +109,11 @@ Module ModuleJoueur
                 If JoueurHistorique(i).nom = JoueurActuel(j).nom Then
                     JoueurHistorique(i).score += JoueurActuel(j).score
                     JoueurHistorique(i).cumulTemps += JoueurActuel(j).cumulTemps
-                    If JoueurHistorique(i).meilleurTemps = 0 Or JoueurActuel(j).meilleurTemps < JoueurHistorique(i).meilleurTemps And ModuleConfig.timerEstActive Then
+                    If JoueurHistorique(i).meilleurTemps = 0 Or JoueurActuel(j).meilleurTemps <> 0 And JoueurActuel(j).meilleurTemps < JoueurHistorique(i).meilleurTemps And ModuleConfig.timerEstActive Then
                         JoueurHistorique(i).meilleurTemps = JoueurActuel(j).meilleurTemps
                     End If
                     JoueurHistorique(i).nbrPartiesPremierJoueur += JoueurActuel(j).nbrPartiesPremierJoueur
                     JoueurHistorique(i).nbrPartiesSecondJoueur += JoueurActuel(j).nbrPartiesSecondJoueur
-                    Exit Sub
                 End If
             Next
         Next

@@ -111,7 +111,7 @@ Partial Class FormulaireConfig
         Me.Titre.ForeColor = System.Drawing.Color.Transparent
         Me.Titre.Location = New System.Drawing.Point(326, 22)
         Me.Titre.Name = "Titre"
-        Me.Titre.Size = New System.Drawing.Size(228, 52)
+        Me.Titre.Size = New System.Drawing.Size(227, 52)
         Me.Titre.TabIndex = 39
         Me.Titre.Text = "MasterMind"
         '
@@ -195,7 +195,7 @@ Partial Class FormulaireConfig
         Me.Label4.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.Label4.Location = New System.Drawing.Point(3, 9)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(202, 16)
+        Me.Label4.Size = New System.Drawing.Size(201, 16)
         Me.Label4.TabIndex = 44
         Me.Label4.Text = "Durée du timer (en min et sec) :"
         '
@@ -271,7 +271,7 @@ Partial Class FormulaireConfig
         Me.Label5.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.Label5.Location = New System.Drawing.Point(3, 8)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(183, 16)
+        Me.Label5.Size = New System.Drawing.Size(182, 16)
         Me.Label5.TabIndex = 46
         Me.Label5.Text = "Nombre de coups maximum :"
         '
@@ -281,7 +281,7 @@ Partial Class FormulaireConfig
         Me.Label6.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.Label6.Location = New System.Drawing.Point(3, 8)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(162, 16)
+        Me.Label6.Size = New System.Drawing.Size(161, 16)
         Me.Label6.TabIndex = 47
         Me.Label6.Text = "Caracteres Jouables (5) : "
         '
@@ -415,7 +415,7 @@ Partial Class FormulaireConfig
         Me.LblNomActu.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.LblNomActu.Location = New System.Drawing.Point(3, 6)
         Me.LblNomActu.Name = "LblNomActu"
-        Me.LblNomActu.Size = New System.Drawing.Size(182, 16)
+        Me.LblNomActu.Size = New System.Drawing.Size(181, 16)
         Me.LblNomActu.TabIndex = 49
         Me.LblNomActu.Text = "Veuillez sectionner un nom :"
         '

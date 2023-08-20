@@ -159,6 +159,7 @@
     End Sub
 
     Private Sub gagnePerdu(gagne As Boolean)
+        BtnAbandonner.Enabled = False
         Dim temps As Integer
         If ModuleConfig.timerEstActive Then
             temps = ModuleConfig.getTempsMax - ModulePartie.getTempsPartie()
