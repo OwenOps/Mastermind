@@ -191,6 +191,7 @@
         BtnGuess.Hide()
         LblBravoPerdu.Show()
         btnExit.Visible = True
+        BtnAbandonner.Enabled = False
     End Sub
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click

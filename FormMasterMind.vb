@@ -6,7 +6,6 @@
 
     Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
         FormAccueil.Show()
-        Me.Hide()
     End Sub
 
     Private Sub btnConfig_Click(sender As Object, e As EventArgs) Handles btnConfig.Click
